@@ -1,0 +1,2 @@
+﻿  win64_vulkantriangle.cpp
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.h(4): fatal error C1083: Cannot open include file: 'vulkan/vulkan.h': No such file or directory
