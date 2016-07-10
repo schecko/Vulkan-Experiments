@@ -9,13 +9,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <glm/glm.hpp>
 #include <chrono>
-#include <commonvulkan.h>
+#include "commonvulkan.h"
 #include "commonwindows.h"
 #include "surface.h"
 #include "util.h"
 #include "camera.h"
+
+using namespace Cy;
 
 void PrepareVertexData(const DeviceInfo* deviceInfo, VkPhysicalDeviceMemoryProperties memoryProperties, VertexBuffer* vertexBuffer)
 {
@@ -446,7 +447,7 @@ void Init(MainMemory* m)
 		m->windowInfo.clientWidth, 
 		m->windowInfo.clientHeight, 
 		-2.0f, 
-		glm::vec3(40.0f, 0.0f, 0.0f));
+		v3(40.0f, 0.0f, 0.0f));
 
 	m->pipelineInfo.descriptorSetLayout = NewDescriptorSetLayout(m->deviceInfo.device, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT);
 	m->pipelineInfo.pipelineLayout = NewPipelineLayout(m->deviceInfo.device, m->pipelineInfo.descriptorSetLayout);
@@ -531,7 +532,7 @@ void Update(MainMemory* m)
 	float speed = CAMERA_SPEED * m->timerInfo.frameTimeMilliSec;
 	if(input.keys[keyW])
 	{
-		m->camera.cameraPos.position += (m->camera.cameraPos.front * speed * 10.0f);
+		m->camera.cameraPos.position += m->camera.cameraPos.front * speed * 10.0f;
 	}
 	if (input.keys[keyS])
 	{

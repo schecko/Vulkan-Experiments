@@ -15,10 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="code\triangle.frag.spv" />
-    <None Include="code\triangle.vert.spv" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="code\win64_vulkantriangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

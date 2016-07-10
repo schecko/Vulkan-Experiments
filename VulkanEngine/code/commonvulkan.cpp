@@ -738,7 +738,7 @@ namespace Cy
 	void DestroyDeviceInfo(DeviceInfo* deviceInfo)
 	{
 
-		vkFreeCommandBuffers(deviceInfo->device, deviceInfo->cmdPool, deviceInfo->drawCmdBuffers.size(), deviceInfo->drawCmdBuffers.data());
+		vkFreeCommandBuffers(deviceInfo->device, deviceInfo->cmdPool, (uint32_t)deviceInfo->drawCmdBuffers.size(), deviceInfo->drawCmdBuffers.data());
 		vkFreeCommandBuffers(deviceInfo->device, deviceInfo->cmdPool, 1, &deviceInfo->prePresentCmdBuffer);
 		vkFreeCommandBuffers(deviceInfo->device, deviceInfo->cmdPool, 1, &deviceInfo->postPresentCmdBuffer);
 		vkFreeCommandBuffers(deviceInfo->device, deviceInfo->cmdPool, 1, &deviceInfo->setupCmdBuffer);

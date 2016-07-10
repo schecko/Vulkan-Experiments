@@ -1,7 +1,7 @@
 #pragma once
 
 #define VK_USE_PLATFORM_WIN32_KHR
-#include <vulkan/vulkan.h>
+#include <vulkan.h>
 #include <windows.h>
 #include <vector>
 
@@ -9,6 +9,8 @@
 #include "surface.h"
 #include "commonwindows.h"
 #include "camera.h"
+
+using namespace Cy;
 
 static const char* EXE_NAME = "VulkanTriangle";
 static const uint32_t VERTEX_BUFFER_BIND_ID = 0;

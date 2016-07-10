@@ -5,38 +5,41 @@
 #include "commonvulkan.h"
 #include "commonwindows.h"
 
-struct WindowInfo;
-//todo remove cyclic dependance
-struct DeviceInfo;
-
-struct SurfaceInfo
+namespace Cy
 {
-	VkSurfaceKHR surface;
-	VkColorSpaceKHR colorSpace;
-	VkFormat colorFormat;
-	uint32_t imageCount;
-	std::vector<VkImage> images;
-	std::vector<VkImageView> views;
-	VkSwapchainKHR swapChain;
-	uint32_t currentBuffer;
-};
+	struct WindowInfo;
+	//todo remove cyclic dependance
+	struct DeviceInfo;
 
-VkSurfaceKHR NewSurface(const WindowInfo* window, VkInstance vkInstance);
+	struct SurfaceInfo
+	{
+		VkSurfaceKHR surface;
+		VkColorSpaceKHR colorSpace;
+		VkFormat colorFormat;
+		uint32_t imageCount;
+		std::vector<VkImage> images;
+		std::vector<VkImageView> views;
+		VkSwapchainKHR swapChain;
+		uint32_t currentBuffer;
+	};
 
-uint32_t FindGraphicsQueueFamilyIndex(VkPhysicalDevice vkPhysicalDevice, VkSurfaceKHR surface);
+	VkSurfaceKHR NewSurface(const WindowInfo* window, VkInstance vkInstance);
 
-void GetSurfaceColorSpaceAndFormat(VkPhysicalDevice physicalDevice,
-	SurfaceInfo* surfaceInfo);
+	uint32_t FindGraphicsQueueFamilyIndex(VkPhysicalDevice vkPhysicalDevice, VkSurfaceKHR surface);
 
-void InitSwapChain(
-	const DeviceInfo* deviceInfo,
-	VkPhysicalDevice physDevice,
-	SurfaceInfo* surfaceInfo,
-	uint32_t* width,
-	uint32_t* height);
+	void GetSurfaceColorSpaceAndFormat(VkPhysicalDevice physicalDevice,
+		SurfaceInfo* surfaceInfo);
 
-VkResult AcquireNextImage(const DeviceInfo* deviceInfo, SurfaceInfo* surfaceInfo);
+	void InitSwapChain(
+		const DeviceInfo* deviceInfo,
+		VkPhysicalDevice physDevice,
+		SurfaceInfo* surfaceInfo,
+		uint32_t* width,
+		uint32_t* height);
 
-VkResult QueuePresent(const DeviceInfo* deviceInfo, const SurfaceInfo* surfaceInfo);
+	VkResult AcquireNextImage(const DeviceInfo* deviceInfo, SurfaceInfo* surfaceInfo);
 
-void DestroySurfaceInfo(VkInstance vkInstance, VkDevice device, SurfaceInfo* surfaceInfo);
+	VkResult QueuePresent(const DeviceInfo* deviceInfo, const SurfaceInfo* surfaceInfo);
+
+	void DestroySurfaceInfo(VkInstance vkInstance, VkDevice device, SurfaceInfo* surfaceInfo);
+}

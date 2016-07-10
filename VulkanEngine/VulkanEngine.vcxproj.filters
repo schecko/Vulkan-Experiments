@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="code\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -50,7 +53,7 @@
     <ClInclude Include="code\util.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="code\math.h">
+    <ClInclude Include="code\cymath.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

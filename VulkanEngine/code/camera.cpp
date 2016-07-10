@@ -1,6 +1,5 @@
 #define GLM_FORCE_RADIANS
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/glm.hpp>
+#include "math.h"
 #include <vulkan.h>
 
 #include "camera.h"
@@ -32,17 +31,17 @@ namespace Cy
 			camera.cameraPos.pitch = -PI / 2;
 		}
 
-		glm::vec3 tempFront;
+		v3 tempFront;
 		tempFront.x = cos(camera.cameraPos.yaw) * cos(camera.cameraPos.pitch);
 		tempFront.y = sin(camera.cameraPos.pitch);
 		tempFront.z = sin(camera.cameraPos.yaw) * cos(camera.cameraPos.pitch);
-		camera.cameraPos.front = glm::normalize(tempFront);
-		camera.cameraPos.right = glm::normalize(glm::cross(camera.cameraPos.front, camera.cameraPos.worldUp));
-		camera.cameraPos.up = glm::normalize(glm::cross(camera.cameraPos.right, camera.cameraPos.front));
+		camera.cameraPos.front = Norm(tempFront);
+		camera.cameraPos.right = Norm(Cross(camera.cameraPos.front, camera.cameraPos.worldUp));
+		camera.cameraPos.up = Norm(Cross(camera.cameraPos.right, camera.cameraPos.front));
 
-		camera.cameraMats.view = lookAt(camera.cameraPos.position, camera.cameraPos.position + camera.cameraPos.front, camera.cameraPos.up);
-		camera.cameraMats.projection = glm::perspective(camera.cameraPos.zoom, (float)width / (float)height, .1f, 256.0f);
-		camera.cameraMats.model = translate(glm::mat4(), glm::vec3(0.0f, 0.0f, 0.0f));
+		camera.cameraMats.view = LookAt(camera.cameraPos.position, camera.cameraPos.position + camera.cameraPos.front, camera.cameraPos.up);
+		camera.cameraMats.projection = Perspective(camera.cameraPos.zoom, (float)width / (float)height, .1f, 256.0f);
+		camera.cameraMats.model = Translate(m4(), v3(0.0f, 0.0f, 0.0f));
 
 		void* destPointer;
 		VkResult error = vkMapMemory(logicalDevice, camera.memory, 0, sizeof(CameraMats), 0, &destPointer);
@@ -58,7 +57,7 @@ namespace Cy
 		uint32_t width,
 		uint32_t height,
 		float zoom,
-		glm::vec3 rotation)
+		v3 rotation)
 	{
 		camera->buffer = NewBuffer(logicalDevice, sizeof(CameraMats), VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT);
 		VkMemoryAllocateInfo aInfo = NewMemoryAllocInfo(logicalDevice, memoryProperties, camera->buffer, 0, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
@@ -74,11 +73,11 @@ namespace Cy
 		UpdateCamera(logicalDevice, *camera, width, height);
 	}
 
-	CameraPos NewCameraPos(glm::vec3 initalPosition)
+	CameraPos NewCameraPos(v3 initalPosition)
 	{
 		CameraPos cameraPos = {};
 		cameraPos.position = initalPosition;
-		cameraPos.worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
+		cameraPos.worldUp = v3(0.0f, 1.0f, 0.0f);
 		cameraPos.yaw = -PI / 2;
 		cameraPos.pitch = 0.0f;
 		cameraPos.zoom = PI / 6;
