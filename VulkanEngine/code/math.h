@@ -10,7 +10,8 @@ namespace Cy
 		float x, y;
 		v2()
 		{
-			
+			this->x = 0;
+			this->y = 0;
 		}
 		v2(const float x, const float y)
 		{
@@ -23,37 +24,37 @@ namespace Cy
 			this->y = v.y;
 		}
 		
-		v2 operator+(const v2 v) const
+		inline friend static v2 operator+(const v2& v)
 		{
 			return v;
 		}
-		v2 operator+(const v2& a1, const v2& a2)
+		inline friend static v2 operator+(const v2& a1, const v2& a2)
 		{
 			return v2(a1.x + a2.x, a1.y + a2.y);
 		}
-		v2 operator+(const v2& a1, float scalar)
+		inline friend static v2 operator+(const v2& a1, float scalar)
 		{
 			return v2(a1.x + scalar, a1.y + scalar);
 		}
 
-		v2 operator-(const v2 v) const
+		inline friend static v2 operator-(const v2 v)
 		{
 			return v2(-v.x, -v.y);
 		}
-		v2 operator-(const v2& a1, const v2& a2)
+		inline friend static v2 operator-(const v2& a1, const v2& a2)
 		{
 			return v2(a1.x - a2.x, a1.y - a2.y);
 		}
-		v2 operator-(const v2& a1, float scalar)
+		inline friend static v2 operator-(const v2& a1, float scalar)
 		{
 			return v2(a1.x - scalar, a1.y - scalar);
 		}
 
-		v2 operator*(const v2& a1, const v2& a2)
+		inline friend static v2 operator*(const v2& a1, const v2& a2)
 		{
 			return v2(a1.x * a2.x, a1.y * a2.y);
 		}
-		v2 operator*(const v2& a1, float scalar)
+		inline friend static v2 operator*(const v2& a1, float scalar)
 		{
 			return v2(a1.x * scalar, a1.y * scalar);
 		}
@@ -65,7 +66,9 @@ namespace Cy
 		float x, y, z;
 		v3()
 		{
-			
+			this->x = 0;
+			this->y = 0;
+			this->z = 0;
 		}
 		v3(const float x, const float y, const float z)
 		{
@@ -84,34 +87,34 @@ namespace Cy
 		{
 			return v;
 		}
-		v3 operator+(const v3& a1, const v3& a2)
+		inline friend static v3 operator+(const v3& a1, const v3& a2)
 		{
 			return v3(a1.x + a2.x, a1.y + a2.y, a1.z + a2.z);
 		}
-		v3 operator+(const v3& a1, float scalar)
+		inline friend static v3 operator+(const v3& a1, float scalar)
 		{
 			return v3(a1.x + scalar, a1.y + scalar, a1.z + scalar);
 		}
 
-		v3 operator-(const v3 v) const
+		inline friend static v3 operator-(const v3 v)
 		{
 			return v3(-v.x, -v.y, -v.z);
 		}
-		v3 operator-(const v3& a1, const v3& a2)
+		inline friend static v3 operator-(const v3& a1, const v3& a2)
 		{
 			return v3(a1.x - a2.x, a1.y - a2.y, a1.z - a2.z);
 		}
-		v3 operator-(const v3& a1, float scalar)
+		inline friend static v3 operator-(const v3& a1, float scalar)
 		{
 			return v3(a1.x - scalar, a1.y - scalar, a1.z - scalar);
 		}
 
 		//element wise multiplication
-		v3 operator*(const v3& a1, const v3& a2)
+		inline friend static v3 operator*(const v3& a1, const v3& a2)
 		{
 			return v3(a1.x * a2.x, a1.y * a2.y, a1.z * a2.z);
 		}
-		v3 operator*(const v3& a1, float scalar)
+		inline friend static v3 operator*(const v3& a1, float scalar)
 		{
 			return v3(a1.x * scalar, a1.y * scalar, a1.z * scalar);
 		}
@@ -122,7 +125,11 @@ namespace Cy
 		float x, y, z, w;
 		v4()
 		{
-			
+			this->x = 0;
+			this->y = 0;
+			this->z = 0;
+			this->w = 0;
+
 		}
 		v4(const float x, const float y, const float z, const float w)
 		{
@@ -143,34 +150,34 @@ namespace Cy
 		{
 			return v;
 		}
-		v4 operator+(const v4& a1, const v4& a2)
+		inline friend static v4 operator+(const v4& a1, const v4& a2)
 		{
 			return v4(a1.x + a2.x, a1.y + a2.y, a1.z + a2.z, a1.w + a2.w);
 		}
-		v4 operator+(const v4& a1, float scalar)
+		inline friend static v4 operator+(const v4& a1, float scalar)
 		{
 			return v4(a1.x + scalar, a1.y + scalar, a1.z + scalar, a1.w + scalar);
 		}
 
-		v4 operator-(const v4 v) const
+		inline friend static v4 operator-(const v4 v)
 		{
 			return v4(-v.x, -v.y, -v.z, -v.w);
 		}
-		v4 operator-(const v4& a1, const v4& a2)
+		inline friend static v4 operator-(const v4& a1, const v4& a2)
 		{
 			return v4(a1.x - a2.x, a1.y - a2.y, a1.z - a2.z, a1.w - a2.w);
 		}
-		v4 operator-(const v4& a1, float scalar)
+		inline friend static v4 operator-(const v4& a1, float scalar)
 		{
 			return v4(a1.x - scalar, a1.y - scalar, a1.z - scalar, a1.w - scalar);
 		}
 
 		//element wise multiplication
-		v4 operator*(const v4& a1, const v4& a2)
+		inline friend static v4 operator*(const v4& a1, const v4& a2)
 		{
 			return v4(a1.x * a2.x, a1.y * a2.y, a1.z * a2.z, a1.w * a2.w);
 		}
-		v4 operator*(const v4& a1, float scalar)
+		inline friend static v4 operator*(const v4& a1, float scalar)
 		{
 			return v4(a1.x * scalar, a1.y * scalar, a1.z * scalar, a1.w * scalar);
 		}
@@ -184,6 +191,58 @@ namespace Cy
 			v2 x, y;
 		};
 
+		m2()
+		{
+			this->x = v2();
+			this->y = v2();
+		}
+		m2(const m2& m)
+		{
+			this->x = m.x;
+			this->y = m.y;
+		}
+		m2(const v2& v1, const v2& v2)
+		{
+			this->x = v1;
+			this->y = v2;
+		}
+
+		inline friend static m2 operator+(const m2 v)
+		{
+			return v;
+		}
+		inline friend static m2 operator+(const m2& a1, const m2& a2)
+		{
+			return m2(a1.x + a2.x, a1.y + a2.y);
+		}
+		inline friend static m2 operator+(const m2& a1, float scalar)
+		{
+			return m2(a1.x + scalar, a1.y + scalar);
+		}
+
+		inline friend static m2 operator-(const m2 v)
+		{
+			return m2(-v.x, -v.y);
+		}
+		inline friend static m2 operator-(const m2& a1, const m2& a2)
+		{
+			return m2(a1.x - a2.x, a1.y - a2.y);
+		}
+		inline friend static m2 operator-(const m2& a1, float scalar)
+		{
+			return m2(a1.x - scalar, a1.y - scalar);
+		}
+
+		//element wise multiplication
+		inline friend static m2 operator*(const m2& a1, const m2& a2)
+		{
+			return m2(a1.x * a2.x, a1.y * a2.y);
+		}
+		inline friend static m2 operator*(const m2& a1, float scalar)
+		{
+			return m2(a1.x * scalar, a1.y * scalar);
+		}
+
 	} m2;
 
 	typedef struct m3
@@ -193,9 +252,62 @@ namespace Cy
 			v3 value[3];
 			v3 x, y, z;
 		};
+
 		m3()
 		{
-			
+			this->x = v3();
+			this->y = v3();
+			this->z = v3();
+		}
+
+		m3(const m3& other)
+		{
+			this->x = other.x;
+			this->y = other.y;
+			this->z = other.z;
+		}
+
+		m3(const v3& a1, const v3& a2, const v3& a3)
+		{
+			this->x = a1;
+			this->y = a2;
+			this->z = a3;
+		}
+
+		inline friend static m3 operator+(const m3 v)
+		{
+			return v;
+		}
+		inline friend static m3 operator+(const m3& a1, const m3& a2)
+		{
+			return m3(a1.x + a2.x, a1.y + a2.y, a1.z + a2.z);
+		}
+		inline friend static m3 operator+(const m3& a1, float scalar)
+		{
+			return m3(a1.x + scalar, a1.y + scalar, a1.z + scalar);
+		}
+
+		inline friend static m3 operator-(const m3 v)
+		{
+			return m3(-v.x, -v.y, v.z);
+		}
+		inline friend static m3 operator-(const m3& a1, const m3& a2)
+		{
+			return m3(a1.x - a2.x, a1.y - a2.y, a1.z - a2.z);
+		}
+		inline friend static m3 operator-(const m3& a1, float scalar)
+		{
+			return m3(a1.x - scalar, a1.y - scalar, a1.z - scalar);
+		}
+
+		//element wise multiplication
+		inline friend static m2 operator*(const m2& a1, const m2& a2)
+		{
+			return m2(a1.x * a2.x, a1.y * a2.y);
+		}
+		inline friend static m2 operator*(const m2& a1, float scalar)
+		{
+			return m2(a1.x * scalar, a1.y * scalar);
 		}
 	} m3;
 
@@ -262,6 +374,7 @@ namespace Cy
 
 	inline m4 LookAt(const v3 eye, const v3 center, const v3 up)
 	{
+		//credits to glm
 		v3 f = v3(Norm(center - eye));
 		v3 s = v3(Norm(Cross(f, up)));
 		v3 u = v3(Cross(s, f));
