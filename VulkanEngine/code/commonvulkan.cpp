@@ -120,18 +120,19 @@ namespace Cy
 		VkApplicationInfo appInfo = {};
 		appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 		appInfo.pApplicationName = appName;
-		appInfo.pEngineName = appName;
-		appInfo.apiVersion = VK_MAKE_VERSION(1, 0, 8);
-		appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 8);
+		appInfo.pEngineName = "VulkanEngine";
+		appInfo.apiVersion = VK_MAKE_VERSION(1, 0, 17);
+		appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 17);
 
 		VkInstanceCreateInfo instanceCreateInfo = {};
 		instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 		instanceCreateInfo.pApplicationInfo = &appInfo;
 
-#if(VALIDATION_LAYERS)
-		instanceCreateInfo.enabledLayerCount = (uint32_t)instanceLayers->size();
-		instanceCreateInfo.ppEnabledLayerNames = instanceLayers->data();
-#endif
+		if (instanceLayers->size() > 0)
+		{
+			instanceCreateInfo.enabledLayerCount = (uint32_t)instanceLayers->size();
+			instanceCreateInfo.ppEnabledLayerNames = instanceLayers->data();
+		}
 
 		instanceCreateInfo.enabledExtensionCount = (uint32_t)instanceExts->size();
 		instanceCreateInfo.ppEnabledExtensionNames = instanceExts->data();
@@ -142,10 +143,121 @@ namespace Cy
 
 		Assert(error == VK_SUCCESS, "could not create instance of vulkan");
 
-#if VALIDATION_LAYERS
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, CreateDebugReportCallbackEXT);
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, DestroyDebugReportCallbackEXT);
-#endif
+		if (instanceLayers->size() > 0 && error == VK_SUCCESS)
+		{
+			GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, CreateDebugReportCallbackEXT);
+			GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, DestroyDebugReportCallbackEXT);
+		}
+
+		return vkInstance;
+	}
+
+
+	VkInstance NewVkInstance(const char* appName, VkInclude features)
+	{
+
+		std::vector<VkExtensionProperties> extProps = GetInstalledVkExtensions();
+		std::vector<VkLayerProperties> layerProps = GetInstalledVkLayers();
+		std::vector<const char*> extNames;
+		std::vector<const char*> layerNames;
+		if (features > VkInclude::nothing)
+		{
+			switch (features)
+			{
+				//NOTE: vktrace layer broken right now.....
+				/*case VkInclude::everything:
+					{
+						extNames.resize(extProps.size());
+						layerNames.resize(layerProps.size());
+						for (uint32_t i = 0; i < layerProps.size(); i++)
+						{
+							layerNames[i] = layerProps[i].layerName;
+						}
+						for (uint32_t i = 0; i < extProps.size(); i++)
+						{
+							extNames[i] = extProps[i].extensionName;
+						}
+					}
+					break;*/
+				case VkInclude::minimalBoth:
+					{
+						layerNames.push_back("VK_LAYER_LUNARG_api_dump");
+						layerNames.push_back("VK_LAYER_LUNARG_core_validation");
+						layerNames.push_back("VK_LAYER_LUNARG_device_limits");
+						layerNames.push_back("VK_LAYER_LUNARG_image");
+						layerNames.push_back("VK_LAYER_LUNARG_object_tracker");
+						layerNames.push_back("VK_LAYER_LUNARG_parameter_validation");
+						layerNames.push_back("VK_LAYER_LUNARG_screenshot");
+						layerNames.push_back("VK_LAYER_LUNARG_swapchain");
+						layerNames.push_back("VK_LAYER_GOOGLE_threading");
+						layerNames.push_back("VK_LAYER_GOOGLE_unique_objects");
+						//layerNames.push_back("VK_LAYER_LUNARG_vktrace"); //trace broken right now
+						layerNames.push_back("VK_LAYER_RENDERDOC_Capture");
+						layerNames.push_back("VK_LAYER_NV_optimus");
+						layerNames.push_back("VK_LAYER_VALVE_steam_overlay");
+						layerNames.push_back("VK_LAYER_LUNARG_standard_validation");
+
+						//required for function GetPhysicalDeviceSurfaceSupportKHR
+						extNames.push_back("VK_KHR_surface");
+						//required for function vkCreateWin32SurfaceKHR 
+						extNames.push_back("VK_KHR_win32_surface");
+						//required for createdebugreportcallback function
+						extNames.push_back("VK_EXT_debug_report");
+					}
+					break;
+				case VkInclude::onlyExtensions:
+					{
+						Assert(((uint32_t)features & (uint32_t)VkInclude::onlyExtensions) == (uint32_t)features, "VkInclude::onlyExtensions cannot be used with other layer and extension options");
+						//required for function GetPhysicalDeviceSurfaceSupportKHR
+						extNames.push_back("VK_KHR_surface");
+						//required for function vkCreateWin32SurfaceKHR 
+						extNames.push_back("VK_KHR_win32_surface");
+						//required for createdebugreportcallback function
+						extNames.push_back("VK_EXT_debug_report");
+					}
+					break;
+				default:
+					{
+						Assert(0, "vkinclude " + std::to_string((uint32_t)features) + "not implemented yet");
+					}
+					break;
+			}
+		}
+
+		VkResult error;
+		VkInstance vkInstance;
+
+		VkApplicationInfo appInfo = {};
+		appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+		appInfo.pApplicationName = appName;
+		appInfo.pEngineName = "VulkanEngine";
+		appInfo.apiVersion = VK_MAKE_VERSION(1, 0, 17);
+		appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 17);
+
+		VkInstanceCreateInfo instanceCreateInfo = {};
+		instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+		instanceCreateInfo.pApplicationInfo = &appInfo;
+
+		if (layerNames.size() > 0)
+		{
+			instanceCreateInfo.enabledLayerCount = (uint32_t)layerNames.size();
+			instanceCreateInfo.ppEnabledLayerNames = layerNames.data();
+		}
+
+		instanceCreateInfo.enabledExtensionCount = (uint32_t)extNames.size();
+		instanceCreateInfo.ppEnabledExtensionNames = extNames.data();
+
+
+
+		error = vkCreateInstance(&instanceCreateInfo, nullptr, &vkInstance);
+
+		Assert(error == VK_SUCCESS, "could not create instance of vulkan");
+
+		if (layerNames.size() > 0 && error == VK_SUCCESS)
+		{
+			GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, CreateDebugReportCallbackEXT);
+			GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, DestroyDebugReportCallbackEXT);
+		}
 
 		return vkInstance;
 	}
@@ -158,7 +270,7 @@ namespace Cy
 		VkResult error;
 		error = vkEnumeratePhysicalDevices(vkInstance, gpuCount, nullptr);
 		Assert(error, "could not enumerate gpus");
-		Assert(gpuCount > 0, "no compatible vulkan gpus available");
+		Assert(*gpuCount > 0, "no compatible vulkan gpus available");
 
 		std::vector<VkPhysicalDevice> physicalDevices(*gpuCount);
 		error = vkEnumeratePhysicalDevices(vkInstance, gpuCount, physicalDevices.data());
@@ -168,8 +280,7 @@ namespace Cy
 	}
 
 
-
-	VkDevice NewLogicalDevice(VkPhysicalDevice physicalDevice, uint32_t renderingQueueFamilyIndex, std::vector<const char*> deviceLayers, std::vector<const char*> deviceExts)
+	VkDevice NewLogicalDevice(VkPhysicalDevice physicalDevice, uint32_t renderingQueueFamilyIndex, std::vector<const char*> deviceLayers, std::vector<const char*> deviceExts, VkPhysicalDeviceFeatures* features = nullptr)
 	{
 
 		float queuePriorities[1] = { 0.0f };
@@ -184,12 +295,14 @@ namespace Cy
 		deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 		deviceCreateInfo.queueCreateInfoCount = 1;
 		deviceCreateInfo.pQueueCreateInfos = &queueCreateInfo;
+		deviceCreateInfo.pEnabledFeatures = features;
 		deviceCreateInfo.enabledExtensionCount = (uint32_t)deviceExts.size();
 		deviceCreateInfo.ppEnabledExtensionNames = deviceExts.data();
-#if VALIDATION_LAYERS
-		deviceCreateInfo.enabledLayerCount = (uint32_t)deviceLayers.size();
-		deviceCreateInfo.ppEnabledLayerNames = deviceLayers.data();
-#endif
+		if (deviceLayers.size() > 0)
+		{
+			deviceCreateInfo.enabledLayerCount = (uint32_t)deviceLayers.size();
+			deviceCreateInfo.ppEnabledLayerNames = deviceLayers.data();
+		}
 
 		VkResult error;
 		VkDevice logicalDevice;
@@ -394,7 +507,15 @@ namespace Cy
 		vkEnumerateInstanceLayerProperties(&layerCount, layerProps.data());
 
 		return layerProps;
+	}
 
+	std::vector<VkExtensionProperties> GetInstalledVkExtensions()
+	{
+		uint32_t layerCount = 0;
+		vkEnumerateInstanceExtensionProperties(nullptr, &layerCount, nullptr);
+		std::vector<VkExtensionProperties> extProps(layerCount);
+		vkEnumerateInstanceExtensionProperties(nullptr, &layerCount, extProps.data());
+		return extProps;
 	}
 
 	std::vector<VkLayerProperties> GetInstalledVkLayers(VkPhysicalDevice physicalDevice)
@@ -406,6 +527,17 @@ namespace Cy
 		vkEnumerateDeviceLayerProperties(physicalDevice, &layerCount, layerProps.data());
 
 		return layerProps;
+	}
+
+	std::vector<VkExtensionProperties> GetInstalledVkExtensions(VkPhysicalDevice physicalDevice)
+	{
+		uint32_t layerCount = 0;
+
+		vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &layerCount, nullptr);
+		std::vector<VkExtensionProperties> extProps(layerCount);
+		vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &layerCount, extProps.data());
+
+		return extProps;
 	}
 
 
@@ -759,13 +891,11 @@ namespace Cy
 		vkDestroySemaphore(deviceInfo->device, deviceInfo->renderComplete, nullptr);
 
 		vkDestroyDevice(deviceInfo->device, nullptr);
-		deviceInfo = {};
 	}
 
 	void DestroyDebugInfo(VkInstance vkInstance, DebugInfo* debugInfo)
 	{
 		DestroyDebugReportCallbackEXT(vkInstance, debugInfo->debugReport, nullptr);
-		debugInfo = {};
 	}
 
 	void DestroyInstance(VkInstance vkInstance)

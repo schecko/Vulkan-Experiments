@@ -10,10 +10,10 @@
 namespace Cy
 {
 	//function pointers
-	PFN_vkGetPhysicalDeviceSurfaceSupportKHR GetPhysicalDeviceSurfaceSupportKHR = nullptr;
-	PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR GetPhysicalDeviceSurfaceCapabilitiesKHR = nullptr;
-	PFN_vkGetPhysicalDeviceSurfaceFormatsKHR GetPhysicalDeviceSurfaceFormatsKHR = nullptr;
-	PFN_vkGetPhysicalDeviceSurfacePresentModesKHR GetPhysicalDeviceSurfacePresentModesKHR = nullptr;
+	//PFN_vkGetPhysicalDeviceSurfaceSupportKHR GetPhysicalDeviceSurfaceSupportKHR = nullptr;
+	//PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR GetPhysicalDeviceSurfaceCapabilitiesKHR = nullptr;
+	//PFN_vkGetPhysicalDeviceSurfaceFormatsKHR GetPhysicalDeviceSurfaceFormatsKHR = nullptr;
+	//PFN_vkGetPhysicalDeviceSurfacePresentModesKHR GetPhysicalDeviceSurfacePresentModesKHR = nullptr;
 	PFN_vkCreateSwapchainKHR CreateSwapchainKHR = nullptr;
 	PFN_vkDestroySwapchainKHR DestroySwapchainKHR = nullptr;
 	PFN_vkGetSwapchainImagesKHR GetSwapchainImagesKHR = nullptr;
@@ -42,13 +42,6 @@ namespace Cy
 			&surface);
 
 		Assert(error, "could not create windows surface");
-
-		//get function pointers after creating instance of vulkan
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceSupportKHR);
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceCapabilitiesKHR);
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceFormatsKHR);
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfacePresentModesKHR);
-
 		return surface;
 	}
 
@@ -57,8 +50,8 @@ namespace Cy
 	{
 
 		uint32_t queueCount = 0;
-		uint32_t graphicsAndPresentingQueueIndex = 0;
-		VkBool32 supportsPresent;
+		uint32_t graphicsAndPresentingQueueIndex = 0; //cannot be within for-loop scope, used a bit later
+		VkBool32 supportsPresent = VK_FALSE;
 		vkGetPhysicalDeviceQueueFamilyProperties(vkPhysicalDevice, &queueCount, nullptr);
 		Assert(queueCount > 0, "physical device has no available queues");
 
@@ -220,7 +213,7 @@ namespace Cy
 
 	static VkSurfaceCapabilitiesKHR GetSurfaceCaps(VkPhysicalDevice physDevice, VkSurfaceKHR surface)
 	{
-		VkSurfaceCapabilitiesKHR surfaceCaps;
+		VkSurfaceCapabilitiesKHR surfaceCaps = {};
 		VkResult error;
 		error = GetPhysicalDeviceSurfaceCapabilitiesKHR(physDevice,
 			surface,
@@ -416,6 +409,17 @@ namespace Cy
 		return QueuePresentKHR(deviceInfo->queue, &pInfo);
 	}
 
+	SurfaceInfo NewSurfaceInfo(VkInstance vkInstance, const WindowInfo* windowInfo)
+	{
+		SurfaceInfo surfaceInfo = {};
+		surfaceInfo.surface = NewSurface(windowInfo, vkInstance);
+		//get function pointers after creating instance of vulkan
+		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceSupportKHR);
+		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceCapabilitiesKHR);
+		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceFormatsKHR);
+		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfacePresentModesKHR);
+	}
+
 
 	void DestroySurfaceInfo(VkInstance vkInstance, VkDevice device, SurfaceInfo* surfaceInfo)
 	{
@@ -429,6 +433,5 @@ namespace Cy
 
 		DestroySwapchainKHR(device, surfaceInfo->swapChain, nullptr);
 		vkDestroySurfaceKHR(vkInstance, surfaceInfo->surface, nullptr);
-		surfaceInfo = {};
 	}
 }

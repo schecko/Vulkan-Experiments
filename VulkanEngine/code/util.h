@@ -3,14 +3,19 @@
 #include <string>
 #include <vulkan.h>
 #include <iostream>
+#include <windows.h> //todo make assert not windows dependant? idk
+
+#define ENGINE_DEBUG true
+#define VALIDATION_MESSAGES true
+
 
 namespace Cy
 {
 	//helper macros for annoying function pointers
 #define GET_VULKAN_FUNCTION_POINTER_INST(inst, function)							\
 {																					\
-	function = (PFN_vk##function) vkGetInstanceProcAddr(inst, "vk"#function);		\
-	Assert(function != nullptr, "could not find function "#function);				\
+	surfaceInfo.##function = (PFN_vk##function) vkGetInstanceProcAddr(inst, "vk"#function);		\
+	Assert(surfaceInfo.##function != nullptr, "could not find function "#function);				\
 }																					\
 
 #define GET_VULKAN_FUNCTION_POINTER_DEV(dev, function)								\
@@ -46,7 +51,7 @@ namespace Cy
 	//the message is printed out and execution halts using std::cin rather than abort() or nullptr errors
 	inline void Assert(bool test, std::string message)
 	{
-#if DEBUGGING == true
+#if ENGINE_DEBUG
 		char x;
 		if (test == false)
 		{

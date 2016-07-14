@@ -3,7 +3,6 @@
 
 #include <vulkan.h>
 #include <vector>
-#include "surface.h"
 
 
 namespace Cy
@@ -85,6 +84,20 @@ namespace Cy
 		VkDebugReportCallbackEXT debugReport;
 	};
 
+	enum class VkInclude
+	{
+		nothing = 0x0,
+		onlyExtensions = 0x1,
+		onlyLayers = 0x2,
+		minimalExtensions = 0x4,
+		minimalLayers = 0x8,
+		minimalBoth = minimalExtensions | minimalLayers,
+		allExtensions = 0x10,
+		allLayers = 0x20,
+		everything = allExtensions | allLayers
+
+	};
+
 	void CreateDebugCallback(VkInstance vkInstance, VkDebugReportCallbackEXT* debugReport);
 
 	VkDescriptorSetLayout NewDescriptorSetLayout(VkDevice logicalDevice, VkDescriptorType type, VkShaderStageFlags flags);
@@ -93,9 +106,11 @@ namespace Cy
 
 	VkInstance NewVkInstance(const char* appName, std::vector<const char*>* instanceLayers, std::vector<const char*>* instanceExts);
 
+	VkInstance NewVkInstance(const char* appName, VkInclude features);
+
 	std::vector<VkPhysicalDevice> EnumeratePhysicalDevices(VkInstance vkInstance, uint32_t* gpuCount);
 
-	VkDevice NewLogicalDevice(VkPhysicalDevice physicalDevice, uint32_t renderingQueueFamilyIndex, std::vector<const char*> deviceLayers, std::vector<const char*> deviceExts);
+	VkDevice NewLogicalDevice(VkPhysicalDevice physicalDevice, uint32_t renderingQueueFamilyIndex, std::vector<const char*> deviceLayers, std::vector<const char*> deviceExts, VkPhysicalDeviceFeatures* features);
 
 	VkFormat GetSupportedDepthFormat(VkPhysicalDevice physicalDevice);
 
@@ -114,6 +129,10 @@ namespace Cy
 	std::vector<VkLayerProperties> GetInstalledVkLayers();
 
 	std::vector<VkLayerProperties> GetInstalledVkLayers(VkPhysicalDevice physicalDevice);
+
+	std::vector<VkExtensionProperties> GetInstalledVkExtensions();
+
+	std::vector<VkExtensionProperties> GetInstalledVkExtensions(VkPhysicalDevice physicalDevice);
 
 	VKAPI_ATTR VkBool32 VKAPI_CALL VkDebugCallback(VkDebugReportFlagsEXT flags,
 		VkDebugReportObjectTypeEXT objType,

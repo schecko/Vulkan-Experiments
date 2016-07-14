@@ -1,8 +1,10 @@
 #pragma once
 
 #define GLM_FORCE_RADIANS
-#include <windows.h>
 #include "cymath.h"
+#include <windows.h>
+#include <cstdint>
+#include <string>
 
 namespace Cy
 {

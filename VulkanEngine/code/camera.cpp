@@ -1,5 +1,5 @@
-#define GLM_FORCE_RADIANS
-#include "math.h"
+
+#include "cymath.h"
 #include <vulkan.h>
 
 #include "camera.h"

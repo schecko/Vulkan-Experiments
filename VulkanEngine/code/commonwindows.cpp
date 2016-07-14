@@ -1,9 +1,8 @@
 
-
+#include "commonwindows.h"
 #include <windows.h>
 #include <windowsx.h>
 #include <string>
-#include "commonwindows.h"
 #include "util.h"
 
 //the compiler cant find the windows version of the sleep function since MY sleep function is in its own namespace
@@ -102,22 +101,21 @@ namespace Cy
 
 		WindowInfo windowInfo;
 
-		WNDCLASS wc = {};
+		WNDCLASSA wc = {};
 
 		wc.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
 		wc.lpfnWndProc = MessageHandler;
 		wc.hInstance = GetModuleHandle(nullptr);
 
-		wchar_t wideName[256];
-		swprintf_s(wideName, L"%p", appName);
+		//wchar_t wideName[256];
+		//swprintf_s(wideName, L"%p", appName);
 
-		wc.lpszClassName = wideName;
-		wc.lpszMenuName = wideName;
+		wc.lpszClassName = appName;
+		wc.lpszMenuName = appName;
 		wc.cbWndExtra = sizeof(void*);
 
 
-		ATOM result = 0;
-		result = RegisterClass(&wc);
+		ATOM result = RegisterClassA(&wc);
 
 		Assert(result != 0, "could not register windowclass");
 
@@ -155,7 +153,6 @@ namespace Cy
 	void DestroyWindowInfo(WindowInfo* windowInfo)
 	{
 		DestroyWindow(windowInfo->windowHandle);
-		windowInfo = {};
 	}
 
 
@@ -163,7 +160,7 @@ namespace Cy
 	{
 		File file = {};
 
-		HANDLE fileHandle = CreateFileA(fileName.c_str(), GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, 0, 0);
+		HANDLE fileHandle = CreateFileA(fileName.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING, 0, nullptr);
 		if (fileHandle != INVALID_HANDLE_VALUE)
 		{
 			LARGE_INTEGER fileSize;
@@ -171,11 +168,11 @@ namespace Cy
 			{
 				Assert(fileSize.QuadPart < (int64_t)pow(2, 32), "file too big");
 				uint32_t fileSize32 = SafeTruncate((uint64_t)fileSize.QuadPart);
-				file.data = VirtualAlloc(0, fileSize32, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+				file.data = VirtualAlloc(nullptr, fileSize32, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 				if (file.data)
 				{
 					DWORD bytesRead;
-					if (ReadFile(fileHandle, file.data, fileSize32, &bytesRead, 0) && fileSize32 == bytesRead)
+					if (ReadFile(fileHandle, file.data, fileSize32, &bytesRead, nullptr) && fileSize32 == bytesRead)
 					{
 						file.size = fileSize32;
 					}
