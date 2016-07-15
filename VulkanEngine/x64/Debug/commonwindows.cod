@@ -5137,7 +5137,7 @@ tv91 = 440
 value$ = 480
 ?SafeTruncate@Cy@@YAH_J@Z PROC				; Cy::SafeTruncate, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 92
+; Line 104
 $LN11:
   00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
   00005	55		 push	 rbp
@@ -5151,13 +5151,13 @@ $LN11:
   00020	f3 ab		 rep stosd
   00022	48 8b 8c 24 08
 	02 00 00	 mov	 rcx, QWORD PTR [rsp+520]
-; Line 93
+; Line 105
   0002a	48 8b 85 e0 01
 	00 00		 mov	 rax, QWORD PTR value$[rbp]
   00031	48 c1 f8 3f	 sar	 rax, 63			; 0000003fH
   00035	48 85 c0	 test	 rax, rax
   00038	74 79		 je	 SHORT $LN2@SafeTrunca
-; Line 95
+; Line 107
   0003a	48 8b 85 e0 01
 	00 00		 mov	 rax, QWORD PTR value$[rbp]
   00041	48 c1 f8 20	 sar	 rax, 32			; 00000020H
@@ -5176,7 +5176,7 @@ $LN6@SafeTrunca:
   00067	0f b6 85 b4 01
 	00 00		 movzx	 eax, BYTE PTR tv69[rbp]
   0006e	88 45 04	 mov	 BYTE PTR safe$1[rbp], al
-; Line 96
+; Line 108
   00071	48 8d 85 08 01
 	00 00		 lea	 rax, QWORD PTR $T3[rbp]
   00078	48 89 85 48 01
@@ -5192,14 +5192,14 @@ $LN6@SafeTrunca:
 	00 00		 mov	 rdx, QWORD PTR tv91[rbp]
   000a0	0f b6 4d 04	 movzx	 ecx, BYTE PTR safe$1[rbp]
   000a4	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 97
+; Line 109
   000a9	8b 85 e0 01 00
 	00		 mov	 eax, DWORD PTR value$[rbp]
   000af	eb 77		 jmp	 SHORT $LN1@SafeTrunca
-; Line 99
+; Line 111
   000b1	eb 75		 jmp	 SHORT $LN1@SafeTrunca
 $LN2@SafeTrunca:
-; Line 101
+; Line 113
   000b3	48 8b 85 e0 01
 	00 00		 mov	 rax, QWORD PTR value$[rbp]
   000ba	48 c1 f8 20	 sar	 rax, 32			; 00000020H
@@ -5218,7 +5218,7 @@ $LN8@SafeTrunca:
   000e0	0f b6 85 b4 01
 	00 00		 movzx	 eax, BYTE PTR tv85[rbp]
   000e7	88 45 24	 mov	 BYTE PTR safe$2[rbp], al
-; Line 102
+; Line 114
   000ea	48 8d 85 68 01
 	00 00		 lea	 rax, QWORD PTR $T5[rbp]
   000f1	48 89 85 a8 01
@@ -5234,11 +5234,11 @@ $LN8@SafeTrunca:
 	00 00		 mov	 rdx, QWORD PTR tv133[rbp]
   00119	0f b6 4d 24	 movzx	 ecx, BYTE PTR safe$2[rbp]
   0011d	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 103
+; Line 115
   00122	8b 85 e0 01 00
 	00		 mov	 eax, DWORD PTR value$[rbp]
 $LN1@SafeTrunca:
-; Line 105
+; Line 117
   00128	48 8d a5 c8 01
 	00 00		 lea	 rsp, QWORD PTR [rbp+456]
   0012f	5f		 pop	 rdi
@@ -5257,7 +5257,7 @@ tv73 = 312
 value$ = 352
 ?SafeTruncate@Cy@@YAI_K@Z PROC				; Cy::SafeTruncate, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 74
+; Line 86
 $LN6:
   00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
   00005	55		 push	 rbp
@@ -5271,7 +5271,7 @@ $LN6:
   00020	f3 ab		 rep stosd
   00022	48 8b 8c 24 88
 	01 00 00	 mov	 rcx, QWORD PTR [rsp+392]
-; Line 75
+; Line 87
   0002a	48 8b 85 60 01
 	00 00		 mov	 rax, QWORD PTR value$[rbp]
   00031	48 c1 e8 20	 shr	 rax, 32			; 00000020H
@@ -5290,7 +5290,7 @@ $LN4@SafeTrunca:
   00057	0f b6 85 34 01
 	00 00		 movzx	 eax, BYTE PTR tv67[rbp]
   0005e	88 45 04	 mov	 BYTE PTR safe$[rbp], al
-; Line 76
+; Line 88
   00061	48 8d 85 e8 00
 	00 00		 lea	 rax, QWORD PTR $T1[rbp]
   00068	48 89 85 28 01
@@ -5306,10 +5306,10 @@ $LN4@SafeTrunca:
 	00 00		 mov	 rdx, QWORD PTR tv73[rbp]
   00090	0f b6 4d 04	 movzx	 ecx, BYTE PTR safe$[rbp]
   00094	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 77
+; Line 89
   00099	8b 85 60 01 00
 	00		 mov	 eax, DWORD PTR value$[rbp]
-; Line 78
+; Line 90
   0009f	48 8d a5 48 01
 	00 00		 lea	 rsp, QWORD PTR [rbp+328]
   000a6	5f		 pop	 rdi
@@ -5624,7 +5624,7 @@ test$ = 432
 message$ = 440
 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Assert, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 53
+; Line 65
 $LN6:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	88 4c 24 08	 mov	 BYTE PTR [rsp+8], cl
@@ -5647,25 +5647,25 @@ $LN6:
   00040	48 33 c5	 xor	 rax, rbp
   00043	48 89 85 80 01
 	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
-; Line 56
+; Line 68
   0004a	0f b6 85 b0 01
 	00 00		 movzx	 eax, BYTE PTR test$[rbp]
   00051	85 c0		 test	 eax, eax
   00053	75 68		 jne	 SHORT $LN2@Assert
-; Line 58
+; Line 70
   00055	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_GetConsoleWindow
   0005b	48 89 45 28	 mov	 QWORD PTR consoleHandle$4[rbp], rax
-; Line 59
+; Line 71
   0005f	ba 05 00 00 00	 mov	 edx, 5
   00064	48 8b 4d 28	 mov	 rcx, QWORD PTR consoleHandle$4[rbp]
   00068	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_ShowWindow
-; Line 60
+; Line 72
   0006e	48 8b 4d 28	 mov	 rcx, QWORD PTR consoleHandle$4[rbp]
   00072	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_SetFocus
-; Line 61
+; Line 73
   00078	48 8d 85 08 01
 	00 00		 lea	 rax, QWORD PTR $T5[rbp]
   0007f	48 89 85 48 01
@@ -5680,14 +5680,14 @@ $LN6:
   000a0	48 8b 8d 78 01
 	00 00		 mov	 rcx, QWORD PTR tv85[rbp]
   000a7	e8 00 00 00 00	 call	 ?Message@Cy@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Message
-; Line 62
+; Line 74
   000ac	48 8d 55 04	 lea	 rdx, QWORD PTR x$[rbp]
   000b0	48 8b 0d 00 00
 	00 00		 mov	 rcx, QWORD PTR __imp_?cin@std@@3V?$basic_istream@DU?$char_traits@D@std@@@1@A
   000b7	e8 00 00 00 00	 call	 ??$?5DU?$char_traits@D@std@@@std@@YAAEAV?$basic_istream@DU?$char_traits@D@std@@@0@AEAV10@AEAD@Z ; std::operator>><char,std::char_traits<char> >
   000bc	90		 npad	 1
 $LN2@Assert:
-; Line 66
+; Line 78
   000bd	48 8b 8d b8 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   000c4	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -5769,7 +5769,7 @@ tv69 = 216
 message$ = 256
 ?Message@Cy@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Message, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 29
+; Line 41
 $LN4:
   00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
   00005	55		 push	 rbp
@@ -5786,13 +5786,13 @@ $LN4:
   0002a	48 c7 85 c8 00
 	00 00 fe ff ff
 	ff		 mov	 QWORD PTR $T1[rbp], -2
-; Line 30
+; Line 42
   00035	48 8d 15 00 00
 	00 00		 lea	 rdx, OFFSET FLAT:??_C@_01EEMJAFIK@?6?$AA@
   0003c	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00043	e8 00 00 00 00	 call	 ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator+=
-; Line 32
+; Line 44
   00048	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   0004f	e8 00 00 00 00	 call	 ?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEBAPEBDXZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::c_str
@@ -5807,7 +5807,7 @@ $LN4:
   00070	48 8b c8	 mov	 rcx, rax
   00073	e8 00 00 00 00	 call	 fprintf
   00078	90		 npad	 1
-; Line 36
+; Line 48
   00079	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00080	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >

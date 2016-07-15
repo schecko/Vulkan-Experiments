@@ -578,7 +578,7 @@ namespace Cy
 			if (((typeBits & 1) == 1) && ((memoryProperties.memoryTypes[i].propertyFlags & properties) == properties))
 			{
 				*typeIndex = i;
-				break;
+				return;
 			}
 			typeBits >>= 1;
 		}
@@ -863,8 +863,6 @@ namespace Cy
 		vkDestroyPipelineCache(device, pipelineInfo->pipelineCache, nullptr);
 		vkDestroyRenderPass(device, pipelineInfo->renderPass, nullptr);
 
-
-		pipelineInfo = {};
 	}
 
 	void DestroyDeviceInfo(DeviceInfo* deviceInfo)

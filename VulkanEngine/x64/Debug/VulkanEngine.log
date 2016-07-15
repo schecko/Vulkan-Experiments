@@ -1,27 +1,10 @@
 ﻿  surface.cpp
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp(63): error C3861: 'GetPhysicalDeviceSurfaceSupportKHR': identifier not found
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp(78): error C3861: 'GetPhysicalDeviceSurfaceFormatsKHR': identifier not found
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp(83): error C3861: 'GetPhysicalDeviceSurfaceFormatsKHR': identifier not found
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp(218): error C3861: 'GetPhysicalDeviceSurfaceCapabilitiesKHR': identifier not found
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp(232): error C3861: 'GetPhysicalDeviceSurfacePresentModesKHR': identifier not found
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp(242): error C3861: 'GetPhysicalDeviceSurfacePresentModesKHR': identifier not found
-  Generating Code...
-  Compiling...
-  camera.cpp
+  commonvulkan.cpp
   Generating Code...
   Compiling...
   commonwindows.cpp
-  commonvulkan.cpp
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(148): error C2065: 'surfaceInfo': undeclared identifier
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(148): error C2228: left of '.CreateDebugReportCallbackEXT' must have class/struct/union
-  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(148): note: type is 'unknown-type'
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(149): error C2065: 'surfaceInfo': undeclared identifier
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(149): error C2228: left of '.DestroyDebugReportCallbackEXT' must have class/struct/union
-  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(149): note: type is 'unknown-type'
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(258): error C2065: 'surfaceInfo': undeclared identifier
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(258): error C2228: left of '.CreateDebugReportCallbackEXT' must have class/struct/union
-  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(258): note: type is 'unknown-type'
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(259): error C2065: 'surfaceInfo': undeclared identifier
-d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(259): error C2228: left of '.DestroyDebugReportCallbackEXT' must have class/struct/union
-  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.cpp(259): note: type is 'unknown-type'
+  camera.cpp
   Generating Code...
+winmm.lib(WINMM.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
+winmm.lib(WINMM.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+  VulkanEngine.vcxproj -> D:\scottsdocs\sourcecode\VulkanEngine\VulkanEngine\x64\Debug\..\..\build\VulkanEngine.lib

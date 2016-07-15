@@ -4745,7 +4745,7 @@ test$ = 352
 message$ = 360
 ?Assert@Cy@@YAXW4VkResult@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Assert, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 69
+; Line 81
 $LN7:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	89 4c 24 08	 mov	 DWORD PTR [rsp+8], ecx
@@ -4763,7 +4763,7 @@ $LN7:
   0002d	48 c7 85 28 01
 	00 00 fe ff ff
 	ff		 mov	 QWORD PTR $T3[rbp], -2
-; Line 70
+; Line 82
   00038	48 8d 85 c8 00
 	00 00		 lea	 rax, QWORD PTR $T1[rbp]
   0003f	48 89 85 08 01
@@ -4791,7 +4791,7 @@ $LN4@Assert:
 	00 00		 movzx	 ecx, BYTE PTR tv77[rbp]
   00087	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
   0008c	90		 npad	 1
-; Line 71
+; Line 83
   0008d	48 8b 8d 68 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00094	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -5160,7 +5160,7 @@ test$ = 432
 message$ = 440
 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Assert, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 53
+; Line 65
 $LN6:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	88 4c 24 08	 mov	 BYTE PTR [rsp+8], cl
@@ -5183,25 +5183,25 @@ $LN6:
   00040	48 33 c5	 xor	 rax, rbp
   00043	48 89 85 80 01
 	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
-; Line 56
+; Line 68
   0004a	0f b6 85 b0 01
 	00 00		 movzx	 eax, BYTE PTR test$[rbp]
   00051	85 c0		 test	 eax, eax
   00053	75 68		 jne	 SHORT $LN2@Assert
-; Line 58
+; Line 70
   00055	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_GetConsoleWindow
   0005b	48 89 45 28	 mov	 QWORD PTR consoleHandle$4[rbp], rax
-; Line 59
+; Line 71
   0005f	ba 05 00 00 00	 mov	 edx, 5
   00064	48 8b 4d 28	 mov	 rcx, QWORD PTR consoleHandle$4[rbp]
   00068	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_ShowWindow
-; Line 60
+; Line 72
   0006e	48 8b 4d 28	 mov	 rcx, QWORD PTR consoleHandle$4[rbp]
   00072	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_SetFocus
-; Line 61
+; Line 73
   00078	48 8d 85 08 01
 	00 00		 lea	 rax, QWORD PTR $T5[rbp]
   0007f	48 89 85 48 01
@@ -5216,14 +5216,14 @@ $LN6:
   000a0	48 8b 8d 78 01
 	00 00		 mov	 rcx, QWORD PTR tv85[rbp]
   000a7	e8 00 00 00 00	 call	 ?Message@Cy@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Message
-; Line 62
+; Line 74
   000ac	48 8d 55 04	 lea	 rdx, QWORD PTR x$[rbp]
   000b0	48 8b 0d 00 00
 	00 00		 mov	 rcx, QWORD PTR __imp_?cin@std@@3V?$basic_istream@DU?$char_traits@D@std@@@1@A
   000b7	e8 00 00 00 00	 call	 ??$?5DU?$char_traits@D@std@@@std@@YAAEAV?$basic_istream@DU?$char_traits@D@std@@@0@AEAV10@AEAD@Z ; std::operator>><char,std::char_traits<char> >
   000bc	90		 npad	 1
 $LN2@Assert:
-; Line 66
+; Line 78
   000bd	48 8b 8d b8 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   000c4	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -5305,7 +5305,7 @@ tv69 = 216
 message$ = 256
 ?Message@Cy@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Message, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 29
+; Line 41
 $LN4:
   00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
   00005	55		 push	 rbp
@@ -5322,13 +5322,13 @@ $LN4:
   0002a	48 c7 85 c8 00
 	00 00 fe ff ff
 	ff		 mov	 QWORD PTR $T1[rbp], -2
-; Line 30
+; Line 42
   00035	48 8d 15 00 00
 	00 00		 lea	 rdx, OFFSET FLAT:??_C@_01EEMJAFIK@?6?$AA@
   0003c	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00043	e8 00 00 00 00	 call	 ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator+=
-; Line 32
+; Line 44
   00048	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   0004f	e8 00 00 00 00	 call	 ?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEBAPEBDXZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::c_str
@@ -5343,7 +5343,7 @@ $LN4:
   00070	48 8b c8	 mov	 rcx, rax
   00073	e8 00 00 00 00	 call	 fprintf
   00078	90		 npad	 1
-; Line 36
+; Line 48
   00079	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00080	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >

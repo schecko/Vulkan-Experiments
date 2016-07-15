@@ -14,11 +14,11 @@ namespace Cy
 	//PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR GetPhysicalDeviceSurfaceCapabilitiesKHR = nullptr;
 	//PFN_vkGetPhysicalDeviceSurfaceFormatsKHR GetPhysicalDeviceSurfaceFormatsKHR = nullptr;
 	//PFN_vkGetPhysicalDeviceSurfacePresentModesKHR GetPhysicalDeviceSurfacePresentModesKHR = nullptr;
-	PFN_vkCreateSwapchainKHR CreateSwapchainKHR = nullptr;
-	PFN_vkDestroySwapchainKHR DestroySwapchainKHR = nullptr;
-	PFN_vkGetSwapchainImagesKHR GetSwapchainImagesKHR = nullptr;
-	PFN_vkAcquireNextImageKHR AcquireNextImageKHR = nullptr;
-	PFN_vkQueuePresentKHR QueuePresentKHR = nullptr;
+	//PFN_vkCreateSwapchainKHR CreateSwapchainKHR = nullptr;
+	//PFN_vkDestroySwapchainKHR DestroySwapchainKHR = nullptr;
+	//PFN_vkGetSwapchainImagesKHR GetSwapchainImagesKHR = nullptr;
+	//PFN_vkAcquireNextImageKHR AcquireNextImageKHR = nullptr;
+	//PFN_vkQueuePresentKHR QueuePresentKHR = nullptr;
 
 #define GET_VULKAN_FUNCTION_POINTER_DEV(dev, function)								\
 {																					\
@@ -46,7 +46,7 @@ namespace Cy
 	}
 
 	//from the physicaldevice as a param, returns a grphics queueFamily cabable of a rendering pipeline.
-	uint32_t FindGraphicsQueueFamilyIndex(VkPhysicalDevice vkPhysicalDevice, VkSurfaceKHR surface)
+	uint32_t FindGraphicsQueueFamilyIndex(VkPhysicalDevice vkPhysicalDevice, const SurfaceInfo* surfaceInfo)
 	{
 
 		uint32_t queueCount = 0;
@@ -60,7 +60,7 @@ namespace Cy
 
 		for (; graphicsAndPresentingQueueIndex < queueCount; graphicsAndPresentingQueueIndex++)
 		{
-			GetPhysicalDeviceSurfaceSupportKHR(vkPhysicalDevice, graphicsAndPresentingQueueIndex, surface, &supportsPresent);
+			surfaceInfo->GetPhysicalDeviceSurfaceSupportKHR(vkPhysicalDevice, graphicsAndPresentingQueueIndex, surfaceInfo->surface, &supportsPresent);
 			if (queueProperties[graphicsAndPresentingQueueIndex].queueFlags & VK_QUEUE_GRAPHICS_BIT && supportsPresent)
 				break;
 		}
@@ -75,12 +75,12 @@ namespace Cy
 	{
 		uint32_t surfaceFormatCount;
 		VkResult error;
-		error = GetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surfaceInfo->surface, &surfaceFormatCount, nullptr);
+		error = surfaceInfo->GetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surfaceInfo->surface, &surfaceFormatCount, nullptr);
 		Assert(error, "could not get surface format counts, GetphysicalDeviceSurfaceFormatsKHR is probably null");
 		Assert(surfaceFormatCount > 0, "surfaceformatcount is less than 1");
 
 		std::vector<VkSurfaceFormatKHR> surfaceFormats(surfaceFormatCount);
-		error = GetPhysicalDeviceSurfaceFormatsKHR(physicalDevice,
+		error = surfaceInfo->GetPhysicalDeviceSurfaceFormatsKHR(physicalDevice,
 			surfaceInfo->surface,
 			&surfaceFormatCount,
 			surfaceFormats.data());
@@ -211,26 +211,26 @@ namespace Cy
 	}
 
 
-	static VkSurfaceCapabilitiesKHR GetSurfaceCaps(VkPhysicalDevice physDevice, VkSurfaceKHR surface)
+	static VkSurfaceCapabilitiesKHR GetSurfaceCaps(VkPhysicalDevice physDevice, const SurfaceInfo* surfaceInfo)
 	{
 		VkSurfaceCapabilitiesKHR surfaceCaps = {};
 		VkResult error;
-		error = GetPhysicalDeviceSurfaceCapabilitiesKHR(physDevice,
-			surface,
+		error = surfaceInfo->GetPhysicalDeviceSurfaceCapabilitiesKHR(physDevice,
+			surfaceInfo->surface,
 			&surfaceCaps);
 		Assert(error, "could not get surface capabilities, the function is probably null?");
 		return surfaceCaps;
 
 	}
 
-	static std::vector<VkPresentModeKHR> GetPresentModes(VkPhysicalDevice physDevice, VkSurfaceKHR surface)
+	static std::vector<VkPresentModeKHR> GetPresentModes(VkPhysicalDevice physDevice, const SurfaceInfo* surfaceInfo)
 	{
 
 		uint32_t presentModeCount;
 		VkResult error;
 
-		error = GetPhysicalDeviceSurfacePresentModesKHR(physDevice,
-			surface,
+		error = surfaceInfo->GetPhysicalDeviceSurfacePresentModesKHR(physDevice,
+			surfaceInfo->surface,
 			&presentModeCount,
 			nullptr);
 		Assert(error, "could not get surface present modes");
@@ -239,8 +239,8 @@ namespace Cy
 		std::vector<VkPresentModeKHR> presentModes(presentModeCount);
 
 
-		error = GetPhysicalDeviceSurfacePresentModesKHR(physDevice,
-			surface,
+		error = surfaceInfo->GetPhysicalDeviceSurfacePresentModesKHR(physDevice,
+			surfaceInfo->surface,
 			&presentModeCount,
 			presentModes.data());
 		Assert(error, "could not get the present Modes");
@@ -310,27 +310,25 @@ namespace Cy
 		return preTransform;
 	}
 
-	void InitSwapChain(
+	void NewSwapchainInfo(WindowInfo* windowInfo,
+		const PhysDeviceInfo* physDeviceInfo,
+		const SurfaceInfo* surfaceInfo,
 		const DeviceInfo* deviceInfo,
-		VkPhysicalDevice physDevice,
-		SurfaceInfo* surfaceInfo,
-		uint32_t* width,
-		uint32_t* height)
+		SwapchainInfo* swapchainInfo)
 	{
 		//TODO parts of this function could be moved to other functions to improve the flow of initialization?
 		//specifically move the use of the function extensions into a single function?
 		VkResult error;
 
-
 		//after logical device creation we can retrieve function pointers associated with it
-		GET_VULKAN_FUNCTION_POINTER_DEV(deviceInfo->device, CreateSwapchainKHR);
-		GET_VULKAN_FUNCTION_POINTER_DEV(deviceInfo->device, DestroySwapchainKHR);
-		GET_VULKAN_FUNCTION_POINTER_DEV(deviceInfo->device, GetSwapchainImagesKHR);
-		GET_VULKAN_FUNCTION_POINTER_DEV(deviceInfo->device, AcquireNextImageKHR);
-		GET_VULKAN_FUNCTION_POINTER_DEV(deviceInfo->device, QueuePresentKHR);
+		GET_VULKAN_FUNCTION_POINTER_DEVSWAPCHAIN(deviceInfo->device, CreateSwapchainKHR);
+		GET_VULKAN_FUNCTION_POINTER_DEVSWAPCHAIN(deviceInfo->device, DestroySwapchainKHR);
+		GET_VULKAN_FUNCTION_POINTER_DEVSWAPCHAIN(deviceInfo->device, GetSwapchainImagesKHR);
+		GET_VULKAN_FUNCTION_POINTER_DEVSWAPCHAIN(deviceInfo->device, AcquireNextImageKHR);
+		GET_VULKAN_FUNCTION_POINTER_DEVSWAPCHAIN(deviceInfo->device, QueuePresentKHR);
 
-		VkSurfaceCapabilitiesKHR surfaceCaps = GetSurfaceCaps(physDevice, surfaceInfo->surface);
-		std::vector<VkPresentModeKHR> presentModes = GetPresentModes(physDevice, surfaceInfo->surface);
+		VkSurfaceCapabilitiesKHR surfaceCaps = GetSurfaceCaps(physDeviceInfo->physicalDevice, surfaceInfo);
+		std::vector<VkPresentModeKHR> presentModes = GetPresentModes(physDeviceInfo->physicalDevice, surfaceInfo);
 
 		VkSwapchainCreateInfoKHR scInfo = {};
 		scInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
@@ -338,7 +336,7 @@ namespace Cy
 		scInfo.minImageCount = GetDesiredNumSwapChainImages(&surfaceCaps);
 		scInfo.imageFormat = surfaceInfo->colorFormat;
 		scInfo.imageColorSpace = surfaceInfo->colorSpace;
-		scInfo.imageExtent = GetSurfaceExtent(&surfaceCaps, width, height);
+		scInfo.imageExtent = GetSurfaceExtent(&surfaceCaps, &windowInfo->clientWidth, &windowInfo->clientHeight);
 		scInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
 		scInfo.preTransform = GetSurfaceTransformBits(&surfaceCaps);
 		scInfo.imageArrayLayers = 1;
@@ -349,18 +347,17 @@ namespace Cy
 		scInfo.clipped = VK_TRUE;
 		scInfo.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
 
-		VkSwapchainKHR swapChain;
-		error = CreateSwapchainKHR(deviceInfo->device, &scInfo, nullptr, &swapChain);
+		error = swapchainInfo->CreateSwapchainKHR(deviceInfo->device, &scInfo, nullptr, &swapchainInfo->swapChain);
 		Assert(error, "could not create a swapchain");
 
-		error = GetSwapchainImagesKHR(deviceInfo->device, swapChain, &surfaceInfo->imageCount, nullptr);
+		error = swapchainInfo->GetSwapchainImagesKHR(deviceInfo->device, swapchainInfo->swapChain, &swapchainInfo->imageCount, nullptr);
 		Assert(error, "could not get surface image count");
-		surfaceInfo->images.resize(surfaceInfo->imageCount);
-		surfaceInfo->views.resize(surfaceInfo->imageCount);
-		error = GetSwapchainImagesKHR(deviceInfo->device, swapChain, &surfaceInfo->imageCount, surfaceInfo->images.data());
+		swapchainInfo->images.resize(swapchainInfo->imageCount);
+		swapchainInfo->views.resize(swapchainInfo->imageCount);
+		error = swapchainInfo->GetSwapchainImagesKHR(deviceInfo->device, swapchainInfo->swapChain, &swapchainInfo->imageCount, swapchainInfo->images.data());
 		Assert(error, "could not fill surface images vector");
 
-		for (uint32_t i = 0; i < surfaceInfo->imageCount; i++)
+		for (uint32_t i = 0; i < swapchainInfo->imageCount; i++)
 		{
 			VkImageViewCreateInfo ivInfo = {};
 			ivInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
@@ -380,58 +377,74 @@ namespace Cy
 			ivInfo.flags = 0;
 
 			SetImageLayout(deviceInfo->setupCmdBuffer,
-				surfaceInfo->images[i],
+				swapchainInfo->images[i],
 				VK_IMAGE_ASPECT_COLOR_BIT,
 				VK_IMAGE_LAYOUT_UNDEFINED,
 				VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
 
-			ivInfo.image = surfaceInfo->images[i];
-			error = vkCreateImageView(deviceInfo->device, &ivInfo, nullptr, &surfaceInfo->views[i]);
+			ivInfo.image = swapchainInfo->images[i];
+			error = vkCreateImageView(deviceInfo->device, &ivInfo, nullptr, &swapchainInfo->views[i]);
 			Assert(error, "could not create image view");
 		}
-		surfaceInfo->swapChain = swapChain;
 	}
 
-	VkResult AcquireNextImage(const DeviceInfo* deviceInfo, SurfaceInfo* surfaceInfo)
+	VkResult AcquireNextImage(const DeviceInfo* deviceInfo, SwapchainInfo* swapchainInfo)
 	{
-		return AcquireNextImageKHR(deviceInfo->device, surfaceInfo->swapChain, UINT64_MAX, deviceInfo->presentComplete, nullptr, &surfaceInfo->currentBuffer);
+		return swapchainInfo->AcquireNextImageKHR(deviceInfo->device, swapchainInfo->swapChain, UINT64_MAX, deviceInfo->presentComplete, nullptr, &swapchainInfo->currentBuffer);
 	}
 
-	VkResult QueuePresent(const DeviceInfo* deviceInfo, const SurfaceInfo* surfaceInfo)
+	VkResult QueuePresent(const DeviceInfo* deviceInfo, const SwapchainInfo* swapchainInfo)
 	{
 		VkPresentInfoKHR pInfo = {};
 		pInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
 		pInfo.swapchainCount = 1;
-		pInfo.pSwapchains = &surfaceInfo->swapChain;
-		pInfo.pImageIndices = &surfaceInfo->currentBuffer;
+		pInfo.pSwapchains = &swapchainInfo->swapChain;
+		pInfo.pImageIndices = &swapchainInfo->currentBuffer;
 		pInfo.waitSemaphoreCount = 1;
 		pInfo.pWaitSemaphores = &deviceInfo->renderComplete;
-		return QueuePresentKHR(deviceInfo->queue, &pInfo);
+		return swapchainInfo->QueuePresentKHR(deviceInfo->queue, &pInfo);
 	}
 
-	SurfaceInfo NewSurfaceInfo(VkInstance vkInstance, const WindowInfo* windowInfo)
+	SurfaceInfo NewSurfaceInfo(const InstanceInfo* instanceInfo, const WindowInfo* windowInfo)
 	{
 		SurfaceInfo surfaceInfo = {};
-		surfaceInfo.surface = NewSurface(windowInfo, vkInstance);
+		surfaceInfo.surface = NewSurface(windowInfo, instanceInfo->vkInstance);
 		//get function pointers after creating instance of vulkan
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceSupportKHR);
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceCapabilitiesKHR);
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfaceFormatsKHR);
-		GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, GetPhysicalDeviceSurfacePresentModesKHR);
+		GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(instanceInfo->vkInstance, GetPhysicalDeviceSurfaceSupportKHR);
+		GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(instanceInfo->vkInstance, GetPhysicalDeviceSurfaceCapabilitiesKHR);
+		GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(instanceInfo->vkInstance, GetPhysicalDeviceSurfaceFormatsKHR);
+		GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(instanceInfo->vkInstance, GetPhysicalDeviceSurfacePresentModesKHR);
+		return surfaceInfo;
 	}
 
 
-	void DestroySurfaceInfo(VkInstance vkInstance, VkDevice device, SurfaceInfo* surfaceInfo)
+	void DestroySurfaceInfo(const InstanceInfo* instanceInfo, SurfaceInfo* surfaceInfo)
 	{
-		for (uint32_t i = 0; i < surfaceInfo->imageCount; i++)
+
+		vkDestroySurfaceKHR(instanceInfo->vkInstance, surfaceInfo->surface, nullptr);
+
+		surfaceInfo->GetPhysicalDeviceSurfaceSupportKHR = nullptr;
+		surfaceInfo->GetPhysicalDeviceSurfaceCapabilitiesKHR = nullptr;
+		surfaceInfo->GetPhysicalDeviceSurfaceFormatsKHR = nullptr;
+		surfaceInfo->GetPhysicalDeviceSurfacePresentModesKHR = nullptr;
+	}
+
+	void DestroySwapchainInfo(const DeviceInfo* deviceInfo, SwapchainInfo* swapchainInfo)
+	{
+		for (uint32_t i = 0; i < swapchainInfo->imageCount; i++)
 		{
 			//TODO is image destroyed along with its associated imageview?
 			//vkDestroyImage(device, surfaceInfo->images[i], nullptr);
-			vkDestroyImageView(device, surfaceInfo->views[i], nullptr);
+			vkDestroyImageView(deviceInfo->device, swapchainInfo->views[i], nullptr);
 
 		}
 
-		DestroySwapchainKHR(device, surfaceInfo->swapChain, nullptr);
-		vkDestroySurfaceKHR(vkInstance, surfaceInfo->surface, nullptr);
+		swapchainInfo->DestroySwapchainKHR(deviceInfo->device, swapchainInfo->swapChain, nullptr);
+
+		swapchainInfo->CreateSwapchainKHR = nullptr;
+		swapchainInfo->DestroySwapchainKHR = nullptr;
+		swapchainInfo->GetSwapchainImagesKHR = nullptr;
+		swapchainInfo->AcquireNextImageKHR = nullptr;
+		swapchainInfo->QueuePresentKHR = nullptr;
 	}
 }

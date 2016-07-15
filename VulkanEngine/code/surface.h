@@ -14,8 +14,19 @@ namespace Cy
 	struct SurfaceInfo
 	{
 		VkSurfaceKHR surface;
+		uint32_t renderingQueueFamilyIndex;
 		VkColorSpaceKHR colorSpace;
 		VkFormat colorFormat;
+
+		//function pointers
+		PFN_vkGetPhysicalDeviceSurfaceSupportKHR GetPhysicalDeviceSurfaceSupportKHR;
+		PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR GetPhysicalDeviceSurfaceCapabilitiesKHR;
+		PFN_vkGetPhysicalDeviceSurfaceFormatsKHR GetPhysicalDeviceSurfaceFormatsKHR;
+		PFN_vkGetPhysicalDeviceSurfacePresentModesKHR GetPhysicalDeviceSurfacePresentModesKHR;
+	};
+
+	struct SwapchainInfo
+	{
 		uint32_t imageCount;
 		std::vector<VkImage> images;
 		std::vector<VkImageView> views;
@@ -23,10 +34,6 @@ namespace Cy
 		uint32_t currentBuffer;
 
 		//function pointers
-		PFN_vkGetPhysicalDeviceSurfaceSupportKHR GetPhysicalDeviceSurfaceSupportKHR;
-		PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR GetPhysicalDeviceSurfaceCapabilitiesKHR;
-		PFN_vkGetPhysicalDeviceSurfaceFormatsKHR GetPhysicalDeviceSurfaceFormatsKHR;
-		PFN_vkGetPhysicalDeviceSurfacePresentModesKHR GetPhysicalDeviceSurfacePresentModesKHR;
 		PFN_vkCreateSwapchainKHR CreateSwapchainKHR;
 		PFN_vkDestroySwapchainKHR DestroySwapchainKHR;
 		PFN_vkGetSwapchainImagesKHR GetSwapchainImagesKHR;
@@ -41,16 +48,17 @@ namespace Cy
 	void GetSurfaceColorSpaceAndFormat(VkPhysicalDevice physicalDevice,
 		SurfaceInfo* surfaceInfo);
 
-	void InitSwapChain(
+	void NewSwapchainInfo(WindowInfo* windowInfo,
+		const PhysDeviceInfo* physDeviceInfo,
+		const SurfaceInfo* surfaceInfo,
 		const DeviceInfo* deviceInfo,
-		VkPhysicalDevice physDevice,
-		SurfaceInfo* surfaceInfo,
-		uint32_t* width,
-		uint32_t* height);
+		SwapchainInfo* swapchainInfo);
 
 	VkResult AcquireNextImage(const DeviceInfo* deviceInfo, SurfaceInfo* surfaceInfo);
 
 	VkResult QueuePresent(const DeviceInfo* deviceInfo, const SurfaceInfo* surfaceInfo);
 
 	void DestroySurfaceInfo(VkInstance vkInstance, VkDevice device, SurfaceInfo* surfaceInfo);
+
+	void DestroySwapchainInfo(const DeviceInfo* deviceInfo, SwapchainInfo* swapchainInfo);
 }

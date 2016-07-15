@@ -79,8 +79,14 @@ namespace Cy
 	{
 		std::vector<const char*> instanceLayerList;
 		std::vector<const char*> instanceExtList;
-		std::vector<const char*> deviceLayerList;
-		std::vector<const char*> deviceExtList;
+		VkDebugReportCallbackEXT debugReport;
+	};
+
+	struct InstanceInfo
+	{
+		VkInstance vkInstance;
+		std::vector<VkExtensionProperties> extensions;
+		std::vector<VkLayerProperties> layers;
 		VkDebugReportCallbackEXT debugReport;
 	};
 

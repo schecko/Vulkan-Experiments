@@ -6,4 +6,31 @@ d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.c
 d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(87): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
 d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(89): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
 d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(146): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
-  VulkanTriangle.vcxproj -> D:\scottsdocs\sourcecode\VulkanEngine\VulkanEngine\x64\Debug\VulkanTriangle.exe
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(310): error C2039: 'images': is not a member of 'Cy::SurfaceInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.h(15): note: see declaration of 'Cy::SurfaceInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(360): error C2039: 'deviceLayerList': is not a member of 'Cy::DebugInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.h(79): note: see declaration of 'Cy::DebugInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(360): error C2228: left of '.push_back' must have class/struct/union
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(365): error C2039: 'deviceExtList': is not a member of 'Cy::DebugInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.h(79): note: see declaration of 'Cy::DebugInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(365): error C2228: left of '.push_back' must have class/struct/union
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(368): error C2039: 'deviceLayerList': is not a member of 'Cy::DebugInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.h(79): note: see declaration of 'Cy::DebugInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(368): error C2039: 'deviceExtList': is not a member of 'Cy::DebugInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\commonvulkan.h(79): note: see declaration of 'Cy::DebugInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(368): error C2660: 'Cy::NewLogicalDevice': function does not take 3 arguments
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(388): error C3861: 'InitSwapChain': identifier not found
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(389): error C2039: 'imageCount': is not a member of 'Cy::SurfaceInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.h(15): note: see declaration of 'Cy::SurfaceInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(389): error C2660: 'SetupCommandBuffers': function does not take 1 arguments
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(401): error C2039: 'views': is not a member of 'Cy::SurfaceInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.h(15): note: see declaration of 'Cy::SurfaceInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(404): error C2039: 'imageCount': is not a member of 'Cy::SurfaceInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.h(15): note: see declaration of 'Cy::SurfaceInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(406): error C2660: 'Cy::NewFrameBuffer': function does not take 5 arguments
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(457): error C2039: 'images': is not a member of 'Cy::SurfaceInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.h(15): note: see declaration of 'Cy::SurfaceInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(457): error C2039: 'currentBuffer': is not a member of 'Cy::SurfaceInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.h(15): note: see declaration of 'Cy::SurfaceInfo'
+d:\scottsdocs\sourcecode\vulkanengine\vulkantriangle\code\win64_vulkantriangle.cpp(494): error C2039: 'currentBuffer': is not a member of 'Cy::SurfaceInfo'
+  d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.h(15): note: see declaration of 'Cy::SurfaceInfo'

@@ -12,17 +12,29 @@
 namespace Cy
 {
 	//helper macros for annoying function pointers
-#define GET_VULKAN_FUNCTION_POINTER_INST(inst, function)							\
+#define GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(inst, function)							\
 {																					\
 	surfaceInfo.##function = (PFN_vk##function) vkGetInstanceProcAddr(inst, "vk"#function);		\
 	Assert(surfaceInfo.##function != nullptr, "could not find function "#function);				\
-}																					\
+}	
+	
+#define GET_VULKAN_FUNCTION_POINTER_INST(inst, function)							\
+{																					\
+	function = (PFN_vk##function) vkGetInstanceProcAddr(inst, "vk"#function);		\
+	Assert(function != nullptr, "could not find function "#function);				\
+}\
 
 #define GET_VULKAN_FUNCTION_POINTER_DEV(dev, function)								\
 {																					\
 	function = (PFN_vk##function) vkGetDeviceProcAddr(dev, "vk"#function);			\
 	Assert(function != nullptr, "could not find function "#function);				\
-}																					\
+}	\
+	
+#define GET_VULKAN_FUNCTION_POINTER_DEVSWAPCHAIN(dev, function)								\
+{																					\
+	swapchainInfo->##function = (PFN_vk##function) vkGetDeviceProcAddr(dev, "vk"#function);			\
+	Assert(swapchainInfo->##function != nullptr, "could not find function "#function);				\
+}\
 
 
 	inline void Message(std::string message)
