@@ -25,10 +25,12 @@ PUBLIC	?Dot@Cy@@YAMUv3@1@0@Z				; Cy::Dot
 PUBLIC	?LookAt@Cy@@YA?AUm4@1@Uv3@1@00@Z		; Cy::LookAt
 PUBLIC	?Perspective@Cy@@YA?AUm4@1@MMMM@Z		; Cy::Perspective
 PUBLIC	?Translate@Cy@@YA?AUm4@1@U21@Uv3@1@@Z		; Cy::Translate
+PUBLIC	??0CameraMats@Cy@@QEAA@$$QEAU01@@Z		; Cy::CameraMats::CameraMats
 PUBLIC	??0CameraPos@Cy@@QEAA@$$QEAU01@@Z		; Cy::CameraPos::CameraPos
+PUBLIC	??0Camera@Cy@@QEAA@$$QEAU01@@Z			; Cy::Camera::Camera
 PUBLIC	?PrepareCameraBuffers@Cy@@YAXPEAUVkDevice_T@@UVkPhysicalDeviceMemoryProperties@@PEAUCamera@1@IIMUv3@1@@Z ; Cy::PrepareCameraBuffers
 PUBLIC	?UpdateCamera@Cy@@YAXPEAUVkDevice_T@@AEAUCamera@1@II@Z ; Cy::UpdateCamera
-PUBLIC	?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z	; Cy::NewCameraPos
+PUBLIC	?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z		; Cy::NewCamera
 PUBLIC	__local_stdio_printf_options
 PUBLIC	_vfprintf_l
 PUBLIC	fprintf
@@ -375,9 +377,21 @@ $pdata$?Translate@Cy@@YA?AUm4@1@U21@Uv3@1@@Z DD imagerel $LN3
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$??0CameraMats@Cy@@QEAA@$$QEAU01@@Z DD imagerel $LN3
+	DD	imagerel $LN3+151
+	DD	imagerel $unwind$??0CameraMats@Cy@@QEAA@$$QEAU01@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$??0CameraPos@Cy@@QEAA@$$QEAU01@@Z DD imagerel $LN3
 	DD	imagerel $LN3+278
 	DD	imagerel $unwind$??0CameraPos@Cy@@QEAA@$$QEAU01@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$??0Camera@Cy@@QEAA@$$QEAU01@@Z DD imagerel $LN3
+	DD	imagerel $LN3+202
+	DD	imagerel $unwind$??0Camera@Cy@@QEAA@$$QEAU01@@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -393,9 +407,9 @@ $pdata$?UpdateCamera@Cy@@YAXPEAUVkDevice_T@@AEAUCamera@1@II@Z DD imagerel $LN8
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z DD imagerel $LN3
-	DD	imagerel $LN3+312
-	DD	imagerel $unwind$?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z
+$pdata$?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z DD imagerel $LN3
+	DD	imagerel $LN3+410
+	DD	imagerel $unwind$?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -2933,33 +2947,30 @@ $unwind$__local_stdio_printf_options DD 05051c01H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z DD 025064119H
+$unwind$?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z DD 025064119H
 	DD	01142319H
-	DD	0700d003aH
+	DD	0700d008cH
 	DD	0500b600cH
 	DD	imagerel __GSHandlerCheck
-	DD	01c8H
+	DD	0458H
 xdata	ENDS
 ;	COMDAT CONST
 CONST	SEGMENT
-?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z$rtcName$0 DB 063H ; Cy::NewCameraPos
+?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z$rtcName$0 DB 063H	; Cy::NewCamera
 	DB	061H
 	DB	06dH
 	DB	065H
 	DB	072H
 	DB	061H
-	DB	050H
-	DB	06fH
-	DB	073H
 	DB	00H
-	ORG $+6
-?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z$rtcVarDesc DD 030H ; Cy::NewCameraPos
-	DD	048H
-	DQ	FLAT:?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z$rtcName$0
+	ORG $+9
+?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z$rtcVarDesc DD 030H ; Cy::NewCamera
+	DD	0130H
+	DQ	FLAT:?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z$rtcName$0
 	ORG $+48
-?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z$rtcFrameData DD 01H ; Cy::NewCameraPos
+?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z$rtcFrameData DD 01H ; Cy::NewCamera
 	DD	00H
-	DQ	FLAT:?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z$rtcVarDesc
+	DQ	FLAT:?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z$rtcVarDesc
 CONST	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -3035,7 +3046,21 @@ CONST	SEGMENT
 CONST	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
+$unwind$??0Camera@Cy@@QEAA@$$QEAU01@@Z DD 025063001H
+	DD	01142319H
+	DD	0700d001cH
+	DD	0500b600cH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
 $unwind$??0CameraPos@Cy@@QEAA@$$QEAU01@@Z DD 025052f01H
+	DD	01132318H
+	DD	0700c001dH
+	DD	0500bH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??0CameraMats@Cy@@QEAA@$$QEAU01@@Z DD 025052f01H
 	DD	01132318H
 	DD	0700c001dH
 	DD	0500bH
@@ -4745,7 +4770,7 @@ test$ = 352
 message$ = 360
 ?Assert@Cy@@YAXW4VkResult@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Assert, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 81
+; Line 88
 $LN7:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	89 4c 24 08	 mov	 DWORD PTR [rsp+8], ecx
@@ -4763,7 +4788,7 @@ $LN7:
   0002d	48 c7 85 28 01
 	00 00 fe ff ff
 	ff		 mov	 QWORD PTR $T3[rbp], -2
-; Line 82
+; Line 89
   00038	48 8d 85 c8 00
 	00 00		 lea	 rax, QWORD PTR $T1[rbp]
   0003f	48 89 85 08 01
@@ -4791,7 +4816,7 @@ $LN4@Assert:
 	00 00		 movzx	 ecx, BYTE PTR tv77[rbp]
   00087	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
   0008c	90		 npad	 1
-; Line 83
+; Line 90
   0008d	48 8b 8d 68 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00094	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -5160,7 +5185,7 @@ test$ = 432
 message$ = 440
 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Assert, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 65
+; Line 72
 $LN6:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	88 4c 24 08	 mov	 BYTE PTR [rsp+8], cl
@@ -5183,25 +5208,25 @@ $LN6:
   00040	48 33 c5	 xor	 rax, rbp
   00043	48 89 85 80 01
 	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
-; Line 68
+; Line 75
   0004a	0f b6 85 b0 01
 	00 00		 movzx	 eax, BYTE PTR test$[rbp]
   00051	85 c0		 test	 eax, eax
   00053	75 68		 jne	 SHORT $LN2@Assert
-; Line 70
+; Line 77
   00055	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_GetConsoleWindow
   0005b	48 89 45 28	 mov	 QWORD PTR consoleHandle$4[rbp], rax
-; Line 71
+; Line 78
   0005f	ba 05 00 00 00	 mov	 edx, 5
   00064	48 8b 4d 28	 mov	 rcx, QWORD PTR consoleHandle$4[rbp]
   00068	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_ShowWindow
-; Line 72
+; Line 79
   0006e	48 8b 4d 28	 mov	 rcx, QWORD PTR consoleHandle$4[rbp]
   00072	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_SetFocus
-; Line 73
+; Line 80
   00078	48 8d 85 08 01
 	00 00		 lea	 rax, QWORD PTR $T5[rbp]
   0007f	48 89 85 48 01
@@ -5216,14 +5241,14 @@ $LN6:
   000a0	48 8b 8d 78 01
 	00 00		 mov	 rcx, QWORD PTR tv85[rbp]
   000a7	e8 00 00 00 00	 call	 ?Message@Cy@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Message
-; Line 74
+; Line 81
   000ac	48 8d 55 04	 lea	 rdx, QWORD PTR x$[rbp]
   000b0	48 8b 0d 00 00
 	00 00		 mov	 rcx, QWORD PTR __imp_?cin@std@@3V?$basic_istream@DU?$char_traits@D@std@@@1@A
   000b7	e8 00 00 00 00	 call	 ??$?5DU?$char_traits@D@std@@@std@@YAAEAV?$basic_istream@DU?$char_traits@D@std@@@0@AEAV10@AEAD@Z ; std::operator>><char,std::char_traits<char> >
   000bc	90		 npad	 1
 $LN2@Assert:
-; Line 78
+; Line 85
   000bd	48 8b 8d b8 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   000c4	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -5305,7 +5330,7 @@ tv69 = 216
 message$ = 256
 ?Message@Cy@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Message, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 41
+; Line 48
 $LN4:
   00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
   00005	55		 push	 rbp
@@ -5322,13 +5347,13 @@ $LN4:
   0002a	48 c7 85 c8 00
 	00 00 fe ff ff
 	ff		 mov	 QWORD PTR $T1[rbp], -2
-; Line 42
+; Line 49
   00035	48 8d 15 00 00
 	00 00		 lea	 rdx, OFFSET FLAT:??_C@_01EEMJAFIK@?6?$AA@
   0003c	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00043	e8 00 00 00 00	 call	 ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator+=
-; Line 44
+; Line 51
   00048	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   0004f	e8 00 00 00 00	 call	 ?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEBAPEBDXZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::c_str
@@ -5343,7 +5368,7 @@ $LN4:
   00070	48 8b c8	 mov	 rcx, rax
   00073	e8 00 00 00 00	 call	 fprintf
   00078	90		 npad	 1
-; Line 48
+; Line 55
   00079	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00080	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -10344,15 +10369,15 @@ $LN3:
 __local_stdio_printf_options ENDP
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
-;	COMDAT ?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z
+;	COMDAT ?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z
 _TEXT	SEGMENT
-cameraPos$ = 16
-$T4 = 308
-$T5 = 340
-__$ArrayPad$ = 424
-$T6 = 464
-initalPosition$ = 472
-?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z PROC	; Cy::NewCameraPos, COMDAT
+camera$ = 16
+$T4 = 724
+$T5 = 760
+__$ArrayPad$ = 1080
+$T6 = 1120
+initalPosition$ = 1128
+?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z PROC		; Cy::NewCamera, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\camera.cpp
 ; Line 77
 $LN3:
@@ -10361,99 +10386,130 @@ $LN3:
   0000a	55		 push	 rbp
   0000b	56		 push	 rsi
   0000c	57		 push	 rdi
-  0000d	48 81 ec d0 01
-	00 00		 sub	 rsp, 464		; 000001d0H
+  0000d	48 81 ec 60 04
+	00 00		 sub	 rsp, 1120		; 00000460H
   00014	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
   00019	48 8b fc	 mov	 rdi, rsp
-  0001c	b9 74 00 00 00	 mov	 ecx, 116		; 00000074H
+  0001c	b9 18 01 00 00	 mov	 ecx, 280		; 00000118H
   00021	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
   00026	f3 ab		 rep stosd
-  00028	48 8b 8c 24 f8
-	01 00 00	 mov	 rcx, QWORD PTR [rsp+504]
+  00028	48 8b 8c 24 88
+	04 00 00	 mov	 rcx, QWORD PTR [rsp+1160]
   00030	48 8b 05 00 00
 	00 00		 mov	 rax, QWORD PTR __security_cookie
   00037	48 33 c5	 xor	 rax, rbp
-  0003a	48 89 85 a8 01
+  0003a	48 89 85 38 04
 	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
+; Line 78
+  00041	48 8d 45 10	 lea	 rax, QWORD PTR camera$[rbp]
+  00045	48 8b f8	 mov	 rdi, rax
+  00048	33 c0		 xor	 eax, eax
+  0004a	b9 e8 00 00 00	 mov	 ecx, 232		; 000000e8H
+  0004f	f3 aa		 rep stosb
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\cymath.h
+; Line 341
+  00051	48 8d 4d 38	 lea	 rcx, QWORD PTR camera$[rbp+40]
+  00055	e8 00 00 00 00	 call	 ??0m4@Cy@@QEAA@XZ	; Cy::m4::m4
+  0005a	48 8d 4d 78	 lea	 rcx, QWORD PTR camera$[rbp+104]
+  0005e	e8 00 00 00 00	 call	 ??0m4@Cy@@QEAA@XZ	; Cy::m4::m4
+  00063	48 8d 8d b8 00
+	00 00		 lea	 rcx, QWORD PTR camera$[rbp+168]
+  0006a	e8 00 00 00 00	 call	 ??0m4@Cy@@QEAA@XZ	; Cy::m4::m4
+  0006f	48 8d 85 f8 00
+	00 00		 lea	 rax, QWORD PTR camera$[rbp+232]
+  00076	48 8b f8	 mov	 rdi, rax
+  00079	33 c0		 xor	 eax, eax
+  0007b	b9 48 00 00 00	 mov	 ecx, 72			; 00000048H
+  00080	f3 aa		 rep stosb
 ; Line 65
-  00041	48 8d 4d 10	 lea	 rcx, QWORD PTR cameraPos$[rbp]
-  00045	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
-  0004a	48 8d 4d 1c	 lea	 rcx, QWORD PTR cameraPos$[rbp+12]
-  0004e	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
-  00053	48 8d 4d 28	 lea	 rcx, QWORD PTR cameraPos$[rbp+24]
-  00057	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
-  0005c	48 8d 4d 34	 lea	 rcx, QWORD PTR cameraPos$[rbp+36]
-  00060	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
-  00065	48 8d 4d 40	 lea	 rcx, QWORD PTR cameraPos$[rbp+48]
-  00069	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
-  0006e	48 8d 45 4c	 lea	 rax, QWORD PTR cameraPos$[rbp+60]
-  00072	48 8b f8	 mov	 rdi, rax
-  00075	33 c0		 xor	 eax, eax
-  00077	b9 0c 00 00 00	 mov	 ecx, 12
-  0007c	f3 aa		 rep stosb
+  00082	48 8d 8d f8 00
+	00 00		 lea	 rcx, QWORD PTR camera$[rbp+232]
+  00089	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
+  0008e	48 8d 8d 04 01
+	00 00		 lea	 rcx, QWORD PTR camera$[rbp+244]
+  00095	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
+  0009a	48 8d 8d 10 01
+	00 00		 lea	 rcx, QWORD PTR camera$[rbp+256]
+  000a1	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
+  000a6	48 8d 8d 1c 01
+	00 00		 lea	 rcx, QWORD PTR camera$[rbp+268]
+  000ad	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
+  000b2	48 8d 8d 28 01
+	00 00		 lea	 rcx, QWORD PTR camera$[rbp+280]
+  000b9	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@XZ	; Cy::v3::v3
+  000be	48 8d 85 34 01
+	00 00		 lea	 rax, QWORD PTR camera$[rbp+292]
+  000c5	48 8b f8	 mov	 rdi, rax
+  000c8	33 c0		 xor	 eax, eax
+  000ca	b9 0c 00 00 00	 mov	 ecx, 12
+  000cf	f3 aa		 rep stosb
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\camera.cpp
 ; Line 79
-  0007e	48 8d 45 10	 lea	 rax, QWORD PTR cameraPos$[rbp]
-  00082	48 8b f8	 mov	 rdi, rax
-  00085	48 8b b5 d8 01
+  000d1	48 8d 85 f8 00
+	00 00		 lea	 rax, QWORD PTR camera$[rbp+232]
+  000d8	48 8b f8	 mov	 rdi, rax
+  000db	48 8b b5 68 04
 	00 00		 mov	 rsi, QWORD PTR initalPosition$[rbp]
-  0008c	b9 0c 00 00 00	 mov	 ecx, 12
-  00091	f3 a4		 rep movsb
+  000e2	b9 0c 00 00 00	 mov	 ecx, 12
+  000e7	f3 a4		 rep movsb
 ; Line 80
-  00093	0f 57 db	 xorps	 xmm3, xmm3
-  00096	f3 0f 10 15 00
+  000e9	0f 57 db	 xorps	 xmm3, xmm3
+  000ec	f3 0f 10 15 00
 	00 00 00	 movss	 xmm2, DWORD PTR __real@3f800000
-  0009e	0f 57 c9	 xorps	 xmm1, xmm1
-  000a1	48 8d 8d 34 01
+  000f4	0f 57 c9	 xorps	 xmm1, xmm1
+  000f7	48 8d 8d d4 02
 	00 00		 lea	 rcx, QWORD PTR $T4[rbp]
-  000a8	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@MMM@Z	; Cy::v3::v3
-  000ad	48 8d 4d 1c	 lea	 rcx, QWORD PTR cameraPos$[rbp+12]
-  000b1	48 8b f9	 mov	 rdi, rcx
-  000b4	48 8b f0	 mov	 rsi, rax
-  000b7	b9 0c 00 00 00	 mov	 ecx, 12
-  000bc	f3 a4		 rep movsb
+  000fe	e8 00 00 00 00	 call	 ??0v3@Cy@@QEAA@MMM@Z	; Cy::v3::v3
+  00103	48 8d 8d 04 01
+	00 00		 lea	 rcx, QWORD PTR camera$[rbp+244]
+  0010a	48 8b f9	 mov	 rdi, rcx
+  0010d	48 8b f0	 mov	 rsi, rax
+  00110	b9 0c 00 00 00	 mov	 ecx, 12
+  00115	f3 a4		 rep movsb
 ; Line 81
-  000be	f3 0f 10 05 00
+  00117	f3 0f 10 05 00
 	00 00 00	 movss	 xmm0, DWORD PTR __real@bfc90fdb
-  000c6	f3 0f 11 45 4c	 movss	 DWORD PTR cameraPos$[rbp+60], xmm0
+  0011f	f3 0f 11 85 34
+	01 00 00	 movss	 DWORD PTR camera$[rbp+292], xmm0
 ; Line 82
-  000cb	0f 57 c0	 xorps	 xmm0, xmm0
-  000ce	f3 0f 11 45 50	 movss	 DWORD PTR cameraPos$[rbp+64], xmm0
+  00127	0f 57 c0	 xorps	 xmm0, xmm0
+  0012a	f3 0f 11 85 38
+	01 00 00	 movss	 DWORD PTR camera$[rbp+296], xmm0
 ; Line 83
-  000d3	f3 0f 10 05 00
+  00132	f3 0f 10 05 00
 	00 00 00	 movss	 xmm0, DWORD PTR __real@3f060a92
-  000db	f3 0f 11 45 54	 movss	 DWORD PTR cameraPos$[rbp+68], xmm0
+  0013a	f3 0f 11 85 3c
+	01 00 00	 movss	 DWORD PTR camera$[rbp+300], xmm0
 ; Line 85
-  000e0	48 8d 55 10	 lea	 rdx, QWORD PTR cameraPos$[rbp]
-  000e4	48 8d 8d 54 01
+  00142	48 8d 55 10	 lea	 rdx, QWORD PTR camera$[rbp]
+  00146	48 8d 8d f8 02
 	00 00		 lea	 rcx, QWORD PTR $T5[rbp]
-  000eb	e8 00 00 00 00	 call	 ??0CameraPos@Cy@@QEAA@$$QEAU01@@Z
-  000f0	48 8b bd d0 01
+  0014d	e8 00 00 00 00	 call	 ??0Camera@Cy@@QEAA@$$QEAU01@@Z
+  00152	48 8b bd 60 04
 	00 00		 mov	 rdi, QWORD PTR $T6[rbp]
-  000f7	48 8b f0	 mov	 rsi, rax
-  000fa	b9 48 00 00 00	 mov	 ecx, 72			; 00000048H
-  000ff	f3 a4		 rep movsb
-  00101	48 8b 85 d0 01
+  00159	48 8b f0	 mov	 rsi, rax
+  0015c	b9 30 01 00 00	 mov	 ecx, 304		; 00000130H
+  00161	f3 a4		 rep movsb
+  00163	48 8b 85 60 04
 	00 00		 mov	 rax, QWORD PTR $T6[rbp]
 ; Line 86
-  00108	48 8b f8	 mov	 rdi, rax
-  0010b	48 8d 4d e0	 lea	 rcx, QWORD PTR [rbp-32]
-  0010f	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z$rtcFrameData
-  00116	e8 00 00 00 00	 call	 _RTC_CheckStackVars
-  0011b	48 8b c7	 mov	 rax, rdi
-  0011e	48 8b 8d a8 01
+  0016a	48 8b f8	 mov	 rdi, rax
+  0016d	48 8d 4d e0	 lea	 rcx, QWORD PTR [rbp-32]
+  00171	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z$rtcFrameData
+  00178	e8 00 00 00 00	 call	 _RTC_CheckStackVars
+  0017d	48 8b c7	 mov	 rax, rdi
+  00180	48 8b 8d 38 04
 	00 00		 mov	 rcx, QWORD PTR __$ArrayPad$[rbp]
-  00125	48 33 cd	 xor	 rcx, rbp
-  00128	e8 00 00 00 00	 call	 __security_check_cookie
-  0012d	48 8d a5 b0 01
-	00 00		 lea	 rsp, QWORD PTR [rbp+432]
-  00134	5f		 pop	 rdi
-  00135	5e		 pop	 rsi
-  00136	5d		 pop	 rbp
-  00137	c3		 ret	 0
-?NewCameraPos@Cy@@YA?AUCameraPos@1@Uv3@1@@Z ENDP	; Cy::NewCameraPos
+  00187	48 33 cd	 xor	 rcx, rbp
+  0018a	e8 00 00 00 00	 call	 __security_check_cookie
+  0018f	48 8d a5 40 04
+	00 00		 lea	 rsp, QWORD PTR [rbp+1088]
+  00196	5f		 pop	 rdi
+  00197	5e		 pop	 rsi
+  00198	5d		 pop	 rbp
+  00199	c3		 ret	 0
+?NewCamera@Cy@@YA?AUCamera@1@Uv3@1@@Z ENDP		; Cy::NewCamera
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?UpdateCamera@Cy@@YAXPEAUVkDevice_T@@AEAUCamera@1@II@Z
@@ -11138,6 +11194,75 @@ $LN5:
 ?PrepareCameraBuffers@Cy@@YAXPEAUVkDevice_T@@UVkPhysicalDeviceMemoryProperties@@PEAUCamera@1@IIMUv3@1@@Z ENDP ; Cy::PrepareCameraBuffers
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
+;	COMDAT ??0Camera@Cy@@QEAA@$$QEAU01@@Z
+_TEXT	SEGMENT
+this$ = 224
+__that$ = 232
+??0Camera@Cy@@QEAA@$$QEAU01@@Z PROC			; Cy::Camera::Camera, COMDAT
+$LN3:
+  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  0000a	55		 push	 rbp
+  0000b	56		 push	 rsi
+  0000c	57		 push	 rdi
+  0000d	48 81 ec e0 00
+	00 00		 sub	 rsp, 224		; 000000e0H
+  00014	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
+  00019	48 8b fc	 mov	 rdi, rsp
+  0001c	b9 38 00 00 00	 mov	 ecx, 56			; 00000038H
+  00021	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
+  00026	f3 ab		 rep stosd
+  00028	48 8b 8c 24 08
+	01 00 00	 mov	 rcx, QWORD PTR [rsp+264]
+  00030	48 8b 85 e0 00
+	00 00		 mov	 rax, QWORD PTR this$[rbp]
+  00037	48 8b 8d e8 00
+	00 00		 mov	 rcx, QWORD PTR __that$[rbp]
+  0003e	48 8b 09	 mov	 rcx, QWORD PTR [rcx]
+  00041	48 89 08	 mov	 QWORD PTR [rax], rcx
+  00044	48 8b 85 e0 00
+	00 00		 mov	 rax, QWORD PTR this$[rbp]
+  0004b	48 8b 8d e8 00
+	00 00		 mov	 rcx, QWORD PTR __that$[rbp]
+  00052	48 8b 49 08	 mov	 rcx, QWORD PTR [rcx+8]
+  00056	48 89 48 08	 mov	 QWORD PTR [rax+8], rcx
+  0005a	48 8b 85 e0 00
+	00 00		 mov	 rax, QWORD PTR this$[rbp]
+  00061	48 8b 8d e8 00
+	00 00		 mov	 rcx, QWORD PTR __that$[rbp]
+  00068	48 8d 78 10	 lea	 rdi, QWORD PTR [rax+16]
+  0006c	48 8d 71 10	 lea	 rsi, QWORD PTR [rcx+16]
+  00070	b9 18 00 00 00	 mov	 ecx, 24
+  00075	f3 a4		 rep movsb
+  00077	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR __that$[rbp]
+  0007e	48 83 c0 28	 add	 rax, 40			; 00000028H
+  00082	48 8b 8d e0 00
+	00 00		 mov	 rcx, QWORD PTR this$[rbp]
+  00089	48 83 c1 28	 add	 rcx, 40			; 00000028H
+  0008d	48 8b d0	 mov	 rdx, rax
+  00090	e8 00 00 00 00	 call	 ??0CameraMats@Cy@@QEAA@$$QEAU01@@Z
+  00095	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR __that$[rbp]
+  0009c	48 05 e8 00 00
+	00		 add	 rax, 232		; 000000e8H
+  000a2	48 8b 8d e0 00
+	00 00		 mov	 rcx, QWORD PTR this$[rbp]
+  000a9	48 81 c1 e8 00
+	00 00		 add	 rcx, 232		; 000000e8H
+  000b0	48 8b d0	 mov	 rdx, rax
+  000b3	e8 00 00 00 00	 call	 ??0CameraPos@Cy@@QEAA@$$QEAU01@@Z
+  000b8	48 8b 85 e0 00
+	00 00		 mov	 rax, QWORD PTR this$[rbp]
+  000bf	48 8d a5 c0 00
+	00 00		 lea	 rsp, QWORD PTR [rbp+192]
+  000c6	5f		 pop	 rdi
+  000c7	5e		 pop	 rsi
+  000c8	5d		 pop	 rbp
+  000c9	c3		 ret	 0
+??0Camera@Cy@@QEAA@$$QEAU01@@Z ENDP			; Cy::Camera::Camera
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ??0CameraPos@Cy@@QEAA@$$QEAU01@@Z
 _TEXT	SEGMENT
 this$ = 224
@@ -11221,6 +11346,59 @@ $LN3:
   00114	5d		 pop	 rbp
   00115	c3		 ret	 0
 ??0CameraPos@Cy@@QEAA@$$QEAU01@@Z ENDP			; Cy::CameraPos::CameraPos
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu /ZI
+;	COMDAT ??0CameraMats@Cy@@QEAA@$$QEAU01@@Z
+_TEXT	SEGMENT
+this$ = 224
+__that$ = 232
+??0CameraMats@Cy@@QEAA@$$QEAU01@@Z PROC			; Cy::CameraMats::CameraMats, COMDAT
+$LN3:
+  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  0000a	55		 push	 rbp
+  0000b	57		 push	 rdi
+  0000c	48 81 ec e8 00
+	00 00		 sub	 rsp, 232		; 000000e8H
+  00013	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
+  00018	48 8b fc	 mov	 rdi, rsp
+  0001b	b9 3a 00 00 00	 mov	 ecx, 58			; 0000003aH
+  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
+  00025	f3 ab		 rep stosd
+  00027	48 8b 8c 24 08
+	01 00 00	 mov	 rcx, QWORD PTR [rsp+264]
+  0002f	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR __that$[rbp]
+  00036	48 8b 8d e0 00
+	00 00		 mov	 rcx, QWORD PTR this$[rbp]
+  0003d	48 8b d0	 mov	 rdx, rax
+  00040	e8 00 00 00 00	 call	 ??0m4@Cy@@QEAA@AEBU01@@Z ; Cy::m4::m4
+  00045	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR __that$[rbp]
+  0004c	48 83 c0 40	 add	 rax, 64			; 00000040H
+  00050	48 8b 8d e0 00
+	00 00		 mov	 rcx, QWORD PTR this$[rbp]
+  00057	48 83 c1 40	 add	 rcx, 64			; 00000040H
+  0005b	48 8b d0	 mov	 rdx, rax
+  0005e	e8 00 00 00 00	 call	 ??0m4@Cy@@QEAA@AEBU01@@Z ; Cy::m4::m4
+  00063	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR __that$[rbp]
+  0006a	48 05 80 00 00
+	00		 add	 rax, 128		; 00000080H
+  00070	48 8b 8d e0 00
+	00 00		 mov	 rcx, QWORD PTR this$[rbp]
+  00077	48 81 c1 80 00
+	00 00		 add	 rcx, 128		; 00000080H
+  0007e	48 8b d0	 mov	 rdx, rax
+  00081	e8 00 00 00 00	 call	 ??0m4@Cy@@QEAA@AEBU01@@Z ; Cy::m4::m4
+  00086	48 8b 85 e0 00
+	00 00		 mov	 rax, QWORD PTR this$[rbp]
+  0008d	48 8d a5 c8 00
+	00 00		 lea	 rsp, QWORD PTR [rbp+200]
+  00094	5f		 pop	 rdi
+  00095	5d		 pop	 rbp
+  00096	c3		 ret	 0
+??0CameraMats@Cy@@QEAA@$$QEAU01@@Z ENDP			; Cy::CameraMats::CameraMats
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?Translate@Cy@@YA?AUm4@1@U21@Uv3@1@@Z

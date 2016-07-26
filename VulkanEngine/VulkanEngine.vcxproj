@@ -147,6 +147,8 @@
     <ClCompile Include="code\camera.cpp" />
     <ClCompile Include="code\commonvulkan.cpp" />
     <ClCompile Include="code\commonwindows.cpp" />
+    <ClCompile Include="code\cymemory.cpp" />
+    <ClCompile Include="code\cystring.cpp" />
     <ClCompile Include="code\surface.cpp" />
     <ClCompile Include="code\timer.cpp" />
   </ItemGroup>
@@ -155,6 +157,8 @@
     <ClInclude Include="code\commonvulkan.h" />
     <ClInclude Include="code\commonwindows.h" />
     <ClInclude Include="code\cymath.h" />
+    <ClInclude Include="code\cymemory.h" />
+    <ClInclude Include="code\cystring.h" />
     <ClInclude Include="code\surface.h" />
     <ClInclude Include="code\timer.h" />
     <ClInclude Include="code\util.h" />

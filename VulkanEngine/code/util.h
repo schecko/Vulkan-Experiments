@@ -14,9 +14,15 @@ namespace Cy
 	//helper macros for annoying function pointers
 #define GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(inst, function)							\
 {																					\
-	surfaceInfo.##function = (PFN_vk##function) vkGetInstanceProcAddr(inst, "vk"#function);		\
-	Assert(surfaceInfo.##function != nullptr, "could not find function "#function);				\
+	surfaceInfo->##function = (PFN_vk##function) vkGetInstanceProcAddr(inst, "vk"#function);		\
+	Assert(surfaceInfo->##function != nullptr, "could not find function "#function);				\
 }	
+
+#define GET_VULKAN_FUNCTION_POINTER_INSTDEBUG(inst, function)							\
+{																					\
+	function = (PFN_vk##function) vkGetInstanceProcAddr(inst, "vk"#function);		\
+	Assert(function != nullptr, "could not find function "#function);				\
+}\
 	
 #define GET_VULKAN_FUNCTION_POINTER_INST(inst, function)							\
 {																					\
@@ -29,6 +35,7 @@ namespace Cy
 	function = (PFN_vk##function) vkGetDeviceProcAddr(dev, "vk"#function);			\
 	Assert(function != nullptr, "could not find function "#function);				\
 }	\
+
 	
 #define GET_VULKAN_FUNCTION_POINTER_DEVSWAPCHAIN(dev, function)								\
 {																					\

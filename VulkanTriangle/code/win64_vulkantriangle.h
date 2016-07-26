@@ -63,11 +63,11 @@ static const float CAMERA_SPEED = 0.001f;
 
 		InputInfo input;
 
-		VkInstance vkInstance;
+		InstanceInfo instanceInfo;
 		SurfaceInfo surfaceInfo;
 		PhysDeviceInfo physDeviceInfo;
-		DebugInfo debugInfo;
 		DeviceInfo deviceInfo;
+		SwapchainInfo swapchainInfo;
 
 		VkCommandBuffer textureCmdBuffer;
 		VertexBuffer vertexBuffer;

@@ -28,7 +28,7 @@ namespace Cy
 
 
 
-	VkSurfaceKHR NewSurface(const WindowInfo* window, VkInstance vkInstance)
+	VkSurfaceKHR NewSurface(VkInstance vkInstance, const WindowInfo* window)
 	{
 		VkResult error;
 		VkSurfaceKHR surface;
@@ -405,16 +405,18 @@ namespace Cy
 		return swapchainInfo->QueuePresentKHR(deviceInfo->queue, &pInfo);
 	}
 
-	SurfaceInfo NewSurfaceInfo(const InstanceInfo* instanceInfo, const WindowInfo* windowInfo)
+	void NewSurfaceInfo(const WindowInfo* windowInfo, const InstanceInfo* instanceInfo, const PhysDeviceInfo* physDeviceInfo, SurfaceInfo* surfaceInfo)
 	{
-		SurfaceInfo surfaceInfo = {};
-		surfaceInfo.surface = NewSurface(windowInfo, instanceInfo->vkInstance);
+
+		surfaceInfo->surface = NewSurface(instanceInfo->vkInstance, windowInfo);
+
 		//get function pointers after creating instance of vulkan
 		GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(instanceInfo->vkInstance, GetPhysicalDeviceSurfaceSupportKHR);
 		GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(instanceInfo->vkInstance, GetPhysicalDeviceSurfaceCapabilitiesKHR);
 		GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(instanceInfo->vkInstance, GetPhysicalDeviceSurfaceFormatsKHR);
 		GET_VULKAN_FUNCTION_POINTER_INSTSURFACE(instanceInfo->vkInstance, GetPhysicalDeviceSurfacePresentModesKHR);
-		return surfaceInfo;
+		surfaceInfo->renderingQueueFamilyIndex = FindGraphicsQueueFamilyIndex(physDeviceInfo->physicalDevice, surfaceInfo);
+		GetSurfaceColorSpaceAndFormat(physDeviceInfo->physicalDevice, surfaceInfo);
 	}
 
 

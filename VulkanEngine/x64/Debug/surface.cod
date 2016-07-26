@@ -168,11 +168,15 @@ PUBLIC	?_Reserve@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@st
 PUBLIC	?_Tidy@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@IEAAXXZ ; std::vector<VkImageView_T * __ptr64,std::allocator<VkImageView_T * __ptr64> >::_Tidy
 PUBLIC	?_Xlen@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@IEBAXXZ ; std::vector<VkImageView_T * __ptr64,std::allocator<VkImageView_T * __ptr64> >::_Xlen
 PUBLIC	?_Orphan_range@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@IEBAXPEAPEAUVkImageView_T@@0@Z ; std::vector<VkImageView_T * __ptr64,std::allocator<VkImageView_T * __ptr64> >::_Orphan_range
-PUBLIC	?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z ; Cy::NewSurface
+PUBLIC	?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z ; Cy::NewSurface
+PUBLIC	?NewSurfaceInfo@Cy@@YAXPEBUWindowInfo@1@PEBUInstanceInfo@1@PEBUPhysDeviceInfo@1@PEAUSurfaceInfo@1@@Z ; Cy::NewSurfaceInfo
+PUBLIC	?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z ; Cy::FindGraphicsQueueFamilyIndex
 PUBLIC	?GetSurfaceColorSpaceAndFormat@Cy@@YAXPEAUVkPhysicalDevice_T@@PEAUSurfaceInfo@1@@Z ; Cy::GetSurfaceColorSpaceAndFormat
 PUBLIC	?NewSwapchainInfo@Cy@@YAXPEAUWindowInfo@1@PEBUPhysDeviceInfo@1@PEBUSurfaceInfo@1@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z ; Cy::NewSwapchainInfo
+PUBLIC	?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z ; Cy::AcquireNextImage
+PUBLIC	?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z ; Cy::QueuePresent
+PUBLIC	?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z ; Cy::DestroySurfaceInfo
 PUBLIC	?DestroySwapchainInfo@Cy@@YAXPEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z ; Cy::DestroySwapchainInfo
-PUBLIC	?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z ; Cy::FindGraphicsQueueFamilyIndex
 PUBLIC	??0?$allocator@UVkQueueFamilyProperties@@@std@@QEAA@XZ ; std::allocator<VkQueueFamilyProperties>::allocator<VkQueueFamilyProperties>
 PUBLIC	??0?$allocator@UVkQueueFamilyProperties@@@std@@QEAA@AEBV01@@Z ; std::allocator<VkQueueFamilyProperties>::allocator<VkQueueFamilyProperties>
 PUBLIC	?deallocate@?$allocator@UVkQueueFamilyProperties@@@std@@QEAAXPEAUVkQueueFamilyProperties@@_K@Z ; std::allocator<VkQueueFamilyProperties>::deallocate
@@ -311,10 +315,6 @@ PUBLIC	?GetPresentMode@Cy@@YA?AW4VkPresentModeKHR@@PEAV?$vector@W4VkPresentModeK
 PUBLIC	?GetSurfaceExtent@Cy@@YA?AUVkExtent2D@@PEAUVkSurfaceCapabilitiesKHR@@PEAI1@Z ; Cy::GetSurfaceExtent
 PUBLIC	?GetDesiredNumSwapChainImages@Cy@@YAIPEBUVkSurfaceCapabilitiesKHR@@@Z ; Cy::GetDesiredNumSwapChainImages
 PUBLIC	?GetSurfaceTransformBits@Cy@@YA?AW4VkSurfaceTransformFlagBitsKHR@@PEBUVkSurfaceCapabilitiesKHR@@@Z ; Cy::GetSurfaceTransformBits
-PUBLIC	?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z ; Cy::AcquireNextImage
-PUBLIC	?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z ; Cy::QueuePresent
-PUBLIC	?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z ; Cy::NewSurfaceInfo
-PUBLIC	?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z ; Cy::DestroySurfaceInfo
 PUBLIC	??$move@AEAU?$_Wrap_alloc@V?$allocator@W4VkPresentModeKHR@@@std@@@std@@@std@@YA$$QEAU?$_Wrap_alloc@V?$allocator@W4VkPresentModeKHR@@@std@@@0@AEAU10@@Z ; std::move<std::_Wrap_alloc<std::allocator<enum VkPresentModeKHR> > & __ptr64>
 PUBLIC	??$forward@V?$vector@W4VkPresentModeKHR@@V?$allocator@W4VkPresentModeKHR@@@std@@@std@@@std@@YA$$QEAV?$vector@W4VkPresentModeKHR@@V?$allocator@W4VkPresentModeKHR@@@std@@@0@AEAV10@@Z ; std::forward<std::vector<enum VkPresentModeKHR,std::allocator<enum VkPresentModeKHR> > >
 PUBLIC	??$_Uninitialized_default_fill_n@PEAW4VkPresentModeKHR@@_KU?$_Wrap_alloc@V?$allocator@W4VkPresentModeKHR@@@std@@@std@@@std@@YAXPEAW4VkPresentModeKHR@@_KAEAU?$_Wrap_alloc@V?$allocator@W4VkPresentModeKHR@@@std@@@0@@Z ; std::_Uninitialized_default_fill_n<enum VkPresentModeKHR * __ptr64,unsigned __int64,std::_Wrap_alloc<std::allocator<enum VkPresentModeKHR> > >
@@ -1641,9 +1641,27 @@ $pdata$?dtor$0@?0??_Orphan_range@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVk
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z DD imagerel $LN4
+$pdata$?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z DD imagerel $LN4
 	DD	imagerel $LN4+249
-	DD	imagerel $unwind$?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z
+	DD	imagerel $unwind$?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?NewSurfaceInfo@Cy@@YAXPEBUWindowInfo@1@PEBUInstanceInfo@1@PEBUPhysDeviceInfo@1@PEAUSurfaceInfo@1@@Z DD imagerel $LN15
+	DD	imagerel $LN15+641
+	DD	imagerel $unwind$?NewSurfaceInfo@Cy@@YAXPEBUWindowInfo@1@PEBUInstanceInfo@1@PEBUPhysDeviceInfo@1@PEAUSurfaceInfo@1@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD imagerel $LN14
+	DD	imagerel $LN14+490
+	DD	imagerel $unwind$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA DD imagerel ?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA
+	DD	imagerel ?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA+36
+	DD	imagerel $unwind$?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -1671,21 +1689,27 @@ $pdata$?dtor$5@?0??NewSwapchainInfo@Cy@@YAXPEAUWindowInfo@1@PEBUPhysDeviceInfo@1
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z DD imagerel $LN3
+	DD	imagerel $LN3+131
+	DD	imagerel $unwind$?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z DD imagerel $LN3
+	DD	imagerel $LN3+218
+	DD	imagerel $unwind$?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z DD imagerel $LN3
+	DD	imagerel $LN3+145
+	DD	imagerel $unwind$?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$?DestroySwapchainInfo@Cy@@YAXPEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z DD imagerel $LN6
 	DD	imagerel $LN6+241
 	DD	imagerel $unwind$?DestroySwapchainInfo@Cy@@YAXPEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD imagerel $LN14
-	DD	imagerel $LN14+490
-	DD	imagerel $unwind$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA DD imagerel ?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA
-	DD	imagerel ?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA+36
-	DD	imagerel $unwind$?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -2592,30 +2616,6 @@ pdata	SEGMENT
 $pdata$?GetSurfaceTransformBits@Cy@@YA?AW4VkSurfaceTransformFlagBitsKHR@@PEBUVkSurfaceCapabilitiesKHR@@@Z DD imagerel $LN5
 	DD	imagerel $LN5+92
 	DD	imagerel $unwind$?GetSurfaceTransformBits@Cy@@YA?AW4VkSurfaceTransformFlagBitsKHR@@PEBUVkSurfaceCapabilitiesKHR@@@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z DD imagerel $LN3
-	DD	imagerel $LN3+131
-	DD	imagerel $unwind$?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z DD imagerel $LN3
-	DD	imagerel $LN3+218
-	DD	imagerel $unwind$?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z DD imagerel $LN15
-	DD	imagerel $LN15+620
-	DD	imagerel $unwind$?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z DD imagerel $LN3
-	DD	imagerel $LN3+145
-	DD	imagerel $unwind$?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
@@ -5003,78 +5003,6 @@ $unwind$??$move@AEAU?$_Wrap_alloc@V?$allocator@W4VkPresentModeKHR@@@std@@@std@@@
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z DD 025052f01H
-	DD	01132318H
-	DD	0700c001dH
-	DD	0500bH
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z DD 025064619H
-	DD	0119231eH
-	DD	070120058H
-	DD	050106011H
-	DD	imagerel __GSHandlerCheck
-	DD	02b0H
-xdata	ENDS
-;	COMDAT CONST
-CONST	SEGMENT
-?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z$rtcName$0 DB 073H ; Cy::NewSurfaceInfo
-	DB	075H
-	DB	072H
-	DB	066H
-	DB	061H
-	DB	063H
-	DB	065H
-	DB	049H
-	DB	06eH
-	DB	066H
-	DB	06fH
-	DB	00H
-	ORG $+4
-?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z$rtcVarDesc DD 028H ; Cy::NewSurfaceInfo
-	DD	038H
-	DQ	FLAT:?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z$rtcName$0
-	ORG $+48
-?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z$rtcFrameData DD 01H ; Cy::NewSurfaceInfo
-	DD	00H
-	DQ	FLAT:?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z$rtcVarDesc
-CONST	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z DD 025054019H
-	DD	01132318H
-	DD	0700c0029H
-	DD	0500bH
-	DD	imagerel __GSHandlerCheck
-	DD	0138H
-xdata	ENDS
-;	COMDAT CONST
-CONST	SEGMENT
-?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcName$0 DB 070H ; Cy::QueuePresent
-	DB	049H
-	DB	06eH
-	DB	066H
-	DB	06fH
-	DB	00H
-	ORG $+10
-?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcVarDesc DD 030H ; Cy::QueuePresent
-	DD	040H
-	DQ	FLAT:?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcName$0
-	ORG $+48
-?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcFrameData DD 01H ; Cy::QueuePresent
-	DD	00H
-	DQ	FLAT:?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcVarDesc
-CONST	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z DD 035052f01H
-	DD	01133318H
-	DD	0700c001fH
-	DD	0500bH
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
 $unwind$?GetSurfaceTransformBits@Cy@@YA?AW4VkSurfaceTransformFlagBitsKHR@@PEBUVkSurfaceCapabilitiesKHR@@@Z DD 05052801H
 	DD	010e0311H
 	DD	07007001dH
@@ -6816,109 +6744,49 @@ $unwind$??0?$allocator@UVkQueueFamilyProperties@@@std@@QEAA@XZ DD 05052801H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA DD 031001H
-	DD	0700c4210H
-	DD	0500bH
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$ip2state$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD imagerel ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
-	DD	0ffffffffH
-	DD	imagerel ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z+225
-	DD	00H
-	DD	imagerel ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z+430
-	DD	0ffffffffH
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$stateUnwindMap$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD 0ffffffffH
-	DD	imagerel ?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD 025054b19H
-	DD	01132318H
-	DD	0700c0053H
-	DD	0500bH
-	DD	imagerel __GSHandlerCheck_EH
-	DD	imagerel $cppxdata$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
-	DD	0282H
-xdata	ENDS
-;	COMDAT CONST
-CONST	SEGMENT
-?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$0 DB 071H ; Cy::FindGraphicsQueueFamilyIndex
-	DB	075H
-	DB	065H
-	DB	075H
-	DB	065H
-	DB	043H
-	DB	06fH
-	DB	075H
-	DB	06eH
-	DB	074H
-	DB	00H
-	ORG $+5
-?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$1 DB 073H ; Cy::FindGraphicsQueueFamilyIndex
-	DB	075H
-	DB	070H
-	DB	070H
-	DB	06fH
-	DB	072H
-	DB	074H
-	DB	073H
-	DB	050H
-	DB	072H
-	DB	065H
-	DB	073H
-	DB	065H
-	DB	06eH
-	DB	074H
-	DB	00H
-?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$2 DB 071H ; Cy::FindGraphicsQueueFamilyIndex
-	DB	075H
-	DB	065H
-	DB	075H
-	DB	065H
-	DB	050H
-	DB	072H
-	DB	06fH
-	DB	070H
-	DB	065H
-	DB	072H
-	DB	074H
-	DB	069H
-	DB	065H
-	DB	073H
-	DB	00H
-?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcVarDesc DD 088H ; Cy::FindGraphicsQueueFamilyIndex
-	DD	020H
-	DQ	FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$2
-	DD	064H
-	DD	04H
-	DQ	FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$1
-	DD	024H
-	DD	04H
-	DQ	FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$0
-	ORG $+144
-?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcFrameData DD 03H ; Cy::FindGraphicsQueueFamilyIndex
-	DD	00H
-	DQ	FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcVarDesc
-$cppxdata$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD 019930522H
-	DD	01H
-	DD	imagerel $stateUnwindMap$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
-	DD	00H
-	DD	00H
-	DD	03H
-	DD	imagerel $ip2state$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
-	DD	0268H
-	DD	00H
-	DD	01H
-CONST	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
 $unwind$?DestroySwapchainInfo@Cy@@YAXPEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z DD 025052f01H
 	DD	01132318H
 	DD	0700c0021H
+	DD	0500bH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z DD 025052f01H
+	DD	01132318H
+	DD	0700c001dH
+	DD	0500bH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z DD 025054019H
+	DD	01132318H
+	DD	0700c0029H
+	DD	0500bH
+	DD	imagerel __GSHandlerCheck
+	DD	0138H
+xdata	ENDS
+;	COMDAT CONST
+CONST	SEGMENT
+?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcName$0 DB 070H ; Cy::QueuePresent
+	DB	049H
+	DB	06eH
+	DB	066H
+	DB	06fH
+	DB	00H
+	ORG $+10
+?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcVarDesc DD 030H ; Cy::QueuePresent
+	DD	040H
+	DQ	FLAT:?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcName$0
+	ORG $+48
+?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcFrameData DD 01H ; Cy::QueuePresent
+	DD	00H
+	DQ	FLAT:?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcVarDesc
+CONST	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z DD 035052f01H
+	DD	01133318H
+	DD	0700c001fH
 	DD	0500bH
 xdata	ENDS
 ;	COMDAT xdata
@@ -7114,7 +6982,114 @@ $cppxdata$?GetSurfaceColorSpaceAndFormat@Cy@@YAXPEAUVkPhysicalDevice_T@@PEAUSurf
 CONST	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z DD 025054019H
+$unwind$?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA DD 031001H
+	DD	0700c4210H
+	DD	0500bH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$ip2state$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD imagerel ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
+	DD	0ffffffffH
+	DD	imagerel ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z+225
+	DD	00H
+	DD	imagerel ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z+430
+	DD	0ffffffffH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD 0ffffffffH
+	DD	imagerel ?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD 025054b19H
+	DD	01132318H
+	DD	0700c0053H
+	DD	0500bH
+	DD	imagerel __GSHandlerCheck_EH
+	DD	imagerel $cppxdata$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
+	DD	0282H
+xdata	ENDS
+;	COMDAT CONST
+CONST	SEGMENT
+?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$0 DB 071H ; Cy::FindGraphicsQueueFamilyIndex
+	DB	075H
+	DB	065H
+	DB	075H
+	DB	065H
+	DB	043H
+	DB	06fH
+	DB	075H
+	DB	06eH
+	DB	074H
+	DB	00H
+	ORG $+5
+?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$1 DB 073H ; Cy::FindGraphicsQueueFamilyIndex
+	DB	075H
+	DB	070H
+	DB	070H
+	DB	06fH
+	DB	072H
+	DB	074H
+	DB	073H
+	DB	050H
+	DB	072H
+	DB	065H
+	DB	073H
+	DB	065H
+	DB	06eH
+	DB	074H
+	DB	00H
+?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$2 DB 071H ; Cy::FindGraphicsQueueFamilyIndex
+	DB	075H
+	DB	065H
+	DB	075H
+	DB	065H
+	DB	050H
+	DB	072H
+	DB	06fH
+	DB	070H
+	DB	065H
+	DB	072H
+	DB	074H
+	DB	069H
+	DB	065H
+	DB	073H
+	DB	00H
+?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcVarDesc DD 088H ; Cy::FindGraphicsQueueFamilyIndex
+	DD	020H
+	DQ	FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$2
+	DD	064H
+	DD	04H
+	DQ	FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$1
+	DD	024H
+	DD	04H
+	DQ	FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcName$0
+	ORG $+144
+?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcFrameData DD 03H ; Cy::FindGraphicsQueueFamilyIndex
+	DD	00H
+	DQ	FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcVarDesc
+$cppxdata$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z DD 019930522H
+	DD	01H
+	DD	imagerel $stateUnwindMap$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
+	DD	00H
+	DD	00H
+	DD	03H
+	DD	imagerel $ip2state$?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
+	DD	0268H
+	DD	00H
+	DD	01H
+CONST	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?NewSurfaceInfo@Cy@@YAXPEBUWindowInfo@1@PEBUInstanceInfo@1@PEBUPhysDeviceInfo@1@PEAUSurfaceInfo@1@@Z DD 025053901H
+	DD	011d2322H
+	DD	07016004dH
+	DD	05015H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z DD 025054019H
 	DD	01132318H
 	DD	0700c003bH
 	DD	0500bH
@@ -7123,7 +7098,7 @@ $unwind$?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@
 xdata	ENDS
 ;	COMDAT CONST
 CONST	SEGMENT
-?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z$rtcName$0 DB 073H ; Cy::NewSurface
+?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z$rtcName$0 DB 073H ; Cy::NewSurface
 	DB	075H
 	DB	072H
 	DB	066H
@@ -7131,7 +7106,7 @@ CONST	SEGMENT
 	DB	063H
 	DB	065H
 	DB	00H
-?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z$rtcName$1 DB 073H ; Cy::NewSurface
+?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z$rtcName$1 DB 073H ; Cy::NewSurface
 	DB	075H
 	DB	072H
 	DB	066H
@@ -7150,16 +7125,16 @@ CONST	SEGMENT
 	DB	06fH
 	DB	00H
 	ORG $+6
-?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z$rtcVarDesc DD 068H ; Cy::NewSurface
+?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z$rtcVarDesc DD 068H ; Cy::NewSurface
 	DD	028H
-	DQ	FLAT:?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z$rtcName$1
+	DQ	FLAT:?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z$rtcName$1
 	DD	048H
 	DD	08H
-	DQ	FLAT:?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z$rtcName$0
+	DQ	FLAT:?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z$rtcName$0
 	ORG $+96
-?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z$rtcFrameData DD 02H ; Cy::NewSurface
+?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z$rtcFrameData DD 02H ; Cy::NewSurface
 	DD	00H
-	DQ	FLAT:?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z$rtcVarDesc
+	DQ	FLAT:?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z$rtcVarDesc
 CONST	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -14871,423 +14846,6 @@ $LN3:
 ??$move@AEAU?$_Wrap_alloc@V?$allocator@W4VkPresentModeKHR@@@std@@@std@@@std@@YA$$QEAU?$_Wrap_alloc@V?$allocator@W4VkPresentModeKHR@@@std@@@0@AEAU10@@Z ENDP ; std::move<std::_Wrap_alloc<std::allocator<enum VkPresentModeKHR> > & __ptr64>
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
-;	COMDAT ?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z
-_TEXT	SEGMENT
-instanceInfo$ = 224
-surfaceInfo$ = 232
-?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z PROC ; Cy::DestroySurfaceInfo, COMDAT
-; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
-; Line 422
-$LN3:
-  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
-  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
-  0000a	55		 push	 rbp
-  0000b	57		 push	 rdi
-  0000c	48 81 ec e8 00
-	00 00		 sub	 rsp, 232		; 000000e8H
-  00013	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
-  00018	48 8b fc	 mov	 rdi, rsp
-  0001b	b9 3a 00 00 00	 mov	 ecx, 58			; 0000003aH
-  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
-  00025	f3 ab		 rep stosd
-  00027	48 8b 8c 24 08
-	01 00 00	 mov	 rcx, QWORD PTR [rsp+264]
-; Line 424
-  0002f	45 33 c0	 xor	 r8d, r8d
-  00032	48 8b 85 e8 00
-	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
-  00039	48 8b 10	 mov	 rdx, QWORD PTR [rax]
-  0003c	48 8b 85 e0 00
-	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
-  00043	48 8b 08	 mov	 rcx, QWORD PTR [rax]
-  00046	e8 00 00 00 00	 call	 vkDestroySurfaceKHR
-; Line 426
-  0004b	48 8b 85 e8 00
-	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
-  00052	48 c7 40 18 00
-	00 00 00	 mov	 QWORD PTR [rax+24], 0
-; Line 427
-  0005a	48 8b 85 e8 00
-	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
-  00061	48 c7 40 20 00
-	00 00 00	 mov	 QWORD PTR [rax+32], 0
-; Line 428
-  00069	48 8b 85 e8 00
-	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
-  00070	48 c7 40 28 00
-	00 00 00	 mov	 QWORD PTR [rax+40], 0
-; Line 429
-  00078	48 8b 85 e8 00
-	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
-  0007f	48 c7 40 30 00
-	00 00 00	 mov	 QWORD PTR [rax+48], 0
-; Line 430
-  00087	48 8d a5 c8 00
-	00 00		 lea	 rsp, QWORD PTR [rbp+200]
-  0008e	5f		 pop	 rdi
-  0008f	5d		 pop	 rbp
-  00090	c3		 ret	 0
-?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z ENDP ; Cy::DestroySurfaceInfo
-_TEXT	ENDS
-; Function compile flags: /Odtp /RTCsu /ZI
-;	COMDAT ?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z
-_TEXT	SEGMENT
-surfaceInfo$ = 8
-$T4 = 280
-$T5 = 344
-$T6 = 376
-$T7 = 440
-$T8 = 472
-$T9 = 536
-$T10 = 568
-$T11 = 632
-tv171 = 644
-tv154 = 644
-tv137 = 644
-tv88 = 644
-tv179 = 648
-tv177 = 648
-tv175 = 648
-tv173 = 648
-__$ArrayPad$ = 656
-$T12 = 704
-instanceInfo$ = 712
-windowInfo$ = 720
-?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z PROC ; Cy::NewSurfaceInfo, COMDAT
-; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
-; Line 409
-$LN15:
-  00000	4c 89 44 24 18	 mov	 QWORD PTR [rsp+24], r8
-  00005	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
-  0000a	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
-  0000f	55		 push	 rbp
-  00010	56		 push	 rsi
-  00011	57		 push	 rdi
-  00012	48 81 ec c0 02
-	00 00		 sub	 rsp, 704		; 000002c0H
-  00019	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
-  0001e	48 8b fc	 mov	 rdi, rsp
-  00021	b9 b0 00 00 00	 mov	 ecx, 176		; 000000b0H
-  00026	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
-  0002b	f3 ab		 rep stosd
-  0002d	48 8b 8c 24 e8
-	02 00 00	 mov	 rcx, QWORD PTR [rsp+744]
-  00035	48 8b 05 00 00
-	00 00		 mov	 rax, QWORD PTR __security_cookie
-  0003c	48 33 c5	 xor	 rax, rbp
-  0003f	48 89 85 90 02
-	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
-; Line 410
-  00046	48 8d 45 08	 lea	 rax, QWORD PTR surfaceInfo$[rbp]
-  0004a	48 8b f8	 mov	 rdi, rax
-  0004d	33 c0		 xor	 eax, eax
-  0004f	b9 38 00 00 00	 mov	 ecx, 56			; 00000038H
-  00054	f3 aa		 rep stosb
-; Line 411
-  00056	48 8b 85 c8 02
-	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
-  0005d	48 8b 10	 mov	 rdx, QWORD PTR [rax]
-  00060	48 8b 8d d0 02
-	00 00		 mov	 rcx, QWORD PTR windowInfo$[rbp]
-  00067	e8 00 00 00 00	 call	 ?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z ; Cy::NewSurface
-  0006c	48 89 45 08	 mov	 QWORD PTR surfaceInfo$[rbp], rax
-; Line 413
-  00070	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CF@KCGJHCCP@vkGetPhysicalDeviceSurfaceSuppor@
-  00077	48 8b 85 c8 02
-	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
-  0007e	48 8b 08	 mov	 rcx, QWORD PTR [rax]
-  00081	e8 00 00 00 00	 call	 vkGetInstanceProcAddr
-  00086	48 89 45 20	 mov	 QWORD PTR surfaceInfo$[rbp+24], rax
-  0008a	48 8d 85 18 01
-	00 00		 lea	 rax, QWORD PTR $T4[rbp]
-  00091	48 89 85 58 01
-	00 00		 mov	 QWORD PTR $T5[rbp], rax
-  00098	48 83 7d 20 00	 cmp	 QWORD PTR surfaceInfo$[rbp+24], 0
-  0009d	74 09		 je	 SHORT $LN3@NewSurface
-  0009f	c6 85 84 02 00
-	00 01		 mov	 BYTE PTR tv88[rbp], 1
-  000a6	eb 07		 jmp	 SHORT $LN4@NewSurface
-$LN3@NewSurface:
-  000a8	c6 85 84 02 00
-	00 00		 mov	 BYTE PTR tv88[rbp], 0
-$LN4@NewSurface:
-  000af	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0DL@FOACHNJ@could?5not?5find?5function?5GetPhysi@
-  000b6	48 8b 8d 58 01
-	00 00		 mov	 rcx, QWORD PTR $T5[rbp]
-  000bd	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
-  000c2	48 89 85 88 02
-	00 00		 mov	 QWORD PTR tv173[rbp], rax
-  000c9	48 8b 95 88 02
-	00 00		 mov	 rdx, QWORD PTR tv173[rbp]
-  000d0	0f b6 8d 84 02
-	00 00		 movzx	 ecx, BYTE PTR tv88[rbp]
-  000d7	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 414
-  000dc	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CK@LHGCODEN@vkGetPhysicalDeviceSurfaceCapabi@
-  000e3	48 8b 85 c8 02
-	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
-  000ea	48 8b 08	 mov	 rcx, QWORD PTR [rax]
-  000ed	e8 00 00 00 00	 call	 vkGetInstanceProcAddr
-  000f2	48 89 45 28	 mov	 QWORD PTR surfaceInfo$[rbp+32], rax
-  000f6	48 8d 85 78 01
-	00 00		 lea	 rax, QWORD PTR $T6[rbp]
-  000fd	48 89 85 b8 01
-	00 00		 mov	 QWORD PTR $T7[rbp], rax
-  00104	48 83 7d 28 00	 cmp	 QWORD PTR surfaceInfo$[rbp+32], 0
-  00109	74 09		 je	 SHORT $LN5@NewSurface
-  0010b	c6 85 84 02 00
-	00 01		 mov	 BYTE PTR tv137[rbp], 1
-  00112	eb 07		 jmp	 SHORT $LN6@NewSurface
-$LN5@NewSurface:
-  00114	c6 85 84 02 00
-	00 00		 mov	 BYTE PTR tv137[rbp], 0
-$LN6@NewSurface:
-  0011b	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0EA@IDGHLDAB@could?5not?5find?5function?5GetPhysi@
-  00122	48 8b 8d b8 01
-	00 00		 mov	 rcx, QWORD PTR $T7[rbp]
-  00129	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
-  0012e	48 89 85 88 02
-	00 00		 mov	 QWORD PTR tv175[rbp], rax
-  00135	48 8b 95 88 02
-	00 00		 mov	 rdx, QWORD PTR tv175[rbp]
-  0013c	0f b6 8d 84 02
-	00 00		 movzx	 ecx, BYTE PTR tv137[rbp]
-  00143	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 415
-  00148	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CF@LAEKEDKL@vkGetPhysicalDeviceSurfaceFormat@
-  0014f	48 8b 85 c8 02
-	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
-  00156	48 8b 08	 mov	 rcx, QWORD PTR [rax]
-  00159	e8 00 00 00 00	 call	 vkGetInstanceProcAddr
-  0015e	48 89 45 30	 mov	 QWORD PTR surfaceInfo$[rbp+40], rax
-  00162	48 8d 85 d8 01
-	00 00		 lea	 rax, QWORD PTR $T8[rbp]
-  00169	48 89 85 18 02
-	00 00		 mov	 QWORD PTR $T9[rbp], rax
-  00170	48 83 7d 30 00	 cmp	 QWORD PTR surfaceInfo$[rbp+40], 0
-  00175	74 09		 je	 SHORT $LN7@NewSurface
-  00177	c6 85 84 02 00
-	00 01		 mov	 BYTE PTR tv154[rbp], 1
-  0017e	eb 07		 jmp	 SHORT $LN8@NewSurface
-$LN7@NewSurface:
-  00180	c6 85 84 02 00
-	00 00		 mov	 BYTE PTR tv154[rbp], 0
-$LN8@NewSurface:
-  00187	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0DL@BHMDBGFN@could?5not?5find?5function?5GetPhysi@
-  0018e	48 8b 8d 18 02
-	00 00		 mov	 rcx, QWORD PTR $T9[rbp]
-  00195	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
-  0019a	48 89 85 88 02
-	00 00		 mov	 QWORD PTR tv177[rbp], rax
-  001a1	48 8b 95 88 02
-	00 00		 mov	 rdx, QWORD PTR tv177[rbp]
-  001a8	0f b6 8d 84 02
-	00 00		 movzx	 ecx, BYTE PTR tv154[rbp]
-  001af	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 416
-  001b4	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CK@ONBJHPIF@vkGetPhysicalDeviceSurfacePresen@
-  001bb	48 8b 85 c8 02
-	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
-  001c2	48 8b 08	 mov	 rcx, QWORD PTR [rax]
-  001c5	e8 00 00 00 00	 call	 vkGetInstanceProcAddr
-  001ca	48 89 45 38	 mov	 QWORD PTR surfaceInfo$[rbp+48], rax
-  001ce	48 8d 85 38 02
-	00 00		 lea	 rax, QWORD PTR $T10[rbp]
-  001d5	48 89 85 78 02
-	00 00		 mov	 QWORD PTR $T11[rbp], rax
-  001dc	48 83 7d 38 00	 cmp	 QWORD PTR surfaceInfo$[rbp+48], 0
-  001e1	74 09		 je	 SHORT $LN9@NewSurface
-  001e3	c6 85 84 02 00
-	00 01		 mov	 BYTE PTR tv171[rbp], 1
-  001ea	eb 07		 jmp	 SHORT $LN10@NewSurface
-$LN9@NewSurface:
-  001ec	c6 85 84 02 00
-	00 00		 mov	 BYTE PTR tv171[rbp], 0
-$LN10@NewSurface:
-  001f3	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0EA@NJBMCPMJ@could?5not?5find?5function?5GetPhysi@
-  001fa	48 8b 8d 78 02
-	00 00		 mov	 rcx, QWORD PTR $T11[rbp]
-  00201	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
-  00206	48 89 85 88 02
-	00 00		 mov	 QWORD PTR tv179[rbp], rax
-  0020d	48 8b 95 88 02
-	00 00		 mov	 rdx, QWORD PTR tv179[rbp]
-  00214	0f b6 8d 84 02
-	00 00		 movzx	 ecx, BYTE PTR tv171[rbp]
-  0021b	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 417
-  00220	48 8d 45 08	 lea	 rax, QWORD PTR surfaceInfo$[rbp]
-  00224	48 8b bd c0 02
-	00 00		 mov	 rdi, QWORD PTR $T12[rbp]
-  0022b	48 8b f0	 mov	 rsi, rax
-  0022e	b9 38 00 00 00	 mov	 ecx, 56			; 00000038H
-  00233	f3 a4		 rep movsb
-  00235	48 8b 85 c0 02
-	00 00		 mov	 rax, QWORD PTR $T12[rbp]
-; Line 418
-  0023c	48 8b f8	 mov	 rdi, rax
-  0023f	48 8d 4d e0	 lea	 rcx, QWORD PTR [rbp-32]
-  00243	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z$rtcFrameData
-  0024a	e8 00 00 00 00	 call	 _RTC_CheckStackVars
-  0024f	48 8b c7	 mov	 rax, rdi
-  00252	48 8b 8d 90 02
-	00 00		 mov	 rcx, QWORD PTR __$ArrayPad$[rbp]
-  00259	48 33 cd	 xor	 rcx, rbp
-  0025c	e8 00 00 00 00	 call	 __security_check_cookie
-  00261	48 8d a5 a0 02
-	00 00		 lea	 rsp, QWORD PTR [rbp+672]
-  00268	5f		 pop	 rdi
-  00269	5e		 pop	 rsi
-  0026a	5d		 pop	 rbp
-  0026b	c3		 ret	 0
-?NewSurfaceInfo@Cy@@YA?AUSurfaceInfo@1@PEBUInstanceInfo@1@PEBUWindowInfo@1@@Z ENDP ; Cy::NewSurfaceInfo
-_TEXT	ENDS
-; Function compile flags: /Odtp /RTCsu /ZI
-;	COMDAT ?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z
-_TEXT	SEGMENT
-pInfo$ = 16
-__$ArrayPad$ = 280
-deviceInfo$ = 320
-swapchainInfo$ = 328
-?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z PROC ; Cy::QueuePresent, COMDAT
-; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
-; Line 397
-$LN3:
-  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
-  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
-  0000a	55		 push	 rbp
-  0000b	57		 push	 rdi
-  0000c	48 81 ec 48 01
-	00 00		 sub	 rsp, 328		; 00000148H
-  00013	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
-  00018	48 8b fc	 mov	 rdi, rsp
-  0001b	b9 52 00 00 00	 mov	 ecx, 82			; 00000052H
-  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
-  00025	f3 ab		 rep stosd
-  00027	48 8b 8c 24 68
-	01 00 00	 mov	 rcx, QWORD PTR [rsp+360]
-  0002f	48 8b 05 00 00
-	00 00		 mov	 rax, QWORD PTR __security_cookie
-  00036	48 33 c5	 xor	 rax, rbp
-  00039	48 89 85 18 01
-	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
-; Line 398
-  00040	48 8d 45 10	 lea	 rax, QWORD PTR pInfo$[rbp]
-  00044	48 8b f8	 mov	 rdi, rax
-  00047	33 c0		 xor	 eax, eax
-  00049	b9 40 00 00 00	 mov	 ecx, 64			; 00000040H
-  0004e	f3 aa		 rep stosb
-; Line 399
-  00050	c7 45 10 e9 cd
-	9a 3b		 mov	 DWORD PTR pInfo$[rbp], 1000001001 ; 3b9acde9H
-; Line 400
-  00057	c7 45 30 01 00
-	00 00		 mov	 DWORD PTR pInfo$[rbp+32], 1
-; Line 401
-  0005e	48 8b 85 48 01
-	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
-  00065	48 83 c0 48	 add	 rax, 72			; 00000048H
-  00069	48 89 45 38	 mov	 QWORD PTR pInfo$[rbp+40], rax
-; Line 402
-  0006d	48 8b 85 48 01
-	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
-  00074	48 83 c0 50	 add	 rax, 80			; 00000050H
-  00078	48 89 45 40	 mov	 QWORD PTR pInfo$[rbp+48], rax
-; Line 403
-  0007c	c7 45 20 01 00
-	00 00		 mov	 DWORD PTR pInfo$[rbp+16], 1
-; Line 404
-  00083	48 8b 85 40 01
-	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
-  0008a	48 83 c0 68	 add	 rax, 104		; 00000068H
-  0008e	48 89 45 28	 mov	 QWORD PTR pInfo$[rbp+24], rax
-; Line 405
-  00092	48 8d 55 10	 lea	 rdx, QWORD PTR pInfo$[rbp]
-  00096	48 8b 85 40 01
-	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
-  0009d	48 8b 48 08	 mov	 rcx, QWORD PTR [rax+8]
-  000a1	48 8b 85 48 01
-	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
-  000a8	ff 50 78	 call	 QWORD PTR [rax+120]
-; Line 406
-  000ab	48 8b f8	 mov	 rdi, rax
-  000ae	48 8d 4d e0	 lea	 rcx, QWORD PTR [rbp-32]
-  000b2	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcFrameData
-  000b9	e8 00 00 00 00	 call	 _RTC_CheckStackVars
-  000be	48 8b c7	 mov	 rax, rdi
-  000c1	48 8b 8d 18 01
-	00 00		 mov	 rcx, QWORD PTR __$ArrayPad$[rbp]
-  000c8	48 33 cd	 xor	 rcx, rbp
-  000cb	e8 00 00 00 00	 call	 __security_check_cookie
-  000d0	48 8d a5 28 01
-	00 00		 lea	 rsp, QWORD PTR [rbp+296]
-  000d7	5f		 pop	 rdi
-  000d8	5d		 pop	 rbp
-  000d9	c3		 ret	 0
-?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z ENDP ; Cy::QueuePresent
-_TEXT	ENDS
-; Function compile flags: /Odtp /RTCsu /ZI
-;	COMDAT ?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z
-_TEXT	SEGMENT
-deviceInfo$ = 224
-swapchainInfo$ = 232
-?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z PROC ; Cy::AcquireNextImage, COMDAT
-; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
-; Line 392
-$LN3:
-  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
-  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
-  0000a	55		 push	 rbp
-  0000b	57		 push	 rdi
-  0000c	48 81 ec f8 00
-	00 00		 sub	 rsp, 248		; 000000f8H
-  00013	48 8d 6c 24 30	 lea	 rbp, QWORD PTR [rsp+48]
-  00018	48 8b fc	 mov	 rdi, rsp
-  0001b	b9 3e 00 00 00	 mov	 ecx, 62			; 0000003eH
-  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
-  00025	f3 ab		 rep stosd
-  00027	48 8b 8c 24 18
-	01 00 00	 mov	 rcx, QWORD PTR [rsp+280]
-; Line 393
-  0002f	48 8b 85 e8 00
-	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
-  00036	48 83 c0 50	 add	 rax, 80			; 00000050H
-  0003a	48 89 44 24 28	 mov	 QWORD PTR [rsp+40], rax
-  0003f	48 c7 44 24 20
-	00 00 00 00	 mov	 QWORD PTR [rsp+32], 0
-  00048	48 8b 85 e0 00
-	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
-  0004f	4c 8b 48 60	 mov	 r9, QWORD PTR [rax+96]
-  00053	49 c7 c0 ff ff
-	ff ff		 mov	 r8, -1
-  0005a	48 8b 85 e8 00
-	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
-  00061	48 8b 50 48	 mov	 rdx, QWORD PTR [rax+72]
-  00065	48 8b 85 e0 00
-	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
-  0006c	48 8b 08	 mov	 rcx, QWORD PTR [rax]
-  0006f	48 8b 85 e8 00
-	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
-  00076	ff 50 70	 call	 QWORD PTR [rax+112]
-; Line 394
-  00079	48 8d a5 c8 00
-	00 00		 lea	 rsp, QWORD PTR [rbp+200]
-  00080	5f		 pop	 rdi
-  00081	5d		 pop	 rbp
-  00082	c3		 ret	 0
-?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z ENDP ; Cy::AcquireNextImage
-_TEXT	ENDS
-; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?GetSurfaceTransformBits@Cy@@YA?AW4VkSurfaceTransformFlagBitsKHR@@PEBUVkSurfaceCapabilitiesKHR@@@Z
 _TEXT	SEGMENT
 preTransform$ = 4
@@ -22382,269 +21940,6 @@ $LN3:
 ??0?$allocator@UVkQueueFamilyProperties@@@std@@QEAA@XZ ENDP ; std::allocator<VkQueueFamilyProperties>::allocator<VkQueueFamilyProperties>
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
-;	COMDAT ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
-_TEXT	SEGMENT
-queueCount$ = 4
-graphicsAndPresentingQueueIndex$ = 36
-supportsPresent$ = 68
-queueProperties$ = 104
-$T6 = 360
-$T7 = 424
-$T8 = 456
-$T9 = 520
-$T10 = 548
-$T11 = 584
-tv152 = 596
-tv79 = 596
-tv157 = 600
-tv154 = 600
-__$ArrayPad$ = 608
-vkPhysicalDevice$ = 656
-surfaceInfo$ = 664
-?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z PROC ; Cy::FindGraphicsQueueFamilyIndex, COMDAT
-; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
-; Line 50
-$LN14:
-  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
-  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
-  0000a	55		 push	 rbp
-  0000b	57		 push	 rdi
-  0000c	48 81 ec 98 02
-	00 00		 sub	 rsp, 664		; 00000298H
-  00013	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
-  00018	48 8b fc	 mov	 rdi, rsp
-  0001b	b9 a6 00 00 00	 mov	 ecx, 166		; 000000a6H
-  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
-  00025	f3 ab		 rep stosd
-  00027	48 8b 8c 24 b8
-	02 00 00	 mov	 rcx, QWORD PTR [rsp+696]
-  0002f	48 c7 85 48 02
-	00 00 fe ff ff
-	ff		 mov	 QWORD PTR $T11[rbp], -2
-  0003a	48 8b 05 00 00
-	00 00		 mov	 rax, QWORD PTR __security_cookie
-  00041	48 33 c5	 xor	 rax, rbp
-  00044	48 89 85 60 02
-	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
-; Line 52
-  0004b	c7 45 04 00 00
-	00 00		 mov	 DWORD PTR queueCount$[rbp], 0
-; Line 53
-  00052	c7 45 24 00 00
-	00 00		 mov	 DWORD PTR graphicsAndPresentingQueueIndex$[rbp], 0
-; Line 54
-  00059	c7 45 44 00 00
-	00 00		 mov	 DWORD PTR supportsPresent$[rbp], 0
-; Line 55
-  00060	45 33 c0	 xor	 r8d, r8d
-  00063	48 8d 55 04	 lea	 rdx, QWORD PTR queueCount$[rbp]
-  00067	48 8b 8d 90 02
-	00 00		 mov	 rcx, QWORD PTR vkPhysicalDevice$[rbp]
-  0006e	e8 00 00 00 00	 call	 vkGetPhysicalDeviceQueueFamilyProperties
-; Line 56
-  00073	48 8d 85 68 01
-	00 00		 lea	 rax, QWORD PTR $T6[rbp]
-  0007a	48 89 85 a8 01
-	00 00		 mov	 QWORD PTR $T7[rbp], rax
-  00081	83 7d 04 00	 cmp	 DWORD PTR queueCount$[rbp], 0
-  00085	76 09		 jbe	 SHORT $LN7@FindGraphi
-  00087	c6 85 54 02 00
-	00 01		 mov	 BYTE PTR tv79[rbp], 1
-  0008e	eb 07		 jmp	 SHORT $LN8@FindGraphi
-$LN7@FindGraphi:
-  00090	c6 85 54 02 00
-	00 00		 mov	 BYTE PTR tv79[rbp], 0
-$LN8@FindGraphi:
-  00097	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CI@MMLLPAMH@physical?5device?5has?5no?5available@
-  0009e	48 8b 8d a8 01
-	00 00		 mov	 rcx, QWORD PTR $T7[rbp]
-  000a5	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
-  000aa	48 89 85 58 02
-	00 00		 mov	 QWORD PTR tv154[rbp], rax
-  000b1	48 8b 95 58 02
-	00 00		 mov	 rdx, QWORD PTR tv154[rbp]
-  000b8	0f b6 8d 54 02
-	00 00		 movzx	 ecx, BYTE PTR tv79[rbp]
-  000bf	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 58
-  000c4	ba 20 00 00 00	 mov	 edx, 32			; 00000020H
-  000c9	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
-  000cd	e8 00 00 00 00	 call	 ?__autoclassinit2@?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAAX_K@Z
-  000d2	8b 45 04	 mov	 eax, DWORD PTR queueCount$[rbp]
-  000d5	8b d0		 mov	 edx, eax
-  000d7	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
-  000db	e8 00 00 00 00	 call	 ??0?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAA@_K@Z ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >
-  000e0	90		 npad	 1
-; Line 59
-  000e1	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
-  000e5	e8 00 00 00 00	 call	 ?data@?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAAPEAUVkQueueFamilyProperties@@XZ ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::data
-  000ea	4c 8b c0	 mov	 r8, rax
-  000ed	48 8d 55 04	 lea	 rdx, QWORD PTR queueCount$[rbp]
-  000f1	48 8b 8d 90 02
-	00 00		 mov	 rcx, QWORD PTR vkPhysicalDevice$[rbp]
-  000f8	e8 00 00 00 00	 call	 vkGetPhysicalDeviceQueueFamilyProperties
-; Line 61
-  000fd	eb 08		 jmp	 SHORT $LN4@FindGraphi
-$LN2@FindGraphi:
-  000ff	8b 45 24	 mov	 eax, DWORD PTR graphicsAndPresentingQueueIndex$[rbp]
-  00102	ff c0		 inc	 eax
-  00104	89 45 24	 mov	 DWORD PTR graphicsAndPresentingQueueIndex$[rbp], eax
-$LN4@FindGraphi:
-  00107	8b 45 04	 mov	 eax, DWORD PTR queueCount$[rbp]
-  0010a	39 45 24	 cmp	 DWORD PTR graphicsAndPresentingQueueIndex$[rbp], eax
-  0010d	73 43		 jae	 SHORT $LN3@FindGraphi
-; Line 63
-  0010f	4c 8d 4d 44	 lea	 r9, QWORD PTR supportsPresent$[rbp]
-  00113	48 8b 85 98 02
-	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
-  0011a	4c 8b 00	 mov	 r8, QWORD PTR [rax]
-  0011d	8b 55 24	 mov	 edx, DWORD PTR graphicsAndPresentingQueueIndex$[rbp]
-  00120	48 8b 8d 90 02
-	00 00		 mov	 rcx, QWORD PTR vkPhysicalDevice$[rbp]
-  00127	48 8b 85 98 02
-	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
-  0012e	ff 50 18	 call	 QWORD PTR [rax+24]
-; Line 64
-  00131	8b 45 24	 mov	 eax, DWORD PTR graphicsAndPresentingQueueIndex$[rbp]
-  00134	8b d0		 mov	 edx, eax
-  00136	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
-  0013a	e8 00 00 00 00	 call	 ??A?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAAAEAUVkQueueFamilyProperties@@_K@Z ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::operator[]
-  0013f	8b 00		 mov	 eax, DWORD PTR [rax]
-  00141	83 e0 01	 and	 eax, 1
-  00144	85 c0		 test	 eax, eax
-  00146	74 08		 je	 SHORT $LN5@FindGraphi
-  00148	83 7d 44 00	 cmp	 DWORD PTR supportsPresent$[rbp], 0
-  0014c	74 02		 je	 SHORT $LN5@FindGraphi
-; Line 65
-  0014e	eb 02		 jmp	 SHORT $LN3@FindGraphi
-$LN5@FindGraphi:
-; Line 66
-  00150	eb ad		 jmp	 SHORT $LN2@FindGraphi
-$LN3@FindGraphi:
-; Line 68
-  00152	48 8d 85 c8 01
-	00 00		 lea	 rax, QWORD PTR $T8[rbp]
-  00159	48 89 85 08 02
-	00 00		 mov	 QWORD PTR $T9[rbp], rax
-  00160	8b 45 04	 mov	 eax, DWORD PTR queueCount$[rbp]
-  00163	39 45 24	 cmp	 DWORD PTR graphicsAndPresentingQueueIndex$[rbp], eax
-  00166	73 09		 jae	 SHORT $LN9@FindGraphi
-  00168	c6 85 54 02 00
-	00 01		 mov	 BYTE PTR tv152[rbp], 1
-  0016f	eb 07		 jmp	 SHORT $LN10@FindGraphi
-$LN9@FindGraphi:
-  00171	c6 85 54 02 00
-	00 00		 mov	 BYTE PTR tv152[rbp], 0
-$LN10@FindGraphi:
-  00178	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0EC@MEFOBPJJ@this?5gpu?5doesn?8t?5support?5graphic@
-  0017f	48 8b 8d 08 02
-	00 00		 mov	 rcx, QWORD PTR $T9[rbp]
-  00186	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
-  0018b	48 89 85 58 02
-	00 00		 mov	 QWORD PTR tv157[rbp], rax
-  00192	48 8b 95 58 02
-	00 00		 mov	 rdx, QWORD PTR tv157[rbp]
-  00199	0f b6 8d 54 02
-	00 00		 movzx	 ecx, BYTE PTR tv152[rbp]
-  001a0	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
-; Line 70
-  001a5	8b 45 24	 mov	 eax, DWORD PTR graphicsAndPresentingQueueIndex$[rbp]
-  001a8	89 85 24 02 00
-	00		 mov	 DWORD PTR $T10[rbp], eax
-  001ae	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
-  001b2	e8 00 00 00 00	 call	 ??1?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAA@XZ ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::~vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >
-  001b7	8b 85 24 02 00
-	00		 mov	 eax, DWORD PTR $T10[rbp]
-; Line 71
-  001bd	8b f8		 mov	 edi, eax
-  001bf	48 8d 4d e0	 lea	 rcx, QWORD PTR [rbp-32]
-  001c3	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcFrameData
-  001ca	e8 00 00 00 00	 call	 _RTC_CheckStackVars
-  001cf	8b c7		 mov	 eax, edi
-  001d1	48 8b 8d 60 02
-	00 00		 mov	 rcx, QWORD PTR __$ArrayPad$[rbp]
-  001d8	48 33 cd	 xor	 rcx, rbp
-  001db	e8 00 00 00 00	 call	 __security_check_cookie
-  001e0	48 8d a5 78 02
-	00 00		 lea	 rsp, QWORD PTR [rbp+632]
-  001e7	5f		 pop	 rdi
-  001e8	5d		 pop	 rbp
-  001e9	c3		 ret	 0
-?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z ENDP ; Cy::FindGraphicsQueueFamilyIndex
-_TEXT	ENDS
-;	COMDAT text$x
-text$x	SEGMENT
-queueCount$ = 4
-graphicsAndPresentingQueueIndex$ = 36
-supportsPresent$ = 68
-queueProperties$ = 104
-$T6 = 360
-$T7 = 424
-$T8 = 456
-$T9 = 520
-$T10 = 548
-$T11 = 584
-tv152 = 596
-tv79 = 596
-tv157 = 600
-tv154 = 600
-__$ArrayPad$ = 608
-vkPhysicalDevice$ = 656
-surfaceInfo$ = 664
-?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA PROC ; `Cy::FindGraphicsQueueFamilyIndex'::`1'::dtor$1
-  00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
-  00005	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
-  0000a	55		 push	 rbp
-  0000b	57		 push	 rdi
-  0000c	48 83 ec 28	 sub	 rsp, 40			; 00000028H
-  00010	48 8d 6a 20	 lea	 rbp, QWORD PTR [rdx+32]
-  00014	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
-  00018	e8 00 00 00 00	 call	 ??1?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAA@XZ ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::~vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >
-  0001d	48 83 c4 28	 add	 rsp, 40			; 00000028H
-  00021	5f		 pop	 rdi
-  00022	5d		 pop	 rbp
-  00023	c3		 ret	 0
-?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA ENDP ; `Cy::FindGraphicsQueueFamilyIndex'::`1'::dtor$1
-text$x	ENDS
-; Function compile flags: /Odtp /RTCsu /ZI
-;	COMDAT text$x
-text$x	SEGMENT
-queueCount$ = 4
-graphicsAndPresentingQueueIndex$ = 36
-supportsPresent$ = 68
-queueProperties$ = 104
-$T6 = 360
-$T7 = 424
-$T8 = 456
-$T9 = 520
-$T10 = 548
-$T11 = 584
-tv152 = 596
-tv79 = 596
-tv157 = 600
-tv154 = 600
-__$ArrayPad$ = 608
-vkPhysicalDevice$ = 656
-surfaceInfo$ = 664
-?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA PROC ; `Cy::FindGraphicsQueueFamilyIndex'::`1'::dtor$1
-  00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
-  00005	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
-  0000a	55		 push	 rbp
-  0000b	57		 push	 rdi
-  0000c	48 83 ec 28	 sub	 rsp, 40			; 00000028H
-  00010	48 8d 6a 20	 lea	 rbp, QWORD PTR [rdx+32]
-  00014	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
-  00018	e8 00 00 00 00	 call	 ??1?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAA@XZ ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::~vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >
-  0001d	48 83 c4 28	 add	 rsp, 40			; 00000028H
-  00021	5f		 pop	 rdi
-  00022	5d		 pop	 rbp
-  00023	c3		 ret	 0
-?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA ENDP ; `Cy::FindGraphicsQueueFamilyIndex'::`1'::dtor$1
-text$x	ENDS
-; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?DestroySwapchainInfo@Cy@@YAXPEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z
 _TEXT	SEGMENT
 i$1 = 4
@@ -22652,7 +21947,7 @@ deviceInfo$ = 256
 swapchainInfo$ = 264
 ?DestroySwapchainInfo@Cy@@YAXPEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z PROC ; Cy::DestroySwapchainInfo, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
-; Line 433
+; Line 435
 $LN6:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
@@ -22667,7 +21962,7 @@ $LN6:
   00025	f3 ab		 rep stosd
   00027	48 8b 8c 24 28
 	01 00 00	 mov	 rcx, QWORD PTR [rsp+296]
-; Line 434
+; Line 436
   0002f	c7 45 04 00 00
 	00 00		 mov	 DWORD PTR i$1[rbp], 0
   00036	eb 08		 jmp	 SHORT $LN4@DestroySwa
@@ -22681,7 +21976,7 @@ $LN4@DestroySwa:
   00047	8b 00		 mov	 eax, DWORD PTR [rax]
   00049	39 45 04	 cmp	 DWORD PTR i$1[rbp], eax
   0004c	73 2c		 jae	 SHORT $LN3@DestroySwa
-; Line 438
+; Line 440
   0004e	8b 45 04	 mov	 eax, DWORD PTR i$1[rbp]
   00051	48 8b 8d 08 01
 	00 00		 mov	 rcx, QWORD PTR swapchainInfo$[rbp]
@@ -22694,10 +21989,10 @@ $LN4@DestroySwa:
 	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
   00070	48 8b 08	 mov	 rcx, QWORD PTR [rax]
   00073	e8 00 00 00 00	 call	 vkDestroyImageView
-; Line 440
+; Line 442
   00078	eb be		 jmp	 SHORT $LN2@DestroySwa
 $LN3@DestroySwa:
-; Line 442
+; Line 444
   0007a	45 33 c0	 xor	 r8d, r8d
   0007d	48 8b 85 08 01
 	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
@@ -22708,38 +22003,233 @@ $LN3@DestroySwa:
   00092	48 8b 85 08 01
 	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
   00099	ff 50 60	 call	 QWORD PTR [rax+96]
-; Line 444
+; Line 446
   0009c	48 8b 85 08 01
 	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
   000a3	48 c7 40 58 00
 	00 00 00	 mov	 QWORD PTR [rax+88], 0
-; Line 445
+; Line 447
   000ab	48 8b 85 08 01
 	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
   000b2	48 c7 40 60 00
 	00 00 00	 mov	 QWORD PTR [rax+96], 0
-; Line 446
+; Line 448
   000ba	48 8b 85 08 01
 	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
   000c1	48 c7 40 68 00
 	00 00 00	 mov	 QWORD PTR [rax+104], 0
-; Line 447
+; Line 449
   000c9	48 8b 85 08 01
 	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
   000d0	48 c7 40 70 00
 	00 00 00	 mov	 QWORD PTR [rax+112], 0
-; Line 448
+; Line 450
   000d8	48 8b 85 08 01
 	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
   000df	48 c7 40 78 00
 	00 00 00	 mov	 QWORD PTR [rax+120], 0
-; Line 449
+; Line 451
   000e7	48 8d a5 e8 00
 	00 00		 lea	 rsp, QWORD PTR [rbp+232]
   000ee	5f		 pop	 rdi
   000ef	5d		 pop	 rbp
   000f0	c3		 ret	 0
 ?DestroySwapchainInfo@Cy@@YAXPEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z ENDP ; Cy::DestroySwapchainInfo
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu /ZI
+;	COMDAT ?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z
+_TEXT	SEGMENT
+instanceInfo$ = 224
+surfaceInfo$ = 232
+?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z PROC ; Cy::DestroySurfaceInfo, COMDAT
+; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
+; Line 424
+$LN3:
+  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  0000a	55		 push	 rbp
+  0000b	57		 push	 rdi
+  0000c	48 81 ec e8 00
+	00 00		 sub	 rsp, 232		; 000000e8H
+  00013	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
+  00018	48 8b fc	 mov	 rdi, rsp
+  0001b	b9 3a 00 00 00	 mov	 ecx, 58			; 0000003aH
+  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
+  00025	f3 ab		 rep stosd
+  00027	48 8b 8c 24 08
+	01 00 00	 mov	 rcx, QWORD PTR [rsp+264]
+; Line 426
+  0002f	45 33 c0	 xor	 r8d, r8d
+  00032	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  00039	48 8b 10	 mov	 rdx, QWORD PTR [rax]
+  0003c	48 8b 85 e0 00
+	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
+  00043	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  00046	e8 00 00 00 00	 call	 vkDestroySurfaceKHR
+; Line 428
+  0004b	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  00052	48 c7 40 18 00
+	00 00 00	 mov	 QWORD PTR [rax+24], 0
+; Line 429
+  0005a	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  00061	48 c7 40 20 00
+	00 00 00	 mov	 QWORD PTR [rax+32], 0
+; Line 430
+  00069	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  00070	48 c7 40 28 00
+	00 00 00	 mov	 QWORD PTR [rax+40], 0
+; Line 431
+  00078	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  0007f	48 c7 40 30 00
+	00 00 00	 mov	 QWORD PTR [rax+48], 0
+; Line 432
+  00087	48 8d a5 c8 00
+	00 00		 lea	 rsp, QWORD PTR [rbp+200]
+  0008e	5f		 pop	 rdi
+  0008f	5d		 pop	 rbp
+  00090	c3		 ret	 0
+?DestroySurfaceInfo@Cy@@YAXPEBUInstanceInfo@1@PEAUSurfaceInfo@1@@Z ENDP ; Cy::DestroySurfaceInfo
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu /ZI
+;	COMDAT ?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z
+_TEXT	SEGMENT
+pInfo$ = 16
+__$ArrayPad$ = 280
+deviceInfo$ = 320
+swapchainInfo$ = 328
+?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z PROC ; Cy::QueuePresent, COMDAT
+; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
+; Line 397
+$LN3:
+  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  0000a	55		 push	 rbp
+  0000b	57		 push	 rdi
+  0000c	48 81 ec 48 01
+	00 00		 sub	 rsp, 328		; 00000148H
+  00013	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
+  00018	48 8b fc	 mov	 rdi, rsp
+  0001b	b9 52 00 00 00	 mov	 ecx, 82			; 00000052H
+  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
+  00025	f3 ab		 rep stosd
+  00027	48 8b 8c 24 68
+	01 00 00	 mov	 rcx, QWORD PTR [rsp+360]
+  0002f	48 8b 05 00 00
+	00 00		 mov	 rax, QWORD PTR __security_cookie
+  00036	48 33 c5	 xor	 rax, rbp
+  00039	48 89 85 18 01
+	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
+; Line 398
+  00040	48 8d 45 10	 lea	 rax, QWORD PTR pInfo$[rbp]
+  00044	48 8b f8	 mov	 rdi, rax
+  00047	33 c0		 xor	 eax, eax
+  00049	b9 40 00 00 00	 mov	 ecx, 64			; 00000040H
+  0004e	f3 aa		 rep stosb
+; Line 399
+  00050	c7 45 10 e9 cd
+	9a 3b		 mov	 DWORD PTR pInfo$[rbp], 1000001001 ; 3b9acde9H
+; Line 400
+  00057	c7 45 30 01 00
+	00 00		 mov	 DWORD PTR pInfo$[rbp+32], 1
+; Line 401
+  0005e	48 8b 85 48 01
+	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
+  00065	48 83 c0 48	 add	 rax, 72			; 00000048H
+  00069	48 89 45 38	 mov	 QWORD PTR pInfo$[rbp+40], rax
+; Line 402
+  0006d	48 8b 85 48 01
+	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
+  00074	48 83 c0 50	 add	 rax, 80			; 00000050H
+  00078	48 89 45 40	 mov	 QWORD PTR pInfo$[rbp+48], rax
+; Line 403
+  0007c	c7 45 20 01 00
+	00 00		 mov	 DWORD PTR pInfo$[rbp+16], 1
+; Line 404
+  00083	48 8b 85 40 01
+	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
+  0008a	48 83 c0 68	 add	 rax, 104		; 00000068H
+  0008e	48 89 45 28	 mov	 QWORD PTR pInfo$[rbp+24], rax
+; Line 405
+  00092	48 8d 55 10	 lea	 rdx, QWORD PTR pInfo$[rbp]
+  00096	48 8b 85 40 01
+	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
+  0009d	48 8b 48 08	 mov	 rcx, QWORD PTR [rax+8]
+  000a1	48 8b 85 48 01
+	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
+  000a8	ff 50 78	 call	 QWORD PTR [rax+120]
+; Line 406
+  000ab	48 8b f8	 mov	 rdi, rax
+  000ae	48 8d 4d e0	 lea	 rcx, QWORD PTR [rbp-32]
+  000b2	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z$rtcFrameData
+  000b9	e8 00 00 00 00	 call	 _RTC_CheckStackVars
+  000be	48 8b c7	 mov	 rax, rdi
+  000c1	48 8b 8d 18 01
+	00 00		 mov	 rcx, QWORD PTR __$ArrayPad$[rbp]
+  000c8	48 33 cd	 xor	 rcx, rbp
+  000cb	e8 00 00 00 00	 call	 __security_check_cookie
+  000d0	48 8d a5 28 01
+	00 00		 lea	 rsp, QWORD PTR [rbp+296]
+  000d7	5f		 pop	 rdi
+  000d8	5d		 pop	 rbp
+  000d9	c3		 ret	 0
+?QueuePresent@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEBUSwapchainInfo@1@@Z ENDP ; Cy::QueuePresent
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu /ZI
+;	COMDAT ?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z
+_TEXT	SEGMENT
+deviceInfo$ = 224
+swapchainInfo$ = 232
+?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z PROC ; Cy::AcquireNextImage, COMDAT
+; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
+; Line 392
+$LN3:
+  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  0000a	55		 push	 rbp
+  0000b	57		 push	 rdi
+  0000c	48 81 ec f8 00
+	00 00		 sub	 rsp, 248		; 000000f8H
+  00013	48 8d 6c 24 30	 lea	 rbp, QWORD PTR [rsp+48]
+  00018	48 8b fc	 mov	 rdi, rsp
+  0001b	b9 3e 00 00 00	 mov	 ecx, 62			; 0000003eH
+  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
+  00025	f3 ab		 rep stosd
+  00027	48 8b 8c 24 18
+	01 00 00	 mov	 rcx, QWORD PTR [rsp+280]
+; Line 393
+  0002f	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
+  00036	48 83 c0 50	 add	 rax, 80			; 00000050H
+  0003a	48 89 44 24 28	 mov	 QWORD PTR [rsp+40], rax
+  0003f	48 c7 44 24 20
+	00 00 00 00	 mov	 QWORD PTR [rsp+32], 0
+  00048	48 8b 85 e0 00
+	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
+  0004f	4c 8b 48 60	 mov	 r9, QWORD PTR [rax+96]
+  00053	49 c7 c0 ff ff
+	ff ff		 mov	 r8, -1
+  0005a	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
+  00061	48 8b 50 48	 mov	 rdx, QWORD PTR [rax+72]
+  00065	48 8b 85 e0 00
+	00 00		 mov	 rax, QWORD PTR deviceInfo$[rbp]
+  0006c	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  0006f	48 8b 85 e8 00
+	00 00		 mov	 rax, QWORD PTR swapchainInfo$[rbp]
+  00076	ff 50 70	 call	 QWORD PTR [rax+112]
+; Line 394
+  00079	48 8d a5 c8 00
+	00 00		 lea	 rsp, QWORD PTR [rbp+200]
+  00080	5f		 pop	 rdi
+  00081	5d		 pop	 rbp
+  00082	c3		 ret	 0
+?AcquireNextImage@Cy@@YA?AW4VkResult@@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z ENDP ; Cy::AcquireNextImage
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?NewSwapchainInfo@Cy@@YAXPEAUWindowInfo@1@PEBUPhysDeviceInfo@1@PEBUSurfaceInfo@1@PEBUDeviceInfo@1@PEAUSwapchainInfo@1@@Z
@@ -23779,7 +23269,495 @@ surfaceInfo$ = 696
 ?dtor$2@?0??GetSurfaceColorSpaceAndFormat@Cy@@YAXPEAUVkPhysicalDevice_T@@PEAUSurfaceInfo@1@@Z@4HA ENDP ; `Cy::GetSurfaceColorSpaceAndFormat'::`1'::dtor$2
 text$x	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
-;	COMDAT ?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z
+;	COMDAT ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z
+_TEXT	SEGMENT
+queueCount$ = 4
+graphicsAndPresentingQueueIndex$ = 36
+supportsPresent$ = 68
+queueProperties$ = 104
+$T6 = 360
+$T7 = 424
+$T8 = 456
+$T9 = 520
+$T10 = 548
+$T11 = 584
+tv152 = 596
+tv79 = 596
+tv157 = 600
+tv154 = 600
+__$ArrayPad$ = 608
+vkPhysicalDevice$ = 656
+surfaceInfo$ = 664
+?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z PROC ; Cy::FindGraphicsQueueFamilyIndex, COMDAT
+; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
+; Line 50
+$LN14:
+  00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  0000a	55		 push	 rbp
+  0000b	57		 push	 rdi
+  0000c	48 81 ec 98 02
+	00 00		 sub	 rsp, 664		; 00000298H
+  00013	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
+  00018	48 8b fc	 mov	 rdi, rsp
+  0001b	b9 a6 00 00 00	 mov	 ecx, 166		; 000000a6H
+  00020	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
+  00025	f3 ab		 rep stosd
+  00027	48 8b 8c 24 b8
+	02 00 00	 mov	 rcx, QWORD PTR [rsp+696]
+  0002f	48 c7 85 48 02
+	00 00 fe ff ff
+	ff		 mov	 QWORD PTR $T11[rbp], -2
+  0003a	48 8b 05 00 00
+	00 00		 mov	 rax, QWORD PTR __security_cookie
+  00041	48 33 c5	 xor	 rax, rbp
+  00044	48 89 85 60 02
+	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
+; Line 52
+  0004b	c7 45 04 00 00
+	00 00		 mov	 DWORD PTR queueCount$[rbp], 0
+; Line 53
+  00052	c7 45 24 00 00
+	00 00		 mov	 DWORD PTR graphicsAndPresentingQueueIndex$[rbp], 0
+; Line 54
+  00059	c7 45 44 00 00
+	00 00		 mov	 DWORD PTR supportsPresent$[rbp], 0
+; Line 55
+  00060	45 33 c0	 xor	 r8d, r8d
+  00063	48 8d 55 04	 lea	 rdx, QWORD PTR queueCount$[rbp]
+  00067	48 8b 8d 90 02
+	00 00		 mov	 rcx, QWORD PTR vkPhysicalDevice$[rbp]
+  0006e	e8 00 00 00 00	 call	 vkGetPhysicalDeviceQueueFamilyProperties
+; Line 56
+  00073	48 8d 85 68 01
+	00 00		 lea	 rax, QWORD PTR $T6[rbp]
+  0007a	48 89 85 a8 01
+	00 00		 mov	 QWORD PTR $T7[rbp], rax
+  00081	83 7d 04 00	 cmp	 DWORD PTR queueCount$[rbp], 0
+  00085	76 09		 jbe	 SHORT $LN7@FindGraphi
+  00087	c6 85 54 02 00
+	00 01		 mov	 BYTE PTR tv79[rbp], 1
+  0008e	eb 07		 jmp	 SHORT $LN8@FindGraphi
+$LN7@FindGraphi:
+  00090	c6 85 54 02 00
+	00 00		 mov	 BYTE PTR tv79[rbp], 0
+$LN8@FindGraphi:
+  00097	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CI@MMLLPAMH@physical?5device?5has?5no?5available@
+  0009e	48 8b 8d a8 01
+	00 00		 mov	 rcx, QWORD PTR $T7[rbp]
+  000a5	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+  000aa	48 89 85 58 02
+	00 00		 mov	 QWORD PTR tv154[rbp], rax
+  000b1	48 8b 95 58 02
+	00 00		 mov	 rdx, QWORD PTR tv154[rbp]
+  000b8	0f b6 8d 54 02
+	00 00		 movzx	 ecx, BYTE PTR tv79[rbp]
+  000bf	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
+; Line 58
+  000c4	ba 20 00 00 00	 mov	 edx, 32			; 00000020H
+  000c9	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
+  000cd	e8 00 00 00 00	 call	 ?__autoclassinit2@?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAAX_K@Z
+  000d2	8b 45 04	 mov	 eax, DWORD PTR queueCount$[rbp]
+  000d5	8b d0		 mov	 edx, eax
+  000d7	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
+  000db	e8 00 00 00 00	 call	 ??0?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAA@_K@Z ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >
+  000e0	90		 npad	 1
+; Line 59
+  000e1	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
+  000e5	e8 00 00 00 00	 call	 ?data@?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAAPEAUVkQueueFamilyProperties@@XZ ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::data
+  000ea	4c 8b c0	 mov	 r8, rax
+  000ed	48 8d 55 04	 lea	 rdx, QWORD PTR queueCount$[rbp]
+  000f1	48 8b 8d 90 02
+	00 00		 mov	 rcx, QWORD PTR vkPhysicalDevice$[rbp]
+  000f8	e8 00 00 00 00	 call	 vkGetPhysicalDeviceQueueFamilyProperties
+; Line 61
+  000fd	eb 08		 jmp	 SHORT $LN4@FindGraphi
+$LN2@FindGraphi:
+  000ff	8b 45 24	 mov	 eax, DWORD PTR graphicsAndPresentingQueueIndex$[rbp]
+  00102	ff c0		 inc	 eax
+  00104	89 45 24	 mov	 DWORD PTR graphicsAndPresentingQueueIndex$[rbp], eax
+$LN4@FindGraphi:
+  00107	8b 45 04	 mov	 eax, DWORD PTR queueCount$[rbp]
+  0010a	39 45 24	 cmp	 DWORD PTR graphicsAndPresentingQueueIndex$[rbp], eax
+  0010d	73 43		 jae	 SHORT $LN3@FindGraphi
+; Line 63
+  0010f	4c 8d 4d 44	 lea	 r9, QWORD PTR supportsPresent$[rbp]
+  00113	48 8b 85 98 02
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  0011a	4c 8b 00	 mov	 r8, QWORD PTR [rax]
+  0011d	8b 55 24	 mov	 edx, DWORD PTR graphicsAndPresentingQueueIndex$[rbp]
+  00120	48 8b 8d 90 02
+	00 00		 mov	 rcx, QWORD PTR vkPhysicalDevice$[rbp]
+  00127	48 8b 85 98 02
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  0012e	ff 50 18	 call	 QWORD PTR [rax+24]
+; Line 64
+  00131	8b 45 24	 mov	 eax, DWORD PTR graphicsAndPresentingQueueIndex$[rbp]
+  00134	8b d0		 mov	 edx, eax
+  00136	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
+  0013a	e8 00 00 00 00	 call	 ??A?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAAAEAUVkQueueFamilyProperties@@_K@Z ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::operator[]
+  0013f	8b 00		 mov	 eax, DWORD PTR [rax]
+  00141	83 e0 01	 and	 eax, 1
+  00144	85 c0		 test	 eax, eax
+  00146	74 08		 je	 SHORT $LN5@FindGraphi
+  00148	83 7d 44 00	 cmp	 DWORD PTR supportsPresent$[rbp], 0
+  0014c	74 02		 je	 SHORT $LN5@FindGraphi
+; Line 65
+  0014e	eb 02		 jmp	 SHORT $LN3@FindGraphi
+$LN5@FindGraphi:
+; Line 66
+  00150	eb ad		 jmp	 SHORT $LN2@FindGraphi
+$LN3@FindGraphi:
+; Line 68
+  00152	48 8d 85 c8 01
+	00 00		 lea	 rax, QWORD PTR $T8[rbp]
+  00159	48 89 85 08 02
+	00 00		 mov	 QWORD PTR $T9[rbp], rax
+  00160	8b 45 04	 mov	 eax, DWORD PTR queueCount$[rbp]
+  00163	39 45 24	 cmp	 DWORD PTR graphicsAndPresentingQueueIndex$[rbp], eax
+  00166	73 09		 jae	 SHORT $LN9@FindGraphi
+  00168	c6 85 54 02 00
+	00 01		 mov	 BYTE PTR tv152[rbp], 1
+  0016f	eb 07		 jmp	 SHORT $LN10@FindGraphi
+$LN9@FindGraphi:
+  00171	c6 85 54 02 00
+	00 00		 mov	 BYTE PTR tv152[rbp], 0
+$LN10@FindGraphi:
+  00178	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0EC@MEFOBPJJ@this?5gpu?5doesn?8t?5support?5graphic@
+  0017f	48 8b 8d 08 02
+	00 00		 mov	 rcx, QWORD PTR $T9[rbp]
+  00186	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+  0018b	48 89 85 58 02
+	00 00		 mov	 QWORD PTR tv157[rbp], rax
+  00192	48 8b 95 58 02
+	00 00		 mov	 rdx, QWORD PTR tv157[rbp]
+  00199	0f b6 8d 54 02
+	00 00		 movzx	 ecx, BYTE PTR tv152[rbp]
+  001a0	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
+; Line 70
+  001a5	8b 45 24	 mov	 eax, DWORD PTR graphicsAndPresentingQueueIndex$[rbp]
+  001a8	89 85 24 02 00
+	00		 mov	 DWORD PTR $T10[rbp], eax
+  001ae	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
+  001b2	e8 00 00 00 00	 call	 ??1?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAA@XZ ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::~vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >
+  001b7	8b 85 24 02 00
+	00		 mov	 eax, DWORD PTR $T10[rbp]
+; Line 71
+  001bd	8b f8		 mov	 edi, eax
+  001bf	48 8d 4d e0	 lea	 rcx, QWORD PTR [rbp-32]
+  001c3	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z$rtcFrameData
+  001ca	e8 00 00 00 00	 call	 _RTC_CheckStackVars
+  001cf	8b c7		 mov	 eax, edi
+  001d1	48 8b 8d 60 02
+	00 00		 mov	 rcx, QWORD PTR __$ArrayPad$[rbp]
+  001d8	48 33 cd	 xor	 rcx, rbp
+  001db	e8 00 00 00 00	 call	 __security_check_cookie
+  001e0	48 8d a5 78 02
+	00 00		 lea	 rsp, QWORD PTR [rbp+632]
+  001e7	5f		 pop	 rdi
+  001e8	5d		 pop	 rbp
+  001e9	c3		 ret	 0
+?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z ENDP ; Cy::FindGraphicsQueueFamilyIndex
+_TEXT	ENDS
+;	COMDAT text$x
+text$x	SEGMENT
+queueCount$ = 4
+graphicsAndPresentingQueueIndex$ = 36
+supportsPresent$ = 68
+queueProperties$ = 104
+$T6 = 360
+$T7 = 424
+$T8 = 456
+$T9 = 520
+$T10 = 548
+$T11 = 584
+tv152 = 596
+tv79 = 596
+tv157 = 600
+tv154 = 600
+__$ArrayPad$ = 608
+vkPhysicalDevice$ = 656
+surfaceInfo$ = 664
+?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA PROC ; `Cy::FindGraphicsQueueFamilyIndex'::`1'::dtor$1
+  00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  00005	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  0000a	55		 push	 rbp
+  0000b	57		 push	 rdi
+  0000c	48 83 ec 28	 sub	 rsp, 40			; 00000028H
+  00010	48 8d 6a 20	 lea	 rbp, QWORD PTR [rdx+32]
+  00014	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
+  00018	e8 00 00 00 00	 call	 ??1?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAA@XZ ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::~vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >
+  0001d	48 83 c4 28	 add	 rsp, 40			; 00000028H
+  00021	5f		 pop	 rdi
+  00022	5d		 pop	 rbp
+  00023	c3		 ret	 0
+?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA ENDP ; `Cy::FindGraphicsQueueFamilyIndex'::`1'::dtor$1
+text$x	ENDS
+; Function compile flags: /Odtp /RTCsu /ZI
+;	COMDAT text$x
+text$x	SEGMENT
+queueCount$ = 4
+graphicsAndPresentingQueueIndex$ = 36
+supportsPresent$ = 68
+queueProperties$ = 104
+$T6 = 360
+$T7 = 424
+$T8 = 456
+$T9 = 520
+$T10 = 548
+$T11 = 584
+tv152 = 596
+tv79 = 596
+tv157 = 600
+tv154 = 600
+__$ArrayPad$ = 608
+vkPhysicalDevice$ = 656
+surfaceInfo$ = 664
+?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA PROC ; `Cy::FindGraphicsQueueFamilyIndex'::`1'::dtor$1
+  00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  00005	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  0000a	55		 push	 rbp
+  0000b	57		 push	 rdi
+  0000c	48 83 ec 28	 sub	 rsp, 40			; 00000028H
+  00010	48 8d 6a 20	 lea	 rbp, QWORD PTR [rdx+32]
+  00014	48 8d 4d 68	 lea	 rcx, QWORD PTR queueProperties$[rbp]
+  00018	e8 00 00 00 00	 call	 ??1?$vector@UVkQueueFamilyProperties@@V?$allocator@UVkQueueFamilyProperties@@@std@@@std@@QEAA@XZ ; std::vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >::~vector<VkQueueFamilyProperties,std::allocator<VkQueueFamilyProperties> >
+  0001d	48 83 c4 28	 add	 rsp, 40			; 00000028H
+  00021	5f		 pop	 rdi
+  00022	5d		 pop	 rbp
+  00023	c3		 ret	 0
+?dtor$1@?0??FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z@4HA ENDP ; `Cy::FindGraphicsQueueFamilyIndex'::`1'::dtor$1
+text$x	ENDS
+; Function compile flags: /Odtp /RTCsu /ZI
+;	COMDAT ?NewSurfaceInfo@Cy@@YAXPEBUWindowInfo@1@PEBUInstanceInfo@1@PEBUPhysDeviceInfo@1@PEAUSurfaceInfo@1@@Z
+_TEXT	SEGMENT
+$T1 = 200
+$T2 = 264
+$T3 = 296
+$T4 = 360
+$T5 = 392
+$T6 = 456
+$T7 = 488
+$T8 = 552
+tv163 = 564
+tv144 = 564
+tv93 = 564
+tv74 = 564
+tv192 = 568
+tv190 = 568
+tv188 = 568
+tv186 = 568
+windowInfo$ = 608
+instanceInfo$ = 616
+physDeviceInfo$ = 624
+surfaceInfo$ = 632
+?NewSurfaceInfo@Cy@@YAXPEBUWindowInfo@1@PEBUInstanceInfo@1@PEBUPhysDeviceInfo@1@PEAUSurfaceInfo@1@@Z PROC ; Cy::NewSurfaceInfo, COMDAT
+; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
+; Line 409
+$LN15:
+  00000	4c 89 4c 24 20	 mov	 QWORD PTR [rsp+32], r9
+  00005	4c 89 44 24 18	 mov	 QWORD PTR [rsp+24], r8
+  0000a	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
+  0000f	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
+  00014	55		 push	 rbp
+  00015	57		 push	 rdi
+  00016	48 81 ec 68 02
+	00 00		 sub	 rsp, 616		; 00000268H
+  0001d	48 8d 6c 24 20	 lea	 rbp, QWORD PTR [rsp+32]
+  00022	48 8b fc	 mov	 rdi, rsp
+  00025	b9 9a 00 00 00	 mov	 ecx, 154		; 0000009aH
+  0002a	b8 cc cc cc cc	 mov	 eax, -858993460		; ccccccccH
+  0002f	f3 ab		 rep stosd
+  00031	48 8b 8c 24 88
+	02 00 00	 mov	 rcx, QWORD PTR [rsp+648]
+; Line 411
+  00039	48 8b 95 60 02
+	00 00		 mov	 rdx, QWORD PTR windowInfo$[rbp]
+  00040	48 8b 85 68 02
+	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
+  00047	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  0004a	e8 00 00 00 00	 call	 ?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z ; Cy::NewSurface
+  0004f	48 8b 8d 78 02
+	00 00		 mov	 rcx, QWORD PTR surfaceInfo$[rbp]
+  00056	48 89 01	 mov	 QWORD PTR [rcx], rax
+; Line 414
+  00059	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CF@KCGJHCCP@vkGetPhysicalDeviceSurfaceSuppor@
+  00060	48 8b 85 68 02
+	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
+  00067	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  0006a	e8 00 00 00 00	 call	 vkGetInstanceProcAddr
+  0006f	48 8b 8d 78 02
+	00 00		 mov	 rcx, QWORD PTR surfaceInfo$[rbp]
+  00076	48 89 41 18	 mov	 QWORD PTR [rcx+24], rax
+  0007a	48 8d 85 c8 00
+	00 00		 lea	 rax, QWORD PTR $T1[rbp]
+  00081	48 89 85 08 01
+	00 00		 mov	 QWORD PTR $T2[rbp], rax
+  00088	48 8b 85 78 02
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  0008f	48 83 78 18 00	 cmp	 QWORD PTR [rax+24], 0
+  00094	74 09		 je	 SHORT $LN3@NewSurface
+  00096	c6 85 34 02 00
+	00 01		 mov	 BYTE PTR tv74[rbp], 1
+  0009d	eb 07		 jmp	 SHORT $LN4@NewSurface
+$LN3@NewSurface:
+  0009f	c6 85 34 02 00
+	00 00		 mov	 BYTE PTR tv74[rbp], 0
+$LN4@NewSurface:
+  000a6	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0DL@FOACHNJ@could?5not?5find?5function?5GetPhysi@
+  000ad	48 8b 8d 08 01
+	00 00		 mov	 rcx, QWORD PTR $T2[rbp]
+  000b4	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+  000b9	48 89 85 38 02
+	00 00		 mov	 QWORD PTR tv186[rbp], rax
+  000c0	48 8b 95 38 02
+	00 00		 mov	 rdx, QWORD PTR tv186[rbp]
+  000c7	0f b6 8d 34 02
+	00 00		 movzx	 ecx, BYTE PTR tv74[rbp]
+  000ce	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
+; Line 415
+  000d3	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CK@LHGCODEN@vkGetPhysicalDeviceSurfaceCapabi@
+  000da	48 8b 85 68 02
+	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
+  000e1	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  000e4	e8 00 00 00 00	 call	 vkGetInstanceProcAddr
+  000e9	48 8b 8d 78 02
+	00 00		 mov	 rcx, QWORD PTR surfaceInfo$[rbp]
+  000f0	48 89 41 20	 mov	 QWORD PTR [rcx+32], rax
+  000f4	48 8d 85 28 01
+	00 00		 lea	 rax, QWORD PTR $T3[rbp]
+  000fb	48 89 85 68 01
+	00 00		 mov	 QWORD PTR $T4[rbp], rax
+  00102	48 8b 85 78 02
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  00109	48 83 78 20 00	 cmp	 QWORD PTR [rax+32], 0
+  0010e	74 09		 je	 SHORT $LN5@NewSurface
+  00110	c6 85 34 02 00
+	00 01		 mov	 BYTE PTR tv93[rbp], 1
+  00117	eb 07		 jmp	 SHORT $LN6@NewSurface
+$LN5@NewSurface:
+  00119	c6 85 34 02 00
+	00 00		 mov	 BYTE PTR tv93[rbp], 0
+$LN6@NewSurface:
+  00120	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0EA@IDGHLDAB@could?5not?5find?5function?5GetPhysi@
+  00127	48 8b 8d 68 01
+	00 00		 mov	 rcx, QWORD PTR $T4[rbp]
+  0012e	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+  00133	48 89 85 38 02
+	00 00		 mov	 QWORD PTR tv188[rbp], rax
+  0013a	48 8b 95 38 02
+	00 00		 mov	 rdx, QWORD PTR tv188[rbp]
+  00141	0f b6 8d 34 02
+	00 00		 movzx	 ecx, BYTE PTR tv93[rbp]
+  00148	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
+; Line 416
+  0014d	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CF@LAEKEDKL@vkGetPhysicalDeviceSurfaceFormat@
+  00154	48 8b 85 68 02
+	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
+  0015b	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  0015e	e8 00 00 00 00	 call	 vkGetInstanceProcAddr
+  00163	48 8b 8d 78 02
+	00 00		 mov	 rcx, QWORD PTR surfaceInfo$[rbp]
+  0016a	48 89 41 28	 mov	 QWORD PTR [rcx+40], rax
+  0016e	48 8d 85 88 01
+	00 00		 lea	 rax, QWORD PTR $T5[rbp]
+  00175	48 89 85 c8 01
+	00 00		 mov	 QWORD PTR $T6[rbp], rax
+  0017c	48 8b 85 78 02
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  00183	48 83 78 28 00	 cmp	 QWORD PTR [rax+40], 0
+  00188	74 09		 je	 SHORT $LN7@NewSurface
+  0018a	c6 85 34 02 00
+	00 01		 mov	 BYTE PTR tv144[rbp], 1
+  00191	eb 07		 jmp	 SHORT $LN8@NewSurface
+$LN7@NewSurface:
+  00193	c6 85 34 02 00
+	00 00		 mov	 BYTE PTR tv144[rbp], 0
+$LN8@NewSurface:
+  0019a	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0DL@BHMDBGFN@could?5not?5find?5function?5GetPhysi@
+  001a1	48 8b 8d c8 01
+	00 00		 mov	 rcx, QWORD PTR $T6[rbp]
+  001a8	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+  001ad	48 89 85 38 02
+	00 00		 mov	 QWORD PTR tv190[rbp], rax
+  001b4	48 8b 95 38 02
+	00 00		 mov	 rdx, QWORD PTR tv190[rbp]
+  001bb	0f b6 8d 34 02
+	00 00		 movzx	 ecx, BYTE PTR tv144[rbp]
+  001c2	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
+; Line 417
+  001c7	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0CK@ONBJHPIF@vkGetPhysicalDeviceSurfacePresen@
+  001ce	48 8b 85 68 02
+	00 00		 mov	 rax, QWORD PTR instanceInfo$[rbp]
+  001d5	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  001d8	e8 00 00 00 00	 call	 vkGetInstanceProcAddr
+  001dd	48 8b 8d 78 02
+	00 00		 mov	 rcx, QWORD PTR surfaceInfo$[rbp]
+  001e4	48 89 41 30	 mov	 QWORD PTR [rcx+48], rax
+  001e8	48 8d 85 e8 01
+	00 00		 lea	 rax, QWORD PTR $T7[rbp]
+  001ef	48 89 85 28 02
+	00 00		 mov	 QWORD PTR $T8[rbp], rax
+  001f6	48 8b 85 78 02
+	00 00		 mov	 rax, QWORD PTR surfaceInfo$[rbp]
+  001fd	48 83 78 30 00	 cmp	 QWORD PTR [rax+48], 0
+  00202	74 09		 je	 SHORT $LN9@NewSurface
+  00204	c6 85 34 02 00
+	00 01		 mov	 BYTE PTR tv163[rbp], 1
+  0020b	eb 07		 jmp	 SHORT $LN10@NewSurface
+$LN9@NewSurface:
+  0020d	c6 85 34 02 00
+	00 00		 mov	 BYTE PTR tv163[rbp], 0
+$LN10@NewSurface:
+  00214	48 8d 15 00 00
+	00 00		 lea	 rdx, OFFSET FLAT:??_C@_0EA@NJBMCPMJ@could?5not?5find?5function?5GetPhysi@
+  0021b	48 8b 8d 28 02
+	00 00		 mov	 rcx, QWORD PTR $T8[rbp]
+  00222	e8 00 00 00 00	 call	 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+  00227	48 89 85 38 02
+	00 00		 mov	 QWORD PTR tv192[rbp], rax
+  0022e	48 8b 95 38 02
+	00 00		 mov	 rdx, QWORD PTR tv192[rbp]
+  00235	0f b6 8d 34 02
+	00 00		 movzx	 ecx, BYTE PTR tv163[rbp]
+  0023c	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
+; Line 418
+  00241	48 8b 95 78 02
+	00 00		 mov	 rdx, QWORD PTR surfaceInfo$[rbp]
+  00248	48 8b 85 70 02
+	00 00		 mov	 rax, QWORD PTR physDeviceInfo$[rbp]
+  0024f	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  00252	e8 00 00 00 00	 call	 ?FindGraphicsQueueFamilyIndex@Cy@@YAIPEAUVkPhysicalDevice_T@@PEBUSurfaceInfo@1@@Z ; Cy::FindGraphicsQueueFamilyIndex
+  00257	48 8b 8d 78 02
+	00 00		 mov	 rcx, QWORD PTR surfaceInfo$[rbp]
+  0025e	89 41 08	 mov	 DWORD PTR [rcx+8], eax
+; Line 419
+  00261	48 8b 95 78 02
+	00 00		 mov	 rdx, QWORD PTR surfaceInfo$[rbp]
+  00268	48 8b 85 70 02
+	00 00		 mov	 rax, QWORD PTR physDeviceInfo$[rbp]
+  0026f	48 8b 08	 mov	 rcx, QWORD PTR [rax]
+  00272	e8 00 00 00 00	 call	 ?GetSurfaceColorSpaceAndFormat@Cy@@YAXPEAUVkPhysicalDevice_T@@PEAUSurfaceInfo@1@@Z ; Cy::GetSurfaceColorSpaceAndFormat
+; Line 420
+  00277	48 8d a5 48 02
+	00 00		 lea	 rsp, QWORD PTR [rbp+584]
+  0027e	5f		 pop	 rdi
+  0027f	5d		 pop	 rbp
+  00280	c3		 ret	 0
+?NewSurfaceInfo@Cy@@YAXPEBUWindowInfo@1@PEBUInstanceInfo@1@PEBUPhysDeviceInfo@1@PEAUSurfaceInfo@1@@Z ENDP ; Cy::NewSurfaceInfo
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu /ZI
+;	COMDAT ?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z
 _TEXT	SEGMENT
 error$ = 4
 surface$ = 40
@@ -23788,9 +23766,9 @@ $T5 = 328
 $T6 = 392
 tv79 = 408
 __$ArrayPad$ = 416
-window$ = 464
-vkInstance$ = 472
-?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z PROC ; Cy::NewSurface, COMDAT
+vkInstance$ = 464
+window$ = 472
+?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z PROC ; Cy::NewSurface, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
 ; Line 32
 $LN4:
@@ -23822,12 +23800,12 @@ $LN4:
   00050	c7 45 48 28 ed
 	9a 3b		 mov	 DWORD PTR surfaceCreateInfo$[rbp], 1000009000 ; 3b9aed28H
 ; Line 37
-  00057	48 8b 85 d0 01
+  00057	48 8b 85 d8 01
 	00 00		 mov	 rax, QWORD PTR window$[rbp]
   0005e	48 8b 40 10	 mov	 rax, QWORD PTR [rax+16]
   00062	48 89 45 60	 mov	 QWORD PTR surfaceCreateInfo$[rbp+24], rax
 ; Line 38
-  00066	48 8b 85 d0 01
+  00066	48 8b 85 d8 01
 	00 00		 mov	 rax, QWORD PTR window$[rbp]
   0006d	48 8b 40 08	 mov	 rax, QWORD PTR [rax+8]
   00071	48 89 45 68	 mov	 QWORD PTR surfaceCreateInfo$[rbp+32], rax
@@ -23835,7 +23813,7 @@ $LN4:
   00075	4c 8d 4d 28	 lea	 r9, QWORD PTR surface$[rbp]
   00079	45 33 c0	 xor	 r8d, r8d
   0007c	48 8d 55 48	 lea	 rdx, QWORD PTR surfaceCreateInfo$[rbp]
-  00080	48 8b 8d d8 01
+  00080	48 8b 8d d0 01
 	00 00		 mov	 rcx, QWORD PTR vkInstance$[rbp]
   00087	e8 00 00 00 00	 call	 vkCreateWin32SurfaceKHR
   0008c	89 45 04	 mov	 DWORD PTR error$[rbp], eax
@@ -23861,7 +23839,7 @@ $LN4:
   000ca	48 8b f8	 mov	 rdi, rax
   000cd	48 8d 4d e0	 lea	 rcx, QWORD PTR [rbp-32]
   000d1	48 8d 15 00 00
-	00 00		 lea	 rdx, OFFSET FLAT:?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z$rtcFrameData
+	00 00		 lea	 rdx, OFFSET FLAT:?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z$rtcFrameData
   000d8	e8 00 00 00 00	 call	 _RTC_CheckStackVars
   000dd	48 8b c7	 mov	 rax, rdi
   000e0	48 8b 8d a0 01
@@ -23873,7 +23851,7 @@ $LN4:
   000f6	5f		 pop	 rdi
   000f7	5d		 pop	 rbp
   000f8	c3		 ret	 0
-?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEBUWindowInfo@1@PEAUVkInstance_T@@@Z ENDP ; Cy::NewSurface
+?NewSurface@Cy@@YAPEAUVkSurfaceKHR_T@@PEAUVkInstance_T@@PEBUWindowInfo@1@@Z ENDP ; Cy::NewSurface
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu /ZI
 ;	COMDAT ?_Orphan_range@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@IEBAXPEAPEAUVkImageView_T@@0@Z
@@ -28307,7 +28285,7 @@ test$ = 352
 message$ = 360
 ?Assert@Cy@@YAXW4VkResult@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Assert, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 81
+; Line 88
 $LN7:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	89 4c 24 08	 mov	 DWORD PTR [rsp+8], ecx
@@ -28325,7 +28303,7 @@ $LN7:
   0002d	48 c7 85 28 01
 	00 00 fe ff ff
 	ff		 mov	 QWORD PTR $T3[rbp], -2
-; Line 82
+; Line 89
   00038	48 8d 85 c8 00
 	00 00		 lea	 rax, QWORD PTR $T1[rbp]
   0003f	48 89 85 08 01
@@ -28353,7 +28331,7 @@ $LN4@Assert:
 	00 00		 movzx	 ecx, BYTE PTR tv77[rbp]
   00087	e8 00 00 00 00	 call	 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Assert
   0008c	90		 npad	 1
-; Line 83
+; Line 90
   0008d	48 8b 8d 68 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00094	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -28722,7 +28700,7 @@ test$ = 432
 message$ = 440
 ?Assert@Cy@@YAX_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Assert, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 65
+; Line 72
 $LN6:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	88 4c 24 08	 mov	 BYTE PTR [rsp+8], cl
@@ -28745,25 +28723,25 @@ $LN6:
   00040	48 33 c5	 xor	 rax, rbp
   00043	48 89 85 80 01
 	00 00		 mov	 QWORD PTR __$ArrayPad$[rbp], rax
-; Line 68
+; Line 75
   0004a	0f b6 85 b0 01
 	00 00		 movzx	 eax, BYTE PTR test$[rbp]
   00051	85 c0		 test	 eax, eax
   00053	75 68		 jne	 SHORT $LN2@Assert
-; Line 70
+; Line 77
   00055	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_GetConsoleWindow
   0005b	48 89 45 28	 mov	 QWORD PTR consoleHandle$4[rbp], rax
-; Line 71
+; Line 78
   0005f	ba 05 00 00 00	 mov	 edx, 5
   00064	48 8b 4d 28	 mov	 rcx, QWORD PTR consoleHandle$4[rbp]
   00068	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_ShowWindow
-; Line 72
+; Line 79
   0006e	48 8b 4d 28	 mov	 rcx, QWORD PTR consoleHandle$4[rbp]
   00072	ff 15 00 00 00
 	00		 call	 QWORD PTR __imp_SetFocus
-; Line 73
+; Line 80
   00078	48 8d 85 08 01
 	00 00		 lea	 rax, QWORD PTR $T5[rbp]
   0007f	48 89 85 48 01
@@ -28778,14 +28756,14 @@ $LN6:
   000a0	48 8b 8d 78 01
 	00 00		 mov	 rcx, QWORD PTR tv85[rbp]
   000a7	e8 00 00 00 00	 call	 ?Message@Cy@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; Cy::Message
-; Line 74
+; Line 81
   000ac	48 8d 55 04	 lea	 rdx, QWORD PTR x$[rbp]
   000b0	48 8b 0d 00 00
 	00 00		 mov	 rcx, QWORD PTR __imp_?cin@std@@3V?$basic_istream@DU?$char_traits@D@std@@@1@A
   000b7	e8 00 00 00 00	 call	 ??$?5DU?$char_traits@D@std@@@std@@YAAEAV?$basic_istream@DU?$char_traits@D@std@@@0@AEAV10@AEAD@Z ; std::operator>><char,std::char_traits<char> >
   000bc	90		 npad	 1
 $LN2@Assert:
-; Line 78
+; Line 85
   000bd	48 8b 8d b8 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   000c4	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -28867,7 +28845,7 @@ tv69 = 216
 message$ = 256
 ?Message@Cy@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; Cy::Message, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\util.h
-; Line 41
+; Line 48
 $LN4:
   00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
   00005	55		 push	 rbp
@@ -28884,13 +28862,13 @@ $LN4:
   0002a	48 c7 85 c8 00
 	00 00 fe ff ff
 	ff		 mov	 QWORD PTR $T1[rbp], -2
-; Line 42
+; Line 49
   00035	48 8d 15 00 00
 	00 00		 lea	 rdx, OFFSET FLAT:??_C@_01EEMJAFIK@?6?$AA@
   0003c	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00043	e8 00 00 00 00	 call	 ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAAAEAV01@PEBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator+=
-; Line 44
+; Line 51
   00048	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   0004f	e8 00 00 00 00	 call	 ?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEBAPEBDXZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::c_str
@@ -28905,7 +28883,7 @@ $LN4:
   00070	48 8b c8	 mov	 rcx, rax
   00073	e8 00 00 00 00	 call	 fprintf
   00078	90		 npad	 1
-; Line 48
+; Line 55
   00079	48 8b 8d 00 01
 	00 00		 mov	 rcx, QWORD PTR message$[rbp]
   00080	e8 00 00 00 00	 call	 ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
@@ -34122,7 +34100,7 @@ __formal$ = 224
 __formal$ = 232
 ?__empty_global_delete@@YAXPEAX_K@Z PROC		; __empty_global_delete, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
-; Line 451
+; Line 453
 $LN3:
   00000	48 89 54 24 10	 mov	 QWORD PTR [rsp+16], rdx
   00005	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
@@ -34150,7 +34128,7 @@ _TEXT	SEGMENT
 __formal$ = 224
 ?__empty_global_delete@@YAXPEAX@Z PROC			; __empty_global_delete, COMDAT
 ; File d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\surface.cpp
-; Line 451
+; Line 453
 $LN3:
   00000	48 89 4c 24 08	 mov	 QWORD PTR [rsp+8], rcx
   00005	55		 push	 rbp

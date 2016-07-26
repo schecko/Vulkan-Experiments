@@ -56,5 +56,5 @@ namespace Cy
 
 	void UpdateCamera(VkDevice logicalDevice, Camera& camera, uint32_t width, uint32_t height);
 
-	CameraPos NewCameraPos(v3 initalPosition = v3(0.0f, 0.0f, 10.0f));
+	Camera NewCamera(v3 initalPosition = v3(0.0f, 0.0f, 10.0f));
 }

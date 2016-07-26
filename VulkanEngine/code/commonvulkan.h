@@ -60,6 +60,9 @@ namespace Cy
 		std::vector<VkFramebuffer> frameBuffers;
 
 		DepthStencil depthStencil; //TODO would this be better in the surfaceinfo struct?
+
+		std::vector<VkExtensionProperties> extensions;
+		std::vector<VkLayerProperties> layers;
 	};
 
 	struct PipelineInfo
@@ -75,19 +78,14 @@ namespace Cy
 
 	};
 
-	struct DebugInfo
-	{
-		std::vector<const char*> instanceLayerList;
-		std::vector<const char*> instanceExtList;
-		VkDebugReportCallbackEXT debugReport;
-	};
-
 	struct InstanceInfo
 	{
 		VkInstance vkInstance;
 		std::vector<VkExtensionProperties> extensions;
 		std::vector<VkLayerProperties> layers;
 		VkDebugReportCallbackEXT debugReport;
+		PFN_vkCreateDebugReportCallbackEXT CreateDebugReportCallbackEXT;
+		PFN_vkDestroyDebugReportCallbackEXT DestroyDebugReportCallbackEXT;
 	};
 
 	enum class VkInclude
@@ -110,7 +108,7 @@ namespace Cy
 
 	VkPipelineLayout NewPipelineLayout(VkDevice logicalDevice, VkDescriptorSetLayout descriptorSetLayout);
 
-	VkInstance NewVkInstance(const char* appName, std::vector<const char*>* instanceLayers, std::vector<const char*>* instanceExts);
+	VkInstance NewVkInstance(const char* appName, std::vector<const char*>* instanceLayers, std::vector<const char*>* instanceExts, PFN_vkCreateDebugReportCallbackEXT* CreateDebugReportCallbackEXT, PFN_vkDestroyDebugReportCallbackEXT* DestroyDebugReportCallbackEXT);
 
 	VkInstance NewVkInstance(const char* appName, VkInclude features);
 
@@ -186,7 +184,11 @@ namespace Cy
 
 	void DestroyDeviceInfo(DeviceInfo* deviceInfo);
 
-	void DestroyDebugInfo(VkInstance vkInstance, DebugInfo* debugInfo);
-
 	void DestroyInstance(VkInstance vkInstance);
+
+	void NewInstanceInfo(const char* appName, InstanceInfo* instanceInfo);
+
+	void DestroyInstanceInfo(InstanceInfo* instanceInfo);
+
+	void NewPhysDeviceInfo(VkInstance vkInstance, PhysDeviceInfo* physDeviceInfo);
 }

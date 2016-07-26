@@ -33,6 +33,12 @@
     <ClCompile Include="code\timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="code\cystring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\cymemory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\camera.h">
@@ -54,6 +60,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="code\cymath.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\cystring.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\cymemory.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

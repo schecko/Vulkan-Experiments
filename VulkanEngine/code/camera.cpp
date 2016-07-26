@@ -73,15 +73,15 @@ namespace Cy
 		UpdateCamera(logicalDevice, *camera, width, height);
 	}
 
-	CameraPos NewCameraPos(v3 initalPosition)
+	Camera NewCamera(v3 initalPosition)
 	{
-		CameraPos cameraPos = {};
-		cameraPos.position = initalPosition;
-		cameraPos.worldUp = v3(0.0f, 1.0f, 0.0f);
-		cameraPos.yaw = -PI / 2;
-		cameraPos.pitch = 0.0f;
-		cameraPos.zoom = PI / 6;
+		Camera camera = {};
+		camera.cameraPos.position = initalPosition;
+		camera.cameraPos.worldUp = v3(0.0f, 1.0f, 0.0f);
+		camera.cameraPos.yaw = -PI / 2;
+		camera.cameraPos.pitch = 0.0f;
+		camera.cameraPos.zoom = PI / 6;
 
-		return cameraPos;
+		return camera;
 	}
 }

@@ -3,14 +3,13 @@
 #include <vulkan.h>
 #include <vector>
 #include "util.h"
+#include "surface.h"
 
 
 namespace Cy
 {
-	PFN_vkCreateDebugReportCallbackEXT CreateDebugReportCallbackEXT = nullptr;
-	PFN_vkDestroyDebugReportCallbackEXT DestroyDebugReportCallbackEXT = nullptr;
 
-	void CreateDebugCallback(VkInstance vkInstance, VkDebugReportCallbackEXT* debugReport)
+	void CreateDebugCallback(VkInstance vkInstance, VkDebugReportCallbackEXT* debugReport, PFN_vkCreateDebugReportCallbackEXT CreateDebugReportCallbackEXT)
 	{
 		VkDebugReportCallbackCreateInfoEXT debugCreateInfo = {};
 		debugCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT;
@@ -110,8 +109,9 @@ namespace Cy
 		return pipelinelayout;
 	}
 
-
-	VkInstance NewVkInstance(const char* appName, std::vector<const char*>* instanceLayers, std::vector<const char*>* instanceExts)
+	//PFN_vkCreateDebugReportCallbackEXT CreateDebugReportCallbackEXT = nullptr;
+	//PFN_vkDestroyDebugReportCallbackEXT DestroyDebugReportCallbackEXT = nullptr;
+	VkInstance NewVkInstance(const char* appName, std::vector<const char*>* instanceLayers, std::vector<const char*>* instanceExts, PFN_vkCreateDebugReportCallbackEXT* argCreateDebugReportCallbackEXT, PFN_vkDestroyDebugReportCallbackEXT* argDestroyDebugReportCallbackEXT)
 	{
 
 		VkResult error;
@@ -145,14 +145,19 @@ namespace Cy
 
 		if (instanceLayers->size() > 0 && error == VK_SUCCESS)
 		{
+			//TODO there is probably a better way to this...
+			PFN_vkCreateDebugReportCallbackEXT CreateDebugReportCallbackEXT;
+			PFN_vkDestroyDebugReportCallbackEXT DestroyDebugReportCallbackEXT;
 			GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, CreateDebugReportCallbackEXT);
 			GET_VULKAN_FUNCTION_POINTER_INST(vkInstance, DestroyDebugReportCallbackEXT);
+			argCreateDebugReportCallbackEXT = &CreateDebugReportCallbackEXT;
+			argDestroyDebugReportCallbackEXT = &DestroyDebugReportCallbackEXT;
 		}
 
 		return vkInstance;
 	}
 
-
+	/*
 	VkInstance NewVkInstance(const char* appName, VkInclude features)
 	{
 
@@ -165,7 +170,7 @@ namespace Cy
 			switch (features)
 			{
 				//NOTE: vktrace layer broken right now.....
-				/*case VkInclude::everything:
+				case VkInclude::everything:
 					{
 						extNames.resize(extProps.size());
 						layerNames.resize(layerProps.size());
@@ -178,7 +183,7 @@ namespace Cy
 							extNames[i] = extProps[i].extensionName;
 						}
 					}
-					break;*/
+					break;
 				case VkInclude::minimalBoth:
 					{
 						layerNames.push_back("VK_LAYER_LUNARG_api_dump");
@@ -260,7 +265,7 @@ namespace Cy
 		}
 
 		return vkInstance;
-	}
+	}*/
 
 	//fill the gpuCount param with the number of physical devices available to the program, and return a pointer to a vector containing the physical devices
 	//returns a vector of the physical devices handles.
@@ -891,13 +896,90 @@ namespace Cy
 		vkDestroyDevice(deviceInfo->device, nullptr);
 	}
 
-	void DestroyDebugInfo(VkInstance vkInstance, DebugInfo* debugInfo)
-	{
-		DestroyDebugReportCallbackEXT(vkInstance, debugInfo->debugReport, nullptr);
-	}
-
 	void DestroyInstance(VkInstance vkInstance)
 	{
+
 		vkDestroyInstance(vkInstance, nullptr);
 	}
+
+	void DestroyInstanceInfo(InstanceInfo* instanceInfo)
+	{
+#if ENGINE_DEBUG
+		instanceInfo->DestroyDebugReportCallbackEXT(instanceInfo->vkInstance, instanceInfo->debugReport, nullptr);
+#endif
+		vkDestroyInstance(instanceInfo->vkInstance, nullptr);
+	}
+
+	 void NewInstanceInfo(const char* appName, InstanceInfo* instanceInfo)
+	{
+#if ENGINE_DEBUG
+		instanceInfo->layers = GetInstalledVkLayers();
+#endif
+		std::vector<const char*> layerChars(instanceInfo->layers.size());
+		for (uint32_t i = 0; i < instanceInfo->layers.size(); i++)
+		{
+			layerChars[i] = instanceInfo->layers[i].layerName;
+		}
+
+		instanceInfo->extensions = GetInstalledVkExtensions();
+		std::vector<const char*> extensionChars(instanceInfo->extensions.size());
+		for (uint32_t i = 0; i < instanceInfo->extensions.size(); i++)
+		{
+			extensionChars[i] = instanceInfo->extensions[i].extensionName;
+		}
+
+		instanceInfo->vkInstance = NewVkInstance(appName, &extensionChars, &layerChars, &instanceInfo->CreateDebugReportCallbackEXT, &instanceInfo->DestroyDebugReportCallbackEXT);
+#if ENGINE_DEBUG
+		CreateDebugCallback(instanceInfo->vkInstance, &instanceInfo->debugReport);
+#endif
+	}
+
+	void NewDeviceInfo(const WindowInfo* windowInfo,
+		const PhysDeviceInfo* physDeviceInfo,
+		const SurfaceInfo* surfaceInfo,
+		DeviceInfo* deviceInfo)
+	{
+		deviceInfo->extensions = GetInstalledVkExtensions(physDeviceInfo->physicalDevice);
+		std::vector<const char*> extensionChars(deviceInfo->extensions.size());
+		for (uint32_t i = 0; i < deviceInfo->extensions.size(); i++)
+		{
+			extensionChars[i] = deviceInfo->extensions[i].extensionName;
+		}
+
+#if VALIDATION_MESSAGES
+		deviceInfo->layers = GetInstalledVkLayers(physDeviceInfo->physicalDevice);
+		std::vector<const char*> layerChars(deviceInfo->layers.size());
+		for (uint32_t i = 0; i < deviceInfo->layers.size(); i++)
+		{
+			layerChars[i] = deviceInfo->layers[i].layerName;
+		}
+		deviceInfo->device = NewLogicalDevice(physDeviceInfo->physicalDevice, surfaceInfo->renderingQueueFamilyIndex, layerChars, extensionChars);
+#else
+		deviceInfo->device = NewLogicalDevice(physDeviceInfo->physicalDevice, surfaceInfo->renderingQueueFamilyIndex, std::vector<const char*>(), extensionChars);
+#endif
+
+		vkGetDeviceQueue(deviceInfo->device, surfaceInfo->renderingQueueFamilyIndex, 0, &deviceInfo->queue);
+
+		deviceInfo->presentComplete = NewSemaphore(deviceInfo->device);
+		deviceInfo->renderComplete = NewSemaphore(deviceInfo->device);
+
+		deviceInfo->cmdPool = NewCommandPool(deviceInfo->device, surfaceInfo->renderingQueueFamilyIndex);
+		deviceInfo->setupCmdBuffer = NewSetupCommandBuffer(deviceInfo->device, deviceInfo->cmdPool);
+		setupDepthStencil(deviceInfo, physDeviceInfo, windowInfo->clientWidth, windowInfo->clientHeight);
+	}
+
+
+	void NewPhysDeviceInfo(VkInstance vkInstance, PhysDeviceInfo* physDeviceInfo)
+	{
+		uint32_t gpuCount;
+		std::vector<VkPhysicalDevice> physicalDevices = EnumeratePhysicalDevices(vkInstance, &gpuCount);
+		physDeviceInfo->physicalDevice = physicalDevices[0];
+		vkGetPhysicalDeviceFeatures(physDeviceInfo->physicalDevice, &physDeviceInfo->deviceFeatures);
+		vkGetPhysicalDeviceMemoryProperties(physDeviceInfo->physicalDevice, &physDeviceInfo->memoryProperties);
+		physDeviceInfo->supportedDepthFormat = GetSupportedDepthFormat(physDeviceInfo->physicalDevice);
+	}
+
 }
+
+
+

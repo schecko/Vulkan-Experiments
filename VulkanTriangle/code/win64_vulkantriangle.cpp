@@ -236,7 +236,7 @@ using namespace Cy;
 
 	}
 
-	void BuildCmdBuffers(const DeviceInfo* deviceInfo, const PipelineInfo* pipelineInfo, const SurfaceInfo* surfaceInfo, const VertexBuffer* vertexBuffer, uint32_t clientWidth, uint32_t clientHeight)
+	void BuildCmdBuffers(const DeviceInfo* deviceInfo, const PipelineInfo* pipelineInfo, const SwapchainInfo* swapchainInfo, const VertexBuffer* vertexBuffer, uint32_t clientWidth, uint32_t clientHeight)
 	{
 		VkCommandBufferBeginInfo cbInfo = {};
 		cbInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
@@ -307,7 +307,7 @@ using namespace Cy;
 			barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
 			barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
 			barrier.subresourceRange = { VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1 };
-			barrier.image = surfaceInfo->images[i];
+			barrier.image = swapchainInfo->images[i];
 
 			vkCmdPipelineBarrier(currCmd,
 				VK_PIPELINE_STAGE_ALL_COMMANDS_BIT,
@@ -328,65 +328,22 @@ using namespace Cy;
 
 		m->consoleHandle = GetConsoleWindow();
 		//ShowWindow(m->consoleHandle, SW_HIDE);
-		m->camera.cameraPos = NewCameraPos();
+		m->camera = NewCamera();
 		m->timerInfo = NewTimerInfo();
 
 		m->windowInfo = NewWindowInfo(EXE_NAME, &m->input, 1200, 800);
 		m->input = NewInputInfo(&m->windowInfo);
 		//ShowWindow(m->windowHandle, SW_HIDE);
 
-		m->vkInstance = NewVkInstance(EXE_NAME, VkInclude::minimalBoth);
-#if VALIDATION_LAYERS
-		CreateDebugCallback(m->vkInstance, &m->debugInfo.debugReport);
-#endif
-		m->surfaceInfo.surface = NewSurface(&m->windowInfo, m->vkInstance);
 
+		NewInstanceInfo(m->windowInfo.appName, &m->instanceInfo);
+		NewPhysDeviceInfo(m->instanceInfo.vkInstance, &m->physDeviceInfo);
 
-		uint32_t gpuCount;
-		std::vector<VkPhysicalDevice> physicalDevices = EnumeratePhysicalDevices(m->vkInstance, &gpuCount);
-		m->physDeviceInfo.physicalDevice = physicalDevices[0];
+		NewSurfaceInfo(&m->windowInfo, &m->instanceInfo, &m->physDeviceInfo, &m->surfaceInfo);
+		NewDeviceInfo(&m->windowInfo, &m->physDeviceInfo, &m->surfaceInfo, &m->deviceInfo);
+		NewSwapchainInfo(&m->windowInfo, &m->physDeviceInfo, &m->surfaceInfo, &m->deviceInfo, &m->swapchainInfo);
+		SetupCommandBuffers(&m->deviceInfo, m->swapchainInfo.imageCount);
 
-		//see what the gpu is capable of
-		vkGetPhysicalDeviceFeatures(m->physDeviceInfo.physicalDevice, &m->physDeviceInfo.deviceFeatures);
-
-		vkGetPhysicalDeviceMemoryProperties(m->physDeviceInfo.physicalDevice, &m->physDeviceInfo.memoryProperties);
-
-		m->physDeviceInfo.renderingQueueFamilyIndex = FindGraphicsQueueFamilyIndex(m->physDeviceInfo.physicalDevice, m->surfaceInfo.surface);
-
-#if VALIDATION_LAYERS
-		std::vector<VkLayerProperties> layerPropsDevice = GetInstalledVkLayers(m->physDeviceInfo.physicalDevice);
-		for (uint32_t i = 0; i < layerPropsDevice.size(); i++)
-		{
-			m->debugInfo.deviceLayerList.push_back(layerPropsDevice[i].layerName);
-		}
-#else
-		m->debugInfo.deviceLayerList.push_back("VK_LAYER_LUNARG_swapchain");
-#endif
-		m->debugInfo.deviceExtList.push_back(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
-		std::vector<VkExtensionProperties> extPropsDevice = GetInstalledVkExtensions(m->physDeviceInfo.physicalDevice);
-
-		m->deviceInfo.device = NewLogicalDevice(m->physDeviceInfo.physicalDevice, m->physDeviceInfo.renderingQueueFamilyIndex, m->debugInfo.deviceLayerList, m->debugInfo.deviceExtList, &m->physDeviceInfo.deviceFeatures);
-		vkGetDeviceQueue(m->deviceInfo.device, m->physDeviceInfo.renderingQueueFamilyIndex, 0, &m->deviceInfo.queue);
-		m->physDeviceInfo.supportedDepthFormat = GetSupportedDepthFormat(m->physDeviceInfo.physicalDevice);
-
-		m->deviceInfo.presentComplete = NewSemaphore(m->deviceInfo.device);
-		m->deviceInfo.renderComplete = NewSemaphore(m->deviceInfo.device);
-
-		m->deviceInfo.submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
-		m->deviceInfo.submitInfo.pWaitDstStageMask = (VkPipelineStageFlags*)VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT;
-		m->deviceInfo.submitInfo.waitSemaphoreCount = 1;
-		m->deviceInfo.submitInfo.pWaitSemaphores = &m->deviceInfo.presentComplete;
-		m->deviceInfo.submitInfo.signalSemaphoreCount = 1;
-		m->deviceInfo.submitInfo.pSignalSemaphores = &m->deviceInfo.renderComplete;
-
-
-		GetSurfaceColorSpaceAndFormat(m->physDeviceInfo.physicalDevice,
-			&m->surfaceInfo);
-
-		m->deviceInfo.cmdPool = NewCommandPool(m->deviceInfo.device, m->physDeviceInfo.renderingQueueFamilyIndex);
-		m->deviceInfo.setupCmdBuffer = NewSetupCommandBuffer(m->deviceInfo.device, m->deviceInfo.cmdPool);
-		InitSwapChain(&m->deviceInfo, m->physDeviceInfo.physicalDevice, &m->surfaceInfo, &m->windowInfo.clientWidth, &m->windowInfo.clientHeight);
-		SetupCommandBuffers(&m->deviceInfo, m->surfaceInfo.imageCount);
 		setupDepthStencil(&m->deviceInfo,
 			&m->physDeviceInfo,
 			m->windowInfo.clientWidth,
@@ -398,10 +355,10 @@ using namespace Cy;
 
 		m->pipelineInfo.pipelineCache = NewPipelineCache(m->deviceInfo.device);
 		m->deviceInfo.frameBuffers = NewFrameBuffer(m->deviceInfo.device,
-			&m->surfaceInfo.views,
+			&m->swapchainInfo.views,
 			m->pipelineInfo.renderPass,
 			m->deviceInfo.depthStencil.view,
-			m->surfaceInfo.imageCount,
+			m->swapchainInfo.imageCount,
 			m->windowInfo.clientWidth,
 			m->windowInfo.clientHeight);
 		//TODO why does the setup cmd buffer need to be flushed and recreated?
@@ -433,16 +390,16 @@ using namespace Cy;
 		m->pipelineInfo.pipeline = NewPipeline(m->deviceInfo.device, &m->pipelineInfo, &m->vertexBuffer.viInfo);
 		m->pipelineInfo.descriptorPool = PrepareDescriptorPool(m->deviceInfo.device);
 		m->pipelineInfo.descriptorSet = NewDescriptorSet(m->deviceInfo.device, &m->pipelineInfo, m->camera.desc);
-		BuildCmdBuffers(&m->deviceInfo, &m->pipelineInfo, &m->surfaceInfo, &m->vertexBuffer, m->windowInfo.clientWidth, m->windowInfo.clientHeight);
+		BuildCmdBuffers(&m->deviceInfo, &m->pipelineInfo, &m->swapchainInfo, &m->vertexBuffer, m->windowInfo.clientWidth, m->windowInfo.clientHeight);
 
 	}
 
 
-	void Render(const DeviceInfo* deviceInfo, SurfaceInfo* surfaceInfo)
+	void Render(const DeviceInfo* deviceInfo, SwapchainInfo* swapchainInfo)
 	{
 		vkDeviceWaitIdle(deviceInfo->device);
 		VkResult error;
-		error = AcquireNextImage(deviceInfo, surfaceInfo);
+		error = AcquireNextImage(deviceInfo, swapchainInfo);
 		Assert(error, "could not acquire next image in update and render");
 
 		VkImageMemoryBarrier barrier = {};
@@ -454,7 +411,7 @@ using namespace Cy;
 		barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
 		barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
 		barrier.subresourceRange = { VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1 };
-		barrier.image = surfaceInfo->images[surfaceInfo->currentBuffer];
+		barrier.image = swapchainInfo->images[swapchainInfo->currentBuffer];
 
 		VkCommandBufferBeginInfo bInfo = {};
 		bInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
@@ -491,14 +448,14 @@ using namespace Cy;
 		sInfo.waitSemaphoreCount = 1;
 		sInfo.pWaitSemaphores = &deviceInfo->presentComplete;
 		sInfo.commandBufferCount = 1;
-		sInfo.pCommandBuffers = &deviceInfo->drawCmdBuffers[surfaceInfo->currentBuffer];
+		sInfo.pCommandBuffers = &deviceInfo->drawCmdBuffers[swapchainInfo->currentBuffer];
 		sInfo.signalSemaphoreCount = 1;
 		sInfo.pSignalSemaphores = &deviceInfo->renderComplete;
 
 		error = vkQueueSubmit(deviceInfo->queue, 1, &sInfo, nullptr);
 		Assert(error, "could not submit cmd buffer in update and render");
 
-		error = QueuePresent(deviceInfo, surfaceInfo);
+		error = QueuePresent(deviceInfo, swapchainInfo);
 		Assert(error, "could not present queue in update and render");
 
 		vkDeviceWaitIdle(deviceInfo->device);
@@ -577,16 +534,14 @@ using namespace Cy;
 		vkFreeMemory(m->deviceInfo.device, m->camera.memory, nullptr);
 
 
-		//destroy "framework" buffers
+		//destroy "framework" objects
 		DestroyTimerInfo(&m->timerInfo);
 		DestroyWindowInfo(&m->windowInfo);
 		DestroyPipelineInfo(m->deviceInfo.device, &m->pipelineInfo);
-		DestroySurfaceInfo(m->vkInstance, m->deviceInfo.device, &m->surfaceInfo);
+		DestroySwapchainInfo(&m->deviceInfo, &m->swapchainInfo);
+		DestroySurfaceInfo(&m->instanceInfo, &m->surfaceInfo);
 		DestroyDeviceInfo(&m->deviceInfo);
-#if VALIDATION_LAYERS
-		DestroyDebugInfo(m->vkInstance, &m->debugInfo);
-#endif
-		DestroyInstance(m->vkInstance);
+		DestroyInstanceInfo(&m->instanceInfo);
 	}
 
 
@@ -600,7 +555,7 @@ using namespace Cy;
 			Tick(&m->timerInfo);
 			PollEvents(&m->windowInfo);
 			Update(m);
-			Render(&m->deviceInfo, &m->surfaceInfo);
+			Render(&m->deviceInfo, &m->swapchainInfo);
 			Tock(&m->timerInfo);
 			Sleep(&m->timerInfo, 30);
 		}

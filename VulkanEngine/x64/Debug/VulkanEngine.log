@@ -1,10 +1,4 @@
-﻿  surface.cpp
-  commonvulkan.cpp
+﻿  cystring.cpp
+  cymemory.cpp
   Generating Code...
-  Compiling...
-  commonwindows.cpp
-  camera.cpp
-  Generating Code...
-winmm.lib(WINMM.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in vulkan-1.lib(vulkan-1.dll); second definition ignored
-winmm.lib(WINMM.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
-  VulkanEngine.vcxproj -> D:\scottsdocs\sourcecode\VulkanEngine\VulkanEngine\x64\Debug\..\..\build\VulkanEngine.lib
+d:\scottsdocs\sourcecode\vulkanengine\vulkanengine\code\cystring.cpp(9): error C4716: 'Cy::operator+': must return a value

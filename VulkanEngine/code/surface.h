@@ -41,9 +41,16 @@ namespace Cy
 		PFN_vkQueuePresentKHR QueuePresentKHR;
 	};
 
-	VkSurfaceKHR NewSurface(const WindowInfo* window, VkInstance vkInstance);
+	VkSurfaceKHR NewSurface(VkInstance vkInstance, const WindowInfo* window);
 
-	uint32_t FindGraphicsQueueFamilyIndex(VkPhysicalDevice vkPhysicalDevice, VkSurfaceKHR surface);
+	void NewSurfaceInfo(const WindowInfo* windowInfo,
+		const InstanceInfo* instanceInfo,
+		const PhysDeviceInfo* physDeviceInfo,
+		SurfaceInfo* surfaceInfo);
+
+
+	uint32_t FindGraphicsQueueFamilyIndex(VkPhysicalDevice vkPhysicalDevice, 
+		const SurfaceInfo* surfaceInfo);
 
 	void GetSurfaceColorSpaceAndFormat(VkPhysicalDevice physicalDevice,
 		SurfaceInfo* surfaceInfo);
@@ -54,11 +61,20 @@ namespace Cy
 		const DeviceInfo* deviceInfo,
 		SwapchainInfo* swapchainInfo);
 
-	VkResult AcquireNextImage(const DeviceInfo* deviceInfo, SurfaceInfo* surfaceInfo);
+	VkResult AcquireNextImage(const DeviceInfo* deviceInfo, 
+		SwapchainInfo* swapchainInfo);
 
-	VkResult QueuePresent(const DeviceInfo* deviceInfo, const SurfaceInfo* surfaceInfo);
+	VkResult QueuePresent(const DeviceInfo* deviceInfo, 
+		const SwapchainInfo* swapchainInfo);
 
-	void DestroySurfaceInfo(VkInstance vkInstance, VkDevice device, SurfaceInfo* surfaceInfo);
+	void DestroySurfaceInfo(const InstanceInfo* instanceInfo, 
+		SurfaceInfo* surfaceInfo);
 
-	void DestroySwapchainInfo(const DeviceInfo* deviceInfo, SwapchainInfo* swapchainInfo);
+	void DestroySwapchainInfo(const DeviceInfo* deviceInfo, 
+		SwapchainInfo* swapchainInfo);
+
+	void NewDeviceInfo(const WindowInfo* windowInfo,
+		const PhysDeviceInfo* physDeviceInfo,
+		const SurfaceInfo* surfaceInfo,
+		DeviceInfo* deviceInfo);
 }

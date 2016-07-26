@@ -140,7 +140,7 @@ namespace Cy
 
 		ShowWindow(windowHandle, SW_SHOW);
 
-		windowInfo.AppName = appName;
+		windowInfo.appName = appName;
 		windowInfo.windowHandle = windowHandle;
 		windowInfo.clientWidth = clientWidth;
 		windowInfo.clientHeight = clientHeight;
